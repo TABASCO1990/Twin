@@ -1,24 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotateSpeed;
 
-    private Rigidbody _rigidbody;
     private PlayerInput _input;
     private Vector2 _direction;
-    private Vector2 _rotate;
-    private Vector2 _rotation;
+    private Vector3 _offset;
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
         _input = new PlayerInput();
 
         _input.Enable();
@@ -29,6 +21,7 @@ public class PlayerMover : MonoBehaviour
         _direction = _input.Player.Movement.ReadValue<Vector2>();
 
         Move(_direction);
+        Look();
     }
 
     private void Move(Vector2 direction)
@@ -36,13 +29,16 @@ public class PlayerMover : MonoBehaviour
         if (direction.sqrMagnitude < 0.1)
             return;
 
-        float scaledMoveSpeed = _moveSpeed * Time.deltaTime;
-        Vector3 move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * new Vector3(direction.x, 0, direction.y);
-        transform.position += move * scaledMoveSpeed;        
+        _offset = new Vector3(direction.x, 0, direction.y);
+        transform.Translate(_offset * _moveSpeed * Time.deltaTime, Space.World);    
     }
-    
+
     private void Look()
     {
-
+        if (_offset != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(_offset, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotateSpeed * Time.deltaTime);
+        }
     }
 }

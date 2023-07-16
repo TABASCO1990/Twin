@@ -50,8 +50,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""b51931d0-42af-4f04-839b-9fda88b90485"",
+                    ""name"": ""Up"",
+                    ""id"": ""e48da37e-61ed-4d2f-8dcc-fe70df7d245e"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -61,8 +61,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""bd560bcf-f7b6-408c-8836-1002a7a8208c"",
+                    ""name"": ""Down"",
+                    ""id"": ""9c692d59-ac81-4e9d-bebb-bd31cea77b9d"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -72,8 +72,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""e48da37e-61ed-4d2f-8dcc-fe70df7d245e"",
+                    ""name"": ""Left"",
+                    ""id"": ""451cf11b-9e08-4c93-9291-0e6364a00b3c"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -83,8 +83,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""9c692d59-ac81-4e9d-bebb-bd31cea77b9d"",
+                    ""name"": ""Right"",
+                    ""id"": ""2c82329b-8ed7-48ff-921f-2ad60a154d50"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -103,17 +103,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Touchscreen"",
-            ""bindingGroup"": ""Touchscreen"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Touchscreen>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -234,15 +223,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
-        }
-    }
-    private int m_TouchscreenSchemeIndex = -1;
-    public InputControlScheme TouchscreenScheme
-    {
-        get
-        {
-            if (m_TouchscreenSchemeIndex == -1) m_TouchscreenSchemeIndex = asset.FindControlSchemeIndex("Touchscreen");
-            return asset.controlSchemes[m_TouchscreenSchemeIndex];
         }
     }
     public interface IPlayerActions
