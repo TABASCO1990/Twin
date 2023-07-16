@@ -1,11 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.UI;
-using ETouch = UnityEngine.InputSystem.EnhancedTouch;
-
 
 [RequireComponent(typeof(Image))]
 public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
@@ -16,7 +12,6 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Vector2 _startPosition;
     private Image _image;
     private OnScreenStick _stick;
-
 
     void Start()
     {
@@ -32,8 +27,7 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     public void OnPointerDown(PointerEventData eventData)
-    {
-        _stick.gameObject.SetActive(true);
+    {     
         Vector2 localPoint;
         
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRectTransform, eventData.position,eventData.pressEventCamera,out localPoint))
@@ -41,14 +35,15 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _stickTransform.anchoredPosition = localPoint;
             _image.enabled = false;
             _stick.OnPointerDown(eventData);
-        }
+            _stick.GetComponent<Image>().enabled = true;
+        }    
     }
 
     public void OnPointerUp(PointerEventData eventData)
-    {       
+    {   
         _stick.OnPointerUp(eventData);
         _image.enabled = true;
-
         _stickTransform.anchoredPosition = _startPosition;
+        _stick.GetComponent<Image>().enabled = false;
     }
 }
