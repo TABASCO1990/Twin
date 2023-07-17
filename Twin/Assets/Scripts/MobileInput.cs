@@ -6,7 +6,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    [SerializeField] private RectTransform _stickTransform;
+    [SerializeField] private RectTransform _knobJoystick;
+    [SerializeField] private RectTransform _stickJoystic;
 
     private RectTransform _canvasRectTransform;
     private Vector2 _startPosition;
@@ -17,8 +18,8 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         _image = GetComponent<Image>();
         _canvasRectTransform = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
-        _stick = _stickTransform.GetComponent<OnScreenStick>();
-        _startPosition = _stickTransform.anchoredPosition;
+        _stick = _knobJoystick.GetComponent<OnScreenStick>();
+        _startPosition = _knobJoystick.anchoredPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -32,8 +33,10 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRectTransform, eventData.position,eventData.pressEventCamera,out localPoint))
         {
-            _stickTransform.anchoredPosition = localPoint;
+            _knobJoystick.anchoredPosition = localPoint;
+            _stickJoystic.anchoredPosition = localPoint;
             _image.enabled = false;
+            _stickJoystic.GetComponent<Image>().enabled = true;
             _stick.OnPointerDown(eventData);
             _stick.GetComponent<Image>().enabled = true;
         }    
@@ -43,7 +46,9 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {   
         _stick.OnPointerUp(eventData);
         _image.enabled = true;
-        _stickTransform.anchoredPosition = _startPosition;
+        _knobJoystick.anchoredPosition = _startPosition;
+        _stickJoystic.anchoredPosition = _startPosition;
+        _stickJoystic.GetComponent<Image>().enabled = false;
         _stick.GetComponent<Image>().enabled = false;
     }
 }
