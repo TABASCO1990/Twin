@@ -317,41 +317,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8854392893128081692, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
-      propertyPath: _level
-      value: 
-      objectReference: {fileID: 1918362608}
-    - target: {fileID: 8854392893128081692, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
-      propertyPath: LevelChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854392893128081692, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
-      propertyPath: LevelChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854392893128081692, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
       propertyPath: LevelChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1918362608}
-    - target: {fileID: 8854392893128081692, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
-      propertyPath: LevelChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854392893128081692, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
-      propertyPath: LevelChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854392893128081692, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
-      propertyPath: LevelChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Location, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854392893128081692, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
-      propertyPath: LevelChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907348085541748255, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
-      propertyPath: _bonus
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -768,6 +736,7 @@ MonoBehaviour:
   _time: {fileID: 1379481744}
   _duration: 30
   _remainingDuration: 0
+  _player: {fileID: 1487311327}
 --- !u!1 &1379481742
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,7 +822,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 91.4
+  m_fontSize: 88.95
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1

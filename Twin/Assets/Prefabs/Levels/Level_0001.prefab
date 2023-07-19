@@ -357,6 +357,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TargetStickman
       objectReference: {fileID: 0}
+    - target: {fileID: 6962903960183007272, guid: 0e026de32c12add4faba968607d7ce36, type: 3}
+      propertyPath: _score
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962903960183007272, guid: 0e026de32c12add4faba968607d7ce36, type: 3}
+      propertyPath: _countBonusSeconds
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

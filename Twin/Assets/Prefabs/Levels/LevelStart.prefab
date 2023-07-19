@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2095013816989287184
 Transform:
   m_ObjectHideFlags: 0
@@ -288,6 +288,14 @@ PrefabInstance:
     - target: {fileID: 4854062688490573634, guid: 0e026de32c12add4faba968607d7ce36, type: 3}
       propertyPath: m_Name
       value: TargetStickman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962903960183007272, guid: 0e026de32c12add4faba968607d7ce36, type: 3}
+      propertyPath: _score
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962903960183007272, guid: 0e026de32c12add4faba968607d7ce36, type: 3}
+      propertyPath: _countBonusSeconds
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
