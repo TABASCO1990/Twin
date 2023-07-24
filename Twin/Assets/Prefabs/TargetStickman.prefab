@@ -489,8 +489,8 @@ GameObject:
   - component: {fileID: 3078379034370146446}
   - component: {fileID: 7613785959243902266}
   - component: {fileID: 974271880615462719}
-  - component: {fileID: 7363115630149300639}
   - component: {fileID: 6962903960183007272}
+  - component: {fileID: 3806576713880147784}
   m_Layer: 0
   m_Name: TargetStickman
   m_TagString: Untagged
@@ -506,7 +506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4854062688490573634}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -644,7 +644,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &7363115630149300639
+--- !u!114 &6962903960183007272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854062688490573634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f94dc603a90324cbbc0e541b98856a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _countBonusSeconds: 1
+  _score: 10
+  _timer: {fileID: 0}
+--- !u!136 &3806576713880147784
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -664,24 +679,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2977683
-  m_Height: 1.8588653
+  m_Height: 1.8579092
   m_Direction: 1
-  m_Center: {x: 0.003369391, y: 0.91495657, z: 0.001314044}
---- !u!114 &6962903960183007272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4854062688490573634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f94dc603a90324cbbc0e541b98856a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _countBonusSeconds: 1
-  _score: 10
-  _timer: {fileID: 0}
+  m_Center: {x: 0.003369391, y: 0.9154346, z: 0.001314044}
 --- !u!1 &5481673718972249775
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Playermat
+  m_Name: PlayerMat
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -80,7 +80,7 @@ Material:
     - _CameraDistanceFadeClose: 0
     - _CameraDistanceFadeFar: 10
     - _CelExtraEnabled: 0
-    - _CelNumSteps: 3
+    - _CelNumSteps: 1
     - _CelPrimaryMode: 1
     - _Cull: 2
     - _Cutoff: 0.5
@@ -108,8 +108,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineDepthOffset: 0
-    - _OutlineWidth: 0.01
+    - _OutlineDepthOffset: 1
+    - _OutlineWidth: 8.32
     - _OverrideLightmapDir: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
@@ -118,6 +118,7 @@ Material:
     - _SelfShadingSizeExtra: 0.6
     - _ShadowEdgeSize: 0.3
     - _ShadowEdgeSizeExtra: 0.05
+    - _Shininess: 0.078125
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
     - _SpecularHighlights: 1
@@ -134,16 +135,17 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.94509804, g: 0.27058825, b: 0.89411765, a: 1}
-    - _ColorDim: {r: 0.9339623, g: 0.56470007, b: 0.13656995, a: 1}
-    - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _Color: {r: 0.9245283, g: 0.66241145, b: 0.16135636, a: 0}
+    - _ColorDim: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorDimCurve: {r: 0.6792453, g: 0.4998056, b: 0.15699539, a: 0}
     - _ColorDimExtra: {r: 0.98039216, g: 0.68024933, b: 0.043137226, a: 1}
-    - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDimSteps: {r: 0.9254902, g: 0.6627451, b: 0.16078432, a: 0}
     - _ColorGradient: {r: 0.98039216, g: 0.68024933, b: 0.043137226, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.98039216, g: 0.68024933, b: 0.043137226, a: 1}
     - _FlatSpecularColor: {r: 0.98039216, g: 0.68024933, b: 0.043137226, a: 1}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.2264151, g: 0.13349947, b: 0.13349947, a: 1}
+    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
   m_BuildTextureStacks: []
