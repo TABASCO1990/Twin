@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor;
 
 public class RendererChanged : MonoBehaviour
 {
@@ -8,11 +7,12 @@ public class RendererChanged : MonoBehaviour
 
     private int colorValue;
     private int startColorIndex = 0;
-     
+    private string shadedName = "_ColorDim";  
 
     private void Start()
     {
         _material.color = _colors[startColorIndex];
+        SetShaded();
     }
 
     public void SetColor()
@@ -25,10 +25,15 @@ public class RendererChanged : MonoBehaviour
         }
 
         _material.color = _colors[colorValue];
-        _material.SetColor("_ColorDim", Color.red);
-
-
-
+        SetShaded();
     }
 
+    private void SetShaded()
+    {
+        float _value = 0.66f;
+
+        Color.RGBToHSV(_colors[colorValue], out float H, out float S, out float V);
+        Color color = Color.HSVToRGB(H, S, _value);
+        _material.SetColor(shadedName, color);       
+    }
 }
