@@ -17,9 +17,10 @@ public class Location : ObjectPool
 
     public void SetLevel()
     {
+
         if (TryGetNextObject(out GameObject level))
         {
-            InitializeObstacle(level);
+            InitializeObstacle(level);        
         }
     }
 

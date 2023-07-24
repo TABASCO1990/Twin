@@ -12,7 +12,6 @@ public class PlayerMover : MonoBehaviour
     private Vector2 _direction;
     private Vector3 _offset;
 
-
     public event UnityAction Running;
     private Animator _animator;
 

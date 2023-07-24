@@ -516,7 +516,7 @@ Transform:
   m_Children:
   - {fileID: 3728182697481420267}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2712053968694220702
 Animator:
@@ -721,9 +721,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2977683
-  m_Height: 1.9049106
+  m_Height: 1.8584905
   m_Direction: 1
-  m_Center: {x: 0.003369391, y: 0.8919339, z: 0.001314044}
+  m_Center: {x: 0.003369391, y: 0.91514397, z: 0.001314044}
 --- !u!1 &4752679703637179404
 GameObject:
   m_ObjectHideFlags: 0
