@@ -29,6 +29,16 @@ public class Plant : MonoBehaviour
         }
     }
 
+    public void ResetTile()
+    {
+        foreach (var tile in _tiles)
+        {
+            tile.gameObject.SetActive(true);
+        }
+
+        _numbers = _numbersTilesGreen.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+    }
+
     private void SetTiles()
     {
         Vector3 nextPosition = _startPosition;

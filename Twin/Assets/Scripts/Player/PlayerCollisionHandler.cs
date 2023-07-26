@@ -20,5 +20,9 @@ public class PlayerCollisionHandler : MonoBehaviour
             _player.IncreaseScore(target.Score);
             LevelChanged?.Invoke();
         }
+        else if (other.TryGetComponent(out Water water))
+        {
+            _player.Die();
+        }
     }
 }

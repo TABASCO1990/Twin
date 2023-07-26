@@ -30,6 +30,11 @@ public class Timer : MonoBehaviour
         UpdateTimer();
     }
 
+    public void ResetTime()
+    {
+        _remainingDuration = _duration;
+    }
+
     private void BeginTime(int second)
     {
         _remainingDuration = second;
@@ -51,7 +56,10 @@ public class Timer : MonoBehaviour
 
     private void EndTime()
     {
-        print("Конец");
+        if(_remainingDuration <= 0)
+        {
+            _player.Die();
+        }
     }
 
     private void OnTimeChanged(float time)

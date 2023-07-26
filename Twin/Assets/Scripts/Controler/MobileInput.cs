@@ -22,6 +22,11 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _startPosition = _knobJoystick.anchoredPosition;
     }
 
+    public void ResetJoystic()
+    {
+        _startPosition = _knobJoystick.anchoredPosition;
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         _stick.OnDrag(eventData);

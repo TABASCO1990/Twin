@@ -8,6 +8,16 @@ public class ObjectPool : MonoBehaviour
 
     protected List<GameObject> _pool = new List<GameObject>();
 
+    public void ResetPool()
+    {
+        _pool[0].SetActive(true);
+
+        for (int i = 1; i < _pool.Count; i++)
+        {
+            _pool[i].SetActive(false);
+        }
+    }
+
     protected void Initialize(GameObject prefab)
     {
         GameObject spawn = Instantiate(prefab, _container.transform);

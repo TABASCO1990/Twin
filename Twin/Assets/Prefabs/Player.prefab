@@ -633,6 +633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52000b16de60e4e41b40620ea2d72f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPosition: {x: 0, y: 0.2, z: 0}
+  _startRotation: {x: 0, y: 180, z: 0}
   _moveSpeed: 5
   _rotateSpeed: 720
 --- !u!54 &6590876692825317679
@@ -692,6 +694,42 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Location, Assembly-CSharp
         m_MethodName: SetLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Plant, Assembly-CSharp
+        m_MethodName: RemoveTile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: RendererChanged, Assembly-CSharp
+        m_MethodName: SetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: RendererChanged, Assembly-CSharp
+        m_MethodName: SetColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

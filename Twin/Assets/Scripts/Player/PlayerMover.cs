@@ -4,27 +4,29 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Animator))]
 public class PlayerMover : MonoBehaviour
 {
+    [SerializeField] private Vector3 _startPosition;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _rotateSpeed;
+    [SerializeField] private float _rotateSpeed;  
 
     private bool _isRunning;
     private PlayerInput _input;
     private Vector2 _direction;
     private Vector3 _offset;
-
-    public event UnityAction Running;
     private Animator _animator;
+
+    public event UnityAction Running;   
 
     private void Awake()
     {
         _input = new PlayerInput();       
 
-        _input.Enable();
+        _input.Enable();   
     }
 
     private void Start()
-    {
+    {        
         _animator = GetComponent<Animator>();
+        ResetPlayer();
     }
 
     private void Update()
@@ -33,6 +35,11 @@ public class PlayerMover : MonoBehaviour
 
         Move(_direction);
         Rotate();
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = _startPosition;
     }
 
     public void Move(Vector2 direction)

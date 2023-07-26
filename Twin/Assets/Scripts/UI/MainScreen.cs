@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameOverScreen : ScreenBase
+public class MainScreen : ScreenBase
 {
-    public event UnityAction RestartButtonClock;
+    public event UnityAction PlayButtonClick;
 
     public override void Close()
     {
         CanvasGroup.alpha = 0;
-        CanvasGroup.blocksRaycasts = false;
         Button.interactable = false;
+        CanvasGroup.blocksRaycasts = false;
         DisableObjects(true);
     }
 
@@ -23,6 +23,6 @@ public class GameOverScreen : ScreenBase
 
     protected override void OnButtonClick()
     {
-        RestartButtonClock?.Invoke();
-    } 
+        PlayButtonClick?.Invoke();
+    }
 }
