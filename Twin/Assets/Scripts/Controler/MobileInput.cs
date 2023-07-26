@@ -24,7 +24,8 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void ResetJoystic()
     {
-        _startPosition = _knobJoystick.anchoredPosition;
+        _knobJoystick.GetComponent<Image>().enabled = false;
+        _stickJoystic.GetComponent<Image>().enabled=false;
     }
 
     public void OnDrag(PointerEventData eventData)

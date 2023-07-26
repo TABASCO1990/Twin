@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
     [SerializeField] private ObstacleColor _obstacleColor;
     [SerializeField] private Timer _timer;
     [SerializeField] private MainScreen _mainScreen;
+    [SerializeField] private MobileInput _mobileInput;
     [SerializeField] private GameOverScreen _gameOverScreen;
 
     private void OnEnable()
@@ -47,6 +48,7 @@ public class Game : MonoBehaviour
         _playerColor.ResetColors();
         _obstacleColor.ResetColors();
         _timer.ResetTime();
+        _mobileInput.ResetJoystic();
         _gameOverScreen.Close();
         StartGame();
     }

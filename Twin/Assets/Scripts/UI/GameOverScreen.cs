@@ -14,7 +14,7 @@ public class GameOverScreen : ScreenBase
     }
 
     public override void Open()
-    {
+    {    
         CanvasGroup.alpha = 1;
         Button.interactable = true;
         CanvasGroup.blocksRaycasts = true;
