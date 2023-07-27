@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +15,15 @@ public class Game : MonoBehaviour
     [SerializeField] private MainScreen _mainScreen;
     [SerializeField] private MobileInput _mobileInput;
     [SerializeField] private GameOverScreen _gameOverScreen;
+    [SerializeField] private PauseScreen _pauseScreen;
 
     private void OnEnable()
     {
         _mainScreen.PlayButtonClick += OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
+        _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;
+        _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
     }
 
     private void OnDisable()
@@ -41,7 +45,7 @@ public class Game : MonoBehaviour
         StartGame();
     }
 
-    private void OnRestartButtonClick()
+    public void OnRestartButtonClick()
     {
         _location.ResetPool();
         _plant.ResetTile();
@@ -59,9 +63,26 @@ public class Game : MonoBehaviour
         _player.ResetPlayer();
     }
 
-    public void OnGameOver()
+    private void OnGameOver()
     {
         Time.timeScale = 0;
         _gameOverScreen.Open();
+    }
+
+    private void OnContinueButtonClick()
+    {
+        Time.timeScale = 1;
+        _pauseScreen.Close();
+    }
+
+    public void ExitPlay()
+    {
+        print("Выход");
+        Application.Quit();
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

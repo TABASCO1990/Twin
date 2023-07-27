@@ -34,6 +34,5 @@ public abstract class ScreenBase : MonoBehaviour
         {
             item.gameObject.SetActive(isActive);
         }
-
     }
 }
