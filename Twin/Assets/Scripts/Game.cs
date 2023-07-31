@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +13,7 @@ public class Game : MonoBehaviour
     [SerializeField] private MobileInput _mobileInput;
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PauseScreen _pauseScreen;
+    [SerializeField] private LevelComplete _levelCompleteScreen;
 
     private void OnEnable()
     {
@@ -23,14 +21,16 @@ public class Game : MonoBehaviour
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;
-        _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
+        _player.LevelComplete += OnLevelComplete;
     }
 
     private void OnDisable()
     {
         _mainScreen.PlayButtonClick -= OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
+        _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
+        _player.LevelComplete -= OnLevelComplete;
     }
 
     private void Start()
@@ -67,6 +67,12 @@ public class Game : MonoBehaviour
     {
         Time.timeScale = 0;
         _gameOverScreen.Open();
+    }
+
+    private void OnLevelComplete()
+    {
+        Time.timeScale = 0;
+        _levelCompleteScreen.Open();
     }
 
     private void OnContinueButtonClick()

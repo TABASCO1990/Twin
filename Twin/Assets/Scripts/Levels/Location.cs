@@ -5,6 +5,8 @@ public class Location : ObjectPool
     [SerializeField] private GameObject[] _levelPrefabs;
     [SerializeField] private int _startLevelPrefab = 0;
 
+    public int CountTarget => _levelPrefabs.Length;
+
     private void Start()
     {
         foreach (var level in _levelPrefabs)
@@ -17,7 +19,6 @@ public class Location : ObjectPool
 
     public void SetLevel()
     {
-
         if (TryGetNextObject(out GameObject level))
         {
             InitializeObstacle(level);        

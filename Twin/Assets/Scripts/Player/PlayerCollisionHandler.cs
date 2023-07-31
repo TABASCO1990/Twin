@@ -16,7 +16,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out Target target))
-        {          
+        {
             _player.IncreaseScore(target.Score);
             LevelChanged?.Invoke();
         }
