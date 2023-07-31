@@ -2512,7 +2512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &280998687
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10029,6 +10029,7 @@ MonoBehaviour:
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1708081984}
+  - {fileID: 1320474295}
   _joystick: {fileID: 2100365764}
 --- !u!1 &681386987
 GameObject:

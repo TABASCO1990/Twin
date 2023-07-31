@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     private PlayerMover _mover;
     private int _score;
+    private int _countEventsScore;
 
     public event UnityAction<int> ScoreChanged;
     public event UnityAction<float> TimeChanged;
@@ -22,14 +23,14 @@ public class Player : MonoBehaviour
     public void IncreaseScore(int score)
     {
         _score += score;
+        _countEventsScore++;
         ScoreChanged?.Invoke(_score);
-
         CheckLevelCompletion();
     }
 
     public void CheckLevelCompletion()
     {
-        if (170 == _location.CountTarget) 
+        if (_countEventsScore == _location.CountTarget) 
         {     
             LevelComplete?.Invoke();
         }
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     public void ResetPlayer()
     {
         _score = 0;
+        _countEventsScore = 0;
         ScoreChanged?.Invoke(_score);
         _mover.ResetPlayer();
     }
