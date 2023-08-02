@@ -4,16 +4,15 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerMover))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Location _location;
-
     private PlayerMover _mover;
     private int _score;
     private int _countEventsScore;
 
     public event UnityAction<int> ScoreChanged;
     public event UnityAction<float> TimeChanged;
-    public event UnityAction GameOver;
-    public event UnityAction LevelComplete;
+    public event UnityAction GameOver;   
+
+    public int CountEventsScore => _countEventsScore;
 
     private void Start()
     {
@@ -25,15 +24,6 @@ public class Player : MonoBehaviour
         _score += score;
         _countEventsScore++;
         ScoreChanged?.Invoke(_score);
-        CheckLevelCompletion();
-    }
-
-    public void CheckLevelCompletion()
-    {
-        if (_countEventsScore == _location.CountTarget) 
-        {     
-            LevelComplete?.Invoke();
-        }
     }
 
     public void IncreaseTime(float time)

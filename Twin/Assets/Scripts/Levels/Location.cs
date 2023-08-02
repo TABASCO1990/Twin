@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Location : ObjectPool
 {
     [SerializeField] private GameObject[] _levelPrefabs;
     [SerializeField] private int _startLevelPrefab = 0;
+    [SerializeField] private Player _player;
 
-    public int CountTarget => _levelPrefabs.Length;
+    public event UnityAction LevelComplete;
 
     private void Start()
     {
@@ -21,7 +23,17 @@ public class Location : ObjectPool
     {
         if (TryGetNextObject(out GameObject level))
         {
-            InitializeObstacle(level);        
+            InitializeObstacle(level);
+        }
+
+        CheckLevelCompletion();
+    }
+
+    public void CheckLevelCompletion()
+    {
+        if (_player.CountEventsScore == _levelPrefabs.Length)
+        {
+            LevelComplete?.Invoke();
         }
     }
 

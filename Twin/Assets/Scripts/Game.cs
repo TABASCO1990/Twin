@@ -5,9 +5,9 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Location _location;
-    [SerializeField] private Plant _plant;
-    [SerializeField] private PlayerColor _playerColor;
-    [SerializeField] private ObstacleColor _obstacleColor;
+    //[SerializeField] private Plant _plant;
+    //[SerializeField] private PlayerColor _playerColor;
+    //[SerializeField] private ObstacleColor _obstacleColor;
     [SerializeField] private Timer _timer;
     [SerializeField] private MainScreen _mainScreen;
     [SerializeField] private MobileInput _mobileInput;
@@ -21,7 +21,7 @@ public class Game : MonoBehaviour
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;
-        _player.LevelComplete += OnLevelComplete;
+        _location.LevelComplete += OnLevelComplete;
     }
 
     private void OnDisable()
@@ -30,7 +30,7 @@ public class Game : MonoBehaviour
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
-        _player.LevelComplete -= OnLevelComplete;
+        _location.LevelComplete -= OnLevelComplete;
     }
 
     private void Start()
@@ -48,9 +48,9 @@ public class Game : MonoBehaviour
     public void OnRestartButtonClick()
     {
         _location.ResetPool();
-        _plant.ResetTile();
-        _playerColor.ResetColors();
-        _obstacleColor.ResetColors();
+        _location.GetComponentInChildren<Plant>().ResetTile();
+        _location.GetComponent<PlayerColor>().ResetColors();
+        _location.GetComponent<ObstacleColor>().ResetColors();
         _timer.ResetTime();
         _mobileInput.ResetJoystic();
         _gameOverScreen.Close();

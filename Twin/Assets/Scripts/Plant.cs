@@ -43,9 +43,9 @@ public class Plant : MonoBehaviour
     {
         Vector3 nextPosition = _startPosition;
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < _columnsCount; i++)
         {
-            for (int j = 0; j < 6; j++)
+            for (int j = 0; j < _rowsCount; j++)
             {
                 nextPosition = new Vector3(
                     _startPosition.x + (_tilePrefab.GetComponent<Renderer>().bounds.size.x) * i, 0, _startPosition.z + (_tilePrefab.GetComponent<Renderer>().bounds.size.z) * j * -1);
