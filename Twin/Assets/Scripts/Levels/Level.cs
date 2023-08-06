@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Location : ObjectPool
+public class Level : ObjectPool
 {
     [SerializeField] private GameObject[] _levelPrefabs;
     [SerializeField] private int _startLevelPrefab = 0;

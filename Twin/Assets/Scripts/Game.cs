@@ -1,56 +1,65 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private Location _location;
-    //[SerializeField] private Plant _plant;
-    //[SerializeField] private PlayerColor _playerColor;
-    //[SerializeField] private ObstacleColor _obstacleColor;
+    [SerializeField] private Locations _location;
     [SerializeField] private Timer _timer;
     [SerializeField] private MainScreen _mainScreen;
+    [SerializeField] private StageScreen _stageScreen;
     [SerializeField] private MobileInput _mobileInput;
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PauseScreen _pauseScreen;
     [SerializeField] private LevelComplete _levelCompleteScreen;
 
+    [SerializeField] private Level _level;
+
+    private void Awake()
+    {
+        _level = _location.GetLevel();
+    }
+
     private void OnEnable()
     {
-        _mainScreen.PlayButtonClick += OnPlayButtonClick;
+        _stageScreen.StageButtonClick += OnPlayButtonClick;
+
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;
-        _location.LevelComplete += OnLevelComplete;
+        _level.LevelComplete += OnLevelComplete;
     }
 
     private void OnDisable()
     {
-        _mainScreen.PlayButtonClick -= OnPlayButtonClick;
+        _stageScreen.StageButtonClick -= OnPlayButtonClick;
+
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
-        _location.LevelComplete -= OnLevelComplete;
+        _level.LevelComplete -= OnLevelComplete;
     }
 
     private void Start()
     {
+        
         Time.timeScale = 0;
         _mainScreen.Open();
     }
 
     private void OnPlayButtonClick()
     {
-        _mainScreen.Close();
+        _stageScreen.Close();
         StartGame();
     }
 
     public void OnRestartButtonClick()
     {
-        _location.ResetPool();
-        _location.GetComponentInChildren<Plant>().ResetTile();
-        _location.GetComponent<PlayerColor>().ResetColors();
-        _location.GetComponent<ObstacleColor>().ResetColors();
+        _level.ResetPool();
+        _level.GetComponentInChildren<Plant>().ResetTile();
+        _level.GetComponent<PlayerColor>().ResetColors();
+        _level.GetComponent<ObstacleColor>().ResetColors();
         _timer.ResetTime();
         _mobileInput.ResetJoystic();
         _gameOverScreen.Close();

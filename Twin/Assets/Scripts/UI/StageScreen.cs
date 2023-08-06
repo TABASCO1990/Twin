@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MainScreen : ScreenBase
+public class StageScreen : ScreenBase
 {
-    public event UnityAction SelectStageClick;
+    public event UnityAction StageButtonClick;
 
     public override void Close()
     {
@@ -23,6 +23,6 @@ public class MainScreen : ScreenBase
 
     protected override void OnButtonClick()
     {
-        SelectStageClick?.Invoke();
+        StageButtonClick?.Invoke();
     }
 }
