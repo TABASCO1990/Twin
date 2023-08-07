@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class StageScreen : ScreenBase
 {
@@ -19,6 +20,11 @@ public class StageScreen : ScreenBase
         Button.interactable = true;
         CanvasGroup.blocksRaycasts = true;
         DisableObjects(false);
+    }
+
+    public void SetButtonStage(Button playButton)
+    {
+        Button = playButton;
     }
 
     protected override void OnButtonClick()

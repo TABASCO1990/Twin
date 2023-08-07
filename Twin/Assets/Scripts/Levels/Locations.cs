@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Locations : MonoBehaviour
 {
     [SerializeField] private Stage[] _stages;
 
-    private int _numberLevel;
+    public int _numberLevel;
 
     public Stage GetStage()
     {
-        _stages[0].gameObject.SetActive(true);
-        Stage level = _stages[0];
+        _stages[_numberLevel].gameObject.SetActive(true);
+        Stage level = _stages[_numberLevel];
         return level;
     }  
     

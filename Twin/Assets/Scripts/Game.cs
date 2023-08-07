@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -67,6 +66,7 @@ public class Game : MonoBehaviour
     {
         Time.timeScale = 1;
         _player.ResetPlayer();
+        _stage = _location.GetStage();
     }
 
     private void OnGameOver()
