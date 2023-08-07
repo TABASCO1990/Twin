@@ -5,19 +5,23 @@ using UnityEngine.Events;
 public class PlayerCollisionHandler : MonoBehaviour
 {
     [SerializeField] private Locations _location;
-    [SerializeField] private Level _level;
+    [SerializeField] private Stage _level;
 
     private Player _player;
 
     private void Awake()
     {
-        _level = _location.GetLevel();
+        ResetCollisoin();
     }
 
     private void Start()
     {
-        _player = GetComponent<Player>();
-        
+        _player = GetComponent<Player>();      
+    }
+
+    public void ResetCollisoin()
+    {
+        _level = _location.GetStage();
     }
 
     private void OnTriggerEnter(Collider other)

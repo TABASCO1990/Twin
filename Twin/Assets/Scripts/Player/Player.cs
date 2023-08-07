@@ -2,9 +2,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerMover))]
+[RequireComponent(typeof(PlayerCollisionHandler))]
 public class Player : MonoBehaviour
 {
     private PlayerMover _mover;
+    private PlayerCollisionHandler _collisionHandler;
     private int _score;
     private int _countEventsScore;
 
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _mover = GetComponent<PlayerMover>();
+        _collisionHandler = GetComponent<PlayerCollisionHandler>();
     }
 
     public void IncreaseScore(int score)
@@ -37,6 +40,7 @@ public class Player : MonoBehaviour
         _countEventsScore = 0;
         ScoreChanged?.Invoke(_score);
         _mover.ResetPlayer();
+        _collisionHandler.ResetCollisoin();
     }
 
     public void Die()

@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Epic Toon FX/Demo/Scenes/etfx_fire3.unity
     guid: 237fa454a1c11d24d8a92ad2acf18735
+  - enabled: 1
+    path: Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer___Scene.unity
+    guid: 39a40a8454d52cf4781a3b756255809d
+  - enabled: 1
+    path: Assets/FlatKit/Demos/[Demo] NormalMapsTree/NormalMapsTree___Scene.unity
+    guid: 33db50a5cfa20494798f0da3061c6d24
+  - enabled: 1
+    path: Assets/FlatKit/Demos/[Demo] Fruit Vase/_4_FruitVaseScene_CelShadingMode_Curve.unity
+    guid: 1dc1412a8d950d140aa76aac1e3e827f
+  - enabled: 1
+    path: Assets/FlatKit/Demos/[Demo] Valley/Valley___Scene___With_Fog.unity
+    guid: 07b09a254de93834d8ba8045c81488a6
   m_configObjects: {}

@@ -14,36 +14,33 @@ public class Game : MonoBehaviour
     [SerializeField] private PauseScreen _pauseScreen;
     [SerializeField] private LevelComplete _levelCompleteScreen;
 
-    [SerializeField] private Level _level;
+    [SerializeField] private Stage _stage;
 
     private void Awake()
     {
-        _level = _location.GetLevel();
+        _stage = _location.GetStage();
     }
 
     private void OnEnable()
     {
         _stageScreen.StageButtonClick += OnPlayButtonClick;
-
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;
-        _level.LevelComplete += OnLevelComplete;
+        _stage.LevelComplete += OnLevelComplete;
     }
 
     private void OnDisable()
     {
         _stageScreen.StageButtonClick -= OnPlayButtonClick;
-
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
-        _level.LevelComplete -= OnLevelComplete;
+        _stage.LevelComplete -= OnLevelComplete;
     }
 
     private void Start()
     {
-        
         Time.timeScale = 0;
         _mainScreen.Open();
     }
@@ -56,10 +53,10 @@ public class Game : MonoBehaviour
 
     public void OnRestartButtonClick()
     {
-        _level.ResetPool();
-        _level.GetComponentInChildren<Plant>().ResetTile();
-        _level.GetComponent<PlayerColor>().ResetColors();
-        _level.GetComponent<ObstacleColor>().ResetColors();
+        _stage.ResetPool();
+        _stage.GetComponentInChildren<Plant>().ResetTile();
+        _stage.GetComponent<PlayerColor>().ResetColors();
+        _stage.GetComponent<ObstacleColor>().ResetColors();
         _timer.ResetTime();
         _mobileInput.ResetJoystic();
         _gameOverScreen.Close();

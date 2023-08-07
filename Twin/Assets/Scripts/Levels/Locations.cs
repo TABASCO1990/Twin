@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Locations : MonoBehaviour
 {
-    [SerializeField] private Level[] _levels;
+    [SerializeField] private Stage[] _stages;
 
     private int _numberLevel;
 
-    public int NumberLevel => _numberLevel;
-
-    public Level GetLevel()
+    public Stage GetStage()
     {
-        _levels[0].gameObject.SetActive(true);
-        Level level = _levels[0];
+        _stages[0].gameObject.SetActive(true);
+        Stage level = _stages[0];
         return level;
-    }   
+    }  
+    
+    public void SetNumberStage(int number)
+    {
+        _numberLevel = number;
+    }
 }
