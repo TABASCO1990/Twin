@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,35 +8,56 @@ public class Game : MonoBehaviour
     [SerializeField] private Locations _location;
     [SerializeField] private Timer _timer;
     [SerializeField] private MainScreen _mainScreen;
-    [SerializeField] private StageScreen _stageScreen;
+    [SerializeField] private GameObject _stageScreen;
     [SerializeField] private MobileInput _mobileInput;
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PauseScreen _pauseScreen;
     [SerializeField] private LevelComplete _levelCompleteScreen;
 
+    [Header("Stages")]
+    [SerializeField] private Launcher _launcherStage_1;
+    [SerializeField] private Launcher _launcherStage_2;
+    [SerializeField] private Launcher _launcherStage_3;
+    [SerializeField] private Launcher _launcherStage_4;
+    [SerializeField] private Launcher _launcherStage_5;
+    [SerializeField] private Launcher _launcherStage_6;
+    [SerializeField] private Launcher _launcherStage_7;
+
+    [Header("Current stage")]
     [SerializeField] private Stage _stage;
-
-    private void Awake()
-    {
-        _stage = _location.GetStage();
-    }
-
+   
     private void OnEnable()
     {
-        _stageScreen.StageButtonClick += OnPlayButtonClick;
+        
+        _launcherStage_1.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_2.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_3.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_4.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_5.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_6.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_7.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
+
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;
-        _stage.LevelComplete += OnLevelComplete;
+        
+        _player.LevelComplete += OnLevelComplete;     
     }
+
 
     private void OnDisable()
     {
-        _stageScreen.StageButtonClick -= OnPlayButtonClick;
+        _launcherStage_1.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_2.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_3.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_4.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_5.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_6.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_7.InitializeStage -= OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
-        _stage.LevelComplete -= OnLevelComplete;
+        _player.LevelComplete -= OnLevelComplete;    
     }
 
     private void Start()
@@ -44,10 +66,11 @@ public class Game : MonoBehaviour
         _mainScreen.Open();
     }
 
-    private void OnPlayButtonClick()
+    private void OnPlayButtonClick(Stage stage)
     {
-        _stageScreen.Close();
-        StartGame();
+        _stage = stage;
+        _stageScreen.SetActive(false);
+        StartGame();   
     }
 
     public void OnRestartButtonClick()
@@ -64,9 +87,12 @@ public class Game : MonoBehaviour
 
     private void StartGame()
     {
+        
+        _timer.ResetTime();
+        
+   
         Time.timeScale = 1;
         _player.ResetPlayer();
-        _stage = _location.GetStage();
     }
 
     private void OnGameOver()

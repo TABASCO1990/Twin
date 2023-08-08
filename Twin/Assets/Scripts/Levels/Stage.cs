@@ -7,7 +7,7 @@ public class Stage : ObjectPool
     [SerializeField] private int _startLevelPrefab = 0;
     [SerializeField] private Player _player;
 
-    public event UnityAction LevelComplete;
+    //public event UnityAction LevelComplete;
 
     private void Start()
     {
@@ -26,15 +26,7 @@ public class Stage : ObjectPool
             InitializeObstacle(level);
         }
 
-        CheckLevelCompletion();
-    }
-
-    public void CheckLevelCompletion()
-    {
-        if (_player.CountEventsScore == _levelPrefabs.Length)
-        {
-            LevelComplete?.Invoke();
-        }
+        _player.CheckLevelCompletion();
     }
 
     private void InitializeObstacle(GameObject level)

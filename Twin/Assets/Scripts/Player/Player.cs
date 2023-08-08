@@ -5,6 +5,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerCollisionHandler))]
 public class Player : MonoBehaviour
 {
+    private const int MaxCountScore = 17;
+
     private PlayerMover _mover;
     private PlayerCollisionHandler _collisionHandler;
     private int _score;
@@ -12,6 +14,7 @@ public class Player : MonoBehaviour
 
     public event UnityAction<int> ScoreChanged;
     public event UnityAction<float> TimeChanged;
+    public event UnityAction LevelComplete;
     public event UnityAction GameOver;   
 
     public int CountEventsScore => _countEventsScore;
@@ -46,5 +49,13 @@ public class Player : MonoBehaviour
     public void Die()
     {
         GameOver?.Invoke();
+    }
+
+    public void CheckLevelCompletion()
+    {
+        if (CountEventsScore == MaxCountScore)
+        {
+            LevelComplete?.Invoke();
+        }
     }
 }

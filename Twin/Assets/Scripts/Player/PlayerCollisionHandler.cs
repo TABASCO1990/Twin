@@ -11,7 +11,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private void Awake()
     {
-        ResetCollisoin();
+        //ResetCollisoin();
     }
 
     private void Start()
