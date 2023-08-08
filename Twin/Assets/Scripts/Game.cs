@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +12,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PauseScreen _pauseScreen;
     [SerializeField] private LevelComplete _levelCompleteScreen;
+    [SerializeField] private ActivationStages _activationStages;
 
     [Header("Stages")]
     [SerializeField] private Launcher _launcherStage_1;
@@ -27,8 +27,7 @@ public class Game : MonoBehaviour
     [SerializeField] private Stage _stage;
    
     private void OnEnable()
-    {
-        
+    {      
         _launcherStage_1.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
         _launcherStage_2.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
         _launcherStage_3.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
@@ -67,7 +66,7 @@ public class Game : MonoBehaviour
     }
 
     private void OnPlayButtonClick(Stage stage)
-    {
+    {      
         _stage = stage;
         _stageScreen.SetActive(false);
         StartGame();   
@@ -75,23 +74,24 @@ public class Game : MonoBehaviour
 
     public void OnRestartButtonClick()
     {
-        _stage.ResetPool();
-        _stage.GetComponentInChildren<Plant>().ResetTile();
-        _stage.GetComponent<PlayerColor>().ResetColors();
-        _stage.GetComponent<ObstacleColor>().ResetColors();
-        _timer.ResetTime();
+        ResetAll();
         _mobileInput.ResetJoystic();
         _gameOverScreen.Close();
         StartGame();
     }
 
-    private void StartGame()
+    private void ResetAll()
     {
-        
-        _timer.ResetTime();
-        
-   
+        _stage.ResetPool();       
+        _stage.GetComponent<PlayerColor>().ResetColors();
+        _stage.GetComponent<ObstacleColor>().ResetColors();
+        _timer.ResetTime();      
+    }
+
+    private void StartGame()
+    {             
         Time.timeScale = 1;
+        _stage.GetComponentInChildren<Plant>().ResetTile();
         _player.ResetPlayer();
     }
 
@@ -104,11 +104,15 @@ public class Game : MonoBehaviour
     private void OnLevelComplete()
     {
         Time.timeScale = 0;
+        ResetAll();   
         _levelCompleteScreen.Open();
+        _activationStages.InitializeStage();
+        _location.ResetStages();
     }
 
     private void OnContinueButtonClick()
     {
+
         Time.timeScale = 1;
         _pauseScreen.Close();
     }

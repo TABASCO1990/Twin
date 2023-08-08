@@ -17,4 +17,12 @@ public class Locations : MonoBehaviour
     {
         _numberLevel = number;
     }
+
+    public void ResetStages()
+    {
+        foreach (var stage in _stages)
+        {
+            stage.gameObject.SetActive(false);
+        }
+    }
 }

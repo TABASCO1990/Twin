@@ -18,6 +18,7 @@ public class Plant : MonoBehaviour
     {
         SetTiles();
         _numbers = _numbersTilesGreen.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+        print(_tiles.Count);
     }
 
     public void RemoveTile()
@@ -35,8 +36,11 @@ public class Plant : MonoBehaviour
         {
             tile.gameObject.SetActive(true);
         }
+      
 
         _numbers = _numbersTilesGreen.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+
+        print(_tiles.Count);
     }
 
     private void SetTiles()

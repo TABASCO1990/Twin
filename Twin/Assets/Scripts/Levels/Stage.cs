@@ -1,13 +1,10 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Stage : ObjectPool
 {
     [SerializeField] private GameObject[] _levelPrefabs;
     [SerializeField] private int _startLevelPrefab = 0;
     [SerializeField] private Player _player;
-
-    //public event UnityAction LevelComplete;
 
     private void Start()
     {
