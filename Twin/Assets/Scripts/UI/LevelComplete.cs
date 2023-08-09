@@ -9,6 +9,7 @@ public class LevelComplete : ScreenBase
     {
         CanvasGroup.alpha = 0;
         CanvasGroup.blocksRaycasts = false;
+        Button.interactable = false;
         DisableObjects(true);
     }
 
@@ -16,6 +17,7 @@ public class LevelComplete : ScreenBase
     {
         CanvasGroup.alpha = 1;
         CanvasGroup.blocksRaycasts = true;
+        Button.interactable = true;
         DisableObjects(false);
     }
 

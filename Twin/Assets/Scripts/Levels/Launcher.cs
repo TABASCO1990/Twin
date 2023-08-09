@@ -13,6 +13,13 @@ public class Launcher : MonoBehaviour
 
     public event UnityAction<Stage> InitializeStage;
 
+    public int NumberStage => _numberStage;
+
+    private void Start()
+    {
+        _buttonStart.enabled = true;
+    }
+
     private void OnEnable()
     {
         _buttonStart.onClick.AddListener(ActivateStage);

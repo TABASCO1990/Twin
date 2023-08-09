@@ -5,7 +5,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(PlayerCollisionHandler))]
 public class Player : MonoBehaviour
 {
-    private const int MaxCountScore = 4;
+    private const int MaxCountScore = 2;
 
     private PlayerMover _mover;
     private PlayerCollisionHandler _collisionHandler;

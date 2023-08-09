@@ -35,12 +35,8 @@ public class Plant : MonoBehaviour
         foreach (var tile in _tiles)
         {
             tile.gameObject.SetActive(true);
-        }
-      
-
+        }      
         _numbers = _numbersTilesGreen.Split(',').Select(x => Convert.ToInt32(x)).ToList();
-
-        print(_tiles.Count);
     }
 
     private void SetTiles()

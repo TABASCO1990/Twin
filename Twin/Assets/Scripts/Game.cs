@@ -6,8 +6,7 @@ public class Game : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Locations _location;
     [SerializeField] private Timer _timer;
-    [SerializeField] private MainScreen _mainScreen;
-    [SerializeField] private GameObject _stageScreen;
+    [SerializeField] private StageScreen _mainScreen;
     [SerializeField] private MobileInput _mobileInput;
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PauseScreen _pauseScreen;
@@ -28,30 +27,27 @@ public class Game : MonoBehaviour
    
     private void OnEnable()
     {      
-        _launcherStage_1.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_2.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_3.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_4.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_5.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_6.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_7.InitializeStage += OnPlayButtonClick;// заработало потомучто поставил ввер
-
+        _launcherStage_1.InitializeStage += OnPlayButtonClick;
+        _launcherStage_2.InitializeStage += OnPlayButtonClick;
+        _launcherStage_3.InitializeStage += OnPlayButtonClick;
+        _launcherStage_4.InitializeStage += OnPlayButtonClick;
+        _launcherStage_5.InitializeStage += OnPlayButtonClick;
+        _launcherStage_6.InitializeStage += OnPlayButtonClick;
+        _launcherStage_7.InitializeStage += OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
-        _player.GameOver += OnGameOver;
-        
+        _player.GameOver += OnGameOver;   
         _player.LevelComplete += OnLevelComplete;     
     }
-
 
     private void OnDisable()
     {
         _launcherStage_1.InitializeStage -= OnPlayButtonClick;
-        _launcherStage_2.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_3.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_4.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_5.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
-        _launcherStage_6.InitializeStage -= OnPlayButtonClick;// заработало потомучто поставил ввер
+        _launcherStage_2.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_3.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_4.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_5.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_6.InitializeStage -= OnPlayButtonClick;
         _launcherStage_7.InitializeStage -= OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
@@ -66,22 +62,22 @@ public class Game : MonoBehaviour
     }
 
     private void OnPlayButtonClick(Stage stage)
-    {      
+    {
+        _location.ResetStages();
         _stage = stage;
-        _stageScreen.SetActive(false);
         StartGame();   
     }
 
     public void OnRestartButtonClick()
     {
         ResetAll();
-        _mobileInput.ResetJoystic();
         _gameOverScreen.Close();
         StartGame();
     }
 
     private void ResetAll()
     {
+        _mobileInput.ResetJoystic();
         _stage.ResetPool();       
         _stage.GetComponent<PlayerColor>().ResetColors();
         _stage.GetComponent<ObstacleColor>().ResetColors();
@@ -106,13 +102,11 @@ public class Game : MonoBehaviour
         Time.timeScale = 0;
         ResetAll();   
         _levelCompleteScreen.Open();
-        _activationStages.InitializeStage();
-        _location.ResetStages();
+        _activationStages.InitializeStage();     
     }
 
     private void OnContinueButtonClick()
     {
-
         Time.timeScale = 1;
         _pauseScreen.Close();
     }

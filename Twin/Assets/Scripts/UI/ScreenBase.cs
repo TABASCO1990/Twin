@@ -15,8 +15,7 @@ public abstract class ScreenBase : MonoBehaviour
 
     private void OnDisable()
     {
-        Button.onClick.RemoveListener(OnButtonClick);
-        
+        Button.onClick.RemoveListener(OnButtonClick);    
     }
 
     protected abstract void OnButtonClick();

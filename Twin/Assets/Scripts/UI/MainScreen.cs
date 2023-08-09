@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MainScreen : ScreenBase
+public class StageScreen : ScreenBase
 {
     public event UnityAction SelectStageClick;
 

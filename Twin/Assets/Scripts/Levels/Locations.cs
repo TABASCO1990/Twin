@@ -6,6 +6,11 @@ public class Locations : MonoBehaviour
 
     public int _numberLevel;
 
+    private void Start()
+    {
+        _stages[_numberLevel].gameObject.SetActive(true);
+    }
+
     public Stage GetStage()
     {
         _stages[_numberLevel].gameObject.SetActive(true);
