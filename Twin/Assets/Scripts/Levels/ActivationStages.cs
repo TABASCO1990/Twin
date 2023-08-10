@@ -5,9 +5,11 @@ public class ActivationStages : MonoBehaviour
 {
     [SerializeField] private Launcher[] _launchers;
     [SerializeField] private Locations _locations;
-    public event UnityAction<int> StageChanged;
+    [SerializeField] private Sprite _spriteActive;
 
     private int _currentStage;
+
+    public event UnityAction<int> StageChanged;
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class ActivationStages : MonoBehaviour
             if (_currentStage < _launchers.Length)
             {
                 _launchers[_currentStage].enabled = true;
+                _launchers[_currentStage].SetButtonSprite(_spriteActive);
             }
             else
             {

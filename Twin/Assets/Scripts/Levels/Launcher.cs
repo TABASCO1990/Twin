@@ -7,7 +7,8 @@ public class Launcher : MonoBehaviour
     [SerializeField] private Stage _stage; //активировать его будем
     [SerializeField] private Locations _location; //передаём номер уровня сюда
     [SerializeField] private int _numberStage; //номер уровня
-    [SerializeField] private Button _buttonStart;
+    //[SerializeField] private Button _buttonStart;
+    [SerializeField] private GameObject _buttonStart;
     [SerializeField] protected GameObject[] ObjectsDisabled;
     [SerializeField] protected GameObject _joystick;
 
@@ -17,21 +18,19 @@ public class Launcher : MonoBehaviour
 
     private void Start()
     {
-        _buttonStart.enabled = true;
+        _buttonStart.GetComponent<Button>().enabled = true;
     }
 
     private void OnEnable()
     {
-        _buttonStart.onClick.AddListener(ActivateStage);
-        _buttonStart.onClick.AddListener(SetStage);
-    
+        _buttonStart.GetComponent<Button>().onClick.AddListener(ActivateStage);
+        _buttonStart.GetComponent<Button>().onClick.AddListener(SetStage); 
     }
 
     private void OnDisable()
     {
-        _buttonStart.onClick.RemoveListener(ActivateStage);
-        _buttonStart.onClick.RemoveListener(SetStage);
-
+        _buttonStart.GetComponent<Button>().onClick.RemoveListener(ActivateStage);
+        _buttonStart.GetComponent<Button>().onClick.RemoveListener(SetStage);
     }
 
     private void ActivateStage()
@@ -55,5 +54,10 @@ public class Launcher : MonoBehaviour
         {
             screenObject.gameObject.SetActive(isActive);
         }
+    }
+
+    public void SetButtonSprite(Sprite sprite)
+    {
+        _buttonStart.GetComponent<Image>().sprite = sprite;
     }
 }

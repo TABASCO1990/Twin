@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PauseScreen _pauseScreen;
     [SerializeField] private LevelComplete _levelCompleteScreen;
+    //[SerializeField] private SettingScreen _settingScreen;
     [SerializeField] private ActivationStages _activationStages;
 
     [Header("Stages")]
@@ -35,6 +37,7 @@ public class Game : MonoBehaviour
         _launcherStage_6.InitializeStage += OnPlayButtonClick;
         _launcherStage_7.InitializeStage += OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
+        //_settingScreen.SettingButtonClick += OnSettingButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;   
         _player.LevelComplete += OnLevelComplete;     
@@ -50,6 +53,7 @@ public class Game : MonoBehaviour
         _launcherStage_6.InitializeStage -= OnPlayButtonClick;
         _launcherStage_7.InitializeStage -= OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
+        //_settingScreen.SettingButtonClick -= OnSettingButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
         _player.LevelComplete -= OnLevelComplete;    
@@ -74,6 +78,11 @@ public class Game : MonoBehaviour
         _gameOverScreen.Close();
         StartGame();
     }
+
+    /*public void OnSettingButtonClick()
+    {
+        _settingScreen.Open();
+    }*/
 
     private void ResetAll()
     {

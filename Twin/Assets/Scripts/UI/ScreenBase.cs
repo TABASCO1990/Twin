@@ -6,7 +6,7 @@ public abstract class ScreenBase : MonoBehaviour
     [SerializeField] protected CanvasGroup CanvasGroup;
     [SerializeField] protected Button Button;
     [SerializeField] protected GameObject[] ObjectsDisabled;
-    [SerializeField] protected GameObject _joystick;
+    [SerializeField] protected GameObject Joystick;
 
     private void OnEnable()
     {
@@ -26,8 +26,8 @@ public abstract class ScreenBase : MonoBehaviour
 
     protected void DisableObjects(bool isActive)
     {
-        _joystick.GetComponent<Image>().enabled = isActive;
-        _joystick.GetComponent<MobileInput>().enabled = isActive;
+        Joystick.GetComponent<Image>().enabled = isActive;
+        Joystick.GetComponent<MobileInput>().enabled = isActive;
 
         foreach (var item in ObjectsDisabled)
         {
