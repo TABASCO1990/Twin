@@ -6,6 +6,9 @@ public class PlayerCollisionHandler : MonoBehaviour
 {
     [SerializeField] private Locations _location;
     [SerializeField] private Stage _level;
+    [SerializeField] private ParticleSystem _targetPartical;
+
+    private float _heightPartical = 2;
 
     private Player _player;
 
@@ -16,7 +19,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private void Start()
     {
-        _player = GetComponent<Player>();      
+        _player = GetComponent<Player>();
     }
 
     public void ResetCollisoin()
@@ -26,13 +29,15 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out Target target))
+        if (other.TryGetComponent(out Target target))
         {
             _player.IncreaseScore(target.Score);
             _level.GetComponent<PlayerColor>().SetColor();
             _level.GetComponent<ObstacleColor>().SetColor();
             _level.SetLevel();
             _level.GetComponentInChildren<Plant>().RemoveTile();
+            _targetPartical.gameObject.transform.position = new Vector3(target.transform.position.x, _heightPartical, target.transform.position.z);
+            _targetPartical.Play();
         }
         else if (other.TryGetComponent(out Water water))
         {

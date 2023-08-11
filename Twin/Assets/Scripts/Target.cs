@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Target : MonoBehaviour
 {
     [SerializeField] private float _countBonusSeconds = 1f;
     [SerializeField] private int _score = 10;
     [SerializeField] private Timer _timer;
+
+    public UnityEvent TargetAchieved;
 
     public int Score => _score;
 
@@ -13,7 +16,7 @@ public class Target : MonoBehaviour
         if (other.TryGetComponent(out Player player))
         {
             player.IncreaseTime(_countBonusSeconds);
-            print($"{_countBonusSeconds} секунд добавлено");       
+            print($"{_countBonusSeconds} секунд добавлено");
         }
     }
 }

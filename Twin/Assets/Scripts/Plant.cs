@@ -9,6 +9,7 @@ public class Plant : MonoBehaviour
     [SerializeField] private int _columnsCount;
     [SerializeField] private int _rowsCount;
     [SerializeField] private string _numbersTilesGreen;
+    [SerializeField] private ParticleSystem _explosionTile;
     
     private Vector3 _startPosition = new Vector3(-6f, 0f, 3.75f);
     private List<Tile> _tiles = new List<Tile>();
@@ -25,8 +26,10 @@ public class Plant : MonoBehaviour
     {
         if (TryGetTile(_numbers))
         {
+            _explosionTile.transform.position = new Vector3(_tiles[_numbers.First()].transform.position.x,1, _tiles[_numbers.First()].transform.position.z);
+            _explosionTile.Play();
             _tiles[_numbers.First()].gameObject.SetActive(false);
-            _numbers.RemoveAt(0);
+            _numbers.RemoveAt(0);        
         }
     }
 
