@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Locations : MonoBehaviour
 {
     [SerializeField] private Stage[] _stages;
+
+    public event UnityAction<int> StageInitialised;
 
     public int _numberLevel;
 
@@ -21,6 +24,7 @@ public class Locations : MonoBehaviour
     public void SetNumberStage(int number)
     {
         _numberLevel = number;
+        StageInitialised(_numberLevel);
     }
 
     public void ResetStages()

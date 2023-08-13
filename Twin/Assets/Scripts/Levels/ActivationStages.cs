@@ -11,6 +11,8 @@ public class ActivationStages : MonoBehaviour
 
     public event UnityAction<int> StageChanged;
 
+    public int CurrentStage => _currentStage;
+
     private void Start()
     {
         _launchers[_currentStage].enabled = true;
