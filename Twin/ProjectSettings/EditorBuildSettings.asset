@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Plugins/CW/LeanLocalization/Examples/_13_Debug.unity
     guid: d6f38797ef5ab014f8c9cd1e4abde429
+  - enabled: 1
+    path: Assets/Plugins/CW/LeanLocalization/Examples/_09_CSV.unity
+    guid: e231f232c8b8f994385b714f5b375ff2
   m_configObjects: {}

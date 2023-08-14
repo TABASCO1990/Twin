@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
 
     private void OnScoreChanged(int score)
     {
-        _score.text = "Score: " + score;
+        _score.text = score.ToString();
     }
 
     private void OnScoreCountChanged(int count)
