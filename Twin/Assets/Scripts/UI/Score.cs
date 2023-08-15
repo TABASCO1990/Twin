@@ -8,6 +8,11 @@ public class Score : MonoBehaviour
     [SerializeField] private TMP_Text _score;
     [SerializeField] private TMP_Text _scoreCount;
 
+    private void Awake()
+    {
+        _score.text = "0";
+    }
+
     private void OnEnable()
     {
         _player.ScoreChanged += OnScoreChanged;

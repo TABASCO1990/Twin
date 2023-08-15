@@ -659,12 +659,13 @@ MonoBehaviour:
   _countBonusSeconds: 1
   _score: 10
   _timer: {fileID: 0}
+  _floatingTime: {fileID: 6752768580453395600, guid: 6078c2340700e004fba8233988c8c073, type: 3}
   TargetAchieved:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
