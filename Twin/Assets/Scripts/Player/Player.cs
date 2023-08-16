@@ -3,20 +3,23 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerMover))]
 [RequireComponent(typeof(PlayerCollisionHandler))]
+
 public class Player : MonoBehaviour
 {
     private const int MaxCountScore = 5;
 
     private PlayerMover _mover;
     private PlayerCollisionHandler _collisionHandler;
+
     private int _score;
     private int _countEventsScore;
 
     public event UnityAction<int> ScoreChanged;
     public event UnityAction<int> ScoreCountChanged;
     public event UnityAction<float> TimeChanged;
-    public event UnityAction LevelComplete;
-    public event UnityAction GameOver;   
+    public event UnityAction EffectsStarted;
+    public event UnityAction LevelCompleted;
+    public event UnityAction GameOver;
 
     public int CountEventsScore => _countEventsScore;
 
@@ -24,6 +27,7 @@ public class Player : MonoBehaviour
     {
         _mover = GetComponent<PlayerMover>();
         _collisionHandler = GetComponent<PlayerCollisionHandler>();
+
     }
 
     public void IncreaseScore(int score)
@@ -58,7 +62,8 @@ public class Player : MonoBehaviour
     {
         if (CountEventsScore == MaxCountScore)
         {
-            LevelComplete?.Invoke();
+            EffectsStarted?.Invoke();
+            LevelCompleted?.Invoke();
         }
     }
 }

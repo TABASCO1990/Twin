@@ -1,25 +1,39 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Player))]
+//[RequireComponent(typeof(Animator))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
     [SerializeField] private Locations _location;
     [SerializeField] private Stage _level;
     [SerializeField] private ParticleSystem _targetPartical;
-
+   
+    private Player _player;
     private float _heightPartical = 2;
 
-    private Player _player;
+    public UnityEvent EffectsLaunched;
 
     private void Awake()
     {
+        _player = GetComponent<Player>();
         //ResetCollisoin();
+    }
+
+    private void OnEnable()
+    {
+        _player.EffectsStarted += OnEffectsStarted;
+    }
+
+    private void OnDisable()
+    {
+        _player.EffectsStarted += OnEffectsStarted;
     }
 
     private void Start()
     {
-        _player = GetComponent<Player>();
+        //_animator = GetComponent<Animator>();
     }
 
     public void ResetCollisoin()
@@ -43,5 +57,10 @@ public class PlayerCollisionHandler : MonoBehaviour
         {
             _player.Die();
         }
+    }
+
+    private void OnEffectsStarted()
+    {
+        EffectsLaunched?.Invoke();
     }
 }

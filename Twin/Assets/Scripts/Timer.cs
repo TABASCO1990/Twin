@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class Timer : MonoBehaviour
     [SerializeField] private Player _player;
 
     private Color _startColorTimer;
+    private bool _isYellowTimer = true;
+    private bool _isRedTimer = true;
+    private bool _isGreenTimer = true;
+
+    public event UnityAction SizeChanged;
 
     private void OnEnable()
     {
@@ -29,7 +35,7 @@ public class Timer : MonoBehaviour
     private void Awake()
     {
         _startColorTimer = _fill.color;
-        ChangeTimeColor(_startColorTimer);
+        ChangeColor(_startColorTimer);
         BeginTime(_duration);
     }
 
@@ -41,7 +47,7 @@ public class Timer : MonoBehaviour
     public void ResetTime()
     {
         _remainingDuration = _duration;
-        ChangeTimeColor(_startColorTimer);
+        ChangeColor(_startColorTimer);
     }
 
     private void BeginTime(int second)
@@ -56,7 +62,7 @@ public class Timer : MonoBehaviour
             _remainingDuration -= Time.deltaTime;
             _time.text = Mathf.Round(_remainingDuration).ToString();
             _fill.fillAmount = Mathf.InverseLerp(0, _duration, _remainingDuration);
-            SetColor();
+            SetProperty();
         }
         else
         {
@@ -78,15 +84,34 @@ public class Timer : MonoBehaviour
             _remainingDuration += time;
     }
 
-    private void SetColor()
+    private void SetProperty()
     {
-        if (_time.text == TimeBeLow.ToString())
-            ChangeTimeColor(Color.yellow);
-        else if(_time.text == TimeLow.ToString())
-            ChangeTimeColor(_colorLowTime);
+        if(_remainingDuration > TimeBeLow && _isGreenTimer)
+        {
+            ChangeColor(_startColorTimer);
+            _isGreenTimer = false;
+            _isYellowTimer = true;
+            _isRedTimer = false;
+        }
+        else if (_remainingDuration <= TimeBeLow && _remainingDuration > TimeLow && _isYellowTimer && _isRedTimer == false)
+        {
+            ChangeColor(Color.yellow);
+            SizeChanged?.Invoke();
+            _isGreenTimer = true;
+            _isYellowTimer = false;
+            _isRedTimer = true;         
+        }
+        else if (_remainingDuration <= TimeLow && _isRedTimer && _isYellowTimer == false)
+        {
+            ChangeColor(_colorLowTime);
+            SizeChanged?.Invoke();
+            _isGreenTimer = true;
+            _isYellowTimer = true;
+            _isRedTimer = false;                          
+        }
     }
 
-    private void ChangeTimeColor(Color color)
+    private void ChangeColor(Color color)
     {
         _time.color = color;
         _fill.color = color;

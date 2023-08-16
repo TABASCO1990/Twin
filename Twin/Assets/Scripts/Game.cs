@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,7 +41,7 @@ public class Game : MonoBehaviour
         //_settingScreen.SettingButtonClick += OnSettingButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;   
-        _player.LevelComplete += OnLevelComplete;     
+        _player.LevelCompleted += OnLevelCompleted;     
     }
 
     private void OnDisable()
@@ -56,7 +57,7 @@ public class Game : MonoBehaviour
         //_settingScreen.SettingButtonClick -= OnSettingButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
-        _player.LevelComplete -= OnLevelComplete;    
+        _player.LevelCompleted -= OnLevelCompleted;    
     }
 
     private void Start()
@@ -106,12 +107,24 @@ public class Game : MonoBehaviour
         _gameOverScreen.Open();
     }
 
-    private void OnLevelComplete()
+    private void OnLevelCompleted()
     {
-        Time.timeScale = 0;
+        /*Time.timeScale = 0;
         ResetAll();   
         _levelCompleteScreen.Open();
-        _activationStages.InitializeStage();     
+        _activationStages.InitializeStage();*/
+        StartCoroutine(DelayShowScreen());
+    }
+
+    IEnumerator DelayShowScreen()
+    {
+        _player.GetComponent<PlayerMover>().enabled = false;
+        yield return new WaitForSeconds(2.0f);
+        Time.timeScale = 0;
+        ResetAll();      
+        _levelCompleteScreen.Open();
+        _activationStages.InitializeStage();
+        _player.GetComponent<PlayerMover>().enabled = true;
     }
 
     private void OnContinueButtonClick()
