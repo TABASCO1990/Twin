@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    private const int MaxCountScore = 5;
+    private const int MaxCountScore = 17;
 
     private PlayerMover _mover;
     private PlayerCollisionHandler _collisionHandler;
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public event UnityAction<int> ScoreCountChanged;
     public event UnityAction<float> TimeChanged;
     public event UnityAction EffectsStarted;
+    public event UnityAction EffectsBomb;
     public event UnityAction LevelCompleted;
     public event UnityAction GameOver;
 
@@ -27,7 +28,6 @@ public class Player : MonoBehaviour
     {
         _mover = GetComponent<PlayerMover>();
         _collisionHandler = GetComponent<PlayerCollisionHandler>();
-
     }
 
     public void IncreaseScore(int score)
@@ -65,5 +65,11 @@ public class Player : MonoBehaviour
             EffectsStarted?.Invoke();
             LevelCompleted?.Invoke();
         }
+    }
+
+    public void TakeHit()
+    {
+        _mover.StopMove();
+        EffectsBomb?.Invoke();
     }
 }

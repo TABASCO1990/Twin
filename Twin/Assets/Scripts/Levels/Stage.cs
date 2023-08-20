@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Stage : ObjectPool
@@ -10,10 +11,11 @@ public class Stage : ObjectPool
     {
         foreach (var level in _levelPrefabs)
         {
-            Initialize(level);
+            Initialize(level);            
         }
 
         _pool[_startLevelPrefab].SetActive(true);
+
     }
 
     public void SetLevel()
@@ -29,7 +31,8 @@ public class Stage : ObjectPool
     private void InitializeObstacle(GameObject level)
     {
         int numberCurrentLevel = _pool.IndexOf(level) - 1;
-        _pool[numberCurrentLevel].SetActive(false);
+ 
+        _pool[numberCurrentLevel].SetActive(false); 
         level.SetActive(true);
     }
 }

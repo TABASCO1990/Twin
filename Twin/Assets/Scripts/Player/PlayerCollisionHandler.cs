@@ -9,26 +9,27 @@ public class PlayerCollisionHandler : MonoBehaviour
     [SerializeField] private Locations _location;
     [SerializeField] private Stage _level;
     [SerializeField] private ParticleSystem _targetPartical;
+    [SerializeField] private ParticleSystem _bombPartical;
    
     private Player _player;
-    private float _heightPartical = 2;
+    private float _heightParticalTarget = 2;
+    private float _heightParticalBomb = 0.5f;
 
     public UnityEvent EffectsLaunched;
 
     private void Awake()
     {
         _player = GetComponent<Player>();
-        //ResetCollisoin();
     }
 
     private void OnEnable()
     {
         _player.EffectsStarted += OnEffectsStarted;
-    }
+    }   
 
     private void OnDisable()
     {
-        _player.EffectsStarted += OnEffectsStarted;
+        _player.EffectsStarted -= OnEffectsStarted;
     }
 
     private void Start()
@@ -50,12 +51,18 @@ public class PlayerCollisionHandler : MonoBehaviour
             _level.GetComponent<ObstacleColor>().SetColor();
             _level.SetLevel();
             _level.GetComponentInChildren<Plant>().RemoveTile();
-            _targetPartical.gameObject.transform.position = new Vector3(target.transform.position.x, _heightPartical, target.transform.position.z);
+            _targetPartical.gameObject.transform.position = new Vector3(target.transform.position.x, _heightParticalTarget, target.transform.position.z);
             _targetPartical.Play();
         }
         else if (other.TryGetComponent(out Water water))
         {
             _player.Die();
+        }
+        else if(other.TryGetComponent(out Bomb bomb))
+        {
+            _bombPartical.gameObject.transform.position = new Vector3(bomb.transform.position.x, _heightParticalBomb, bomb.transform.position.z);
+
+            _bombPartical.Play();         
         }
     }
 
@@ -63,4 +70,6 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         EffectsLaunched?.Invoke();
     }
+
+    
 }

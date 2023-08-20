@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -19,24 +20,28 @@ public class Timer : MonoBehaviour
     private bool _isYellowTimer = true;
     private bool _isRedTimer = true;
     private bool _isGreenTimer = true;
+    private bool _isRun;
 
     public event UnityAction SizeChanged;
-
-    private void OnEnable()
-    {
-        _player.TimeChanged += OnTimeChanged;
-    }
-
-    private void OnDisable()
-    {
-        _player.TimeChanged -= OnTimeChanged;
-    }
 
     private void Awake()
     {
         _startColorTimer = _fill.color;
         ChangeColor(_startColorTimer);
         BeginTime(_duration);
+        _isRun = true;
+    }
+
+    private void OnEnable()
+    {
+        _player.TimeChanged += OnTimeChanged;
+        _player.LevelCompleted += OnLevelComplete;
+    }
+
+    private void OnDisable()
+    {
+        _player.TimeChanged -= OnTimeChanged;
+        _player.LevelCompleted -= OnLevelComplete;
     }
 
     private void Update()
@@ -46,8 +51,9 @@ public class Timer : MonoBehaviour
 
     public void ResetTime()
     {
+        _isRun = true;
         _remainingDuration = _duration;
-        ChangeColor(_startColorTimer);
+        ChangeColor(_startColorTimer);       
     }
 
     private void BeginTime(int second)
@@ -57,17 +63,25 @@ public class Timer : MonoBehaviour
 
     private void UpdateTimer()
     {
-        if (_remainingDuration >= 0)
+        if (_isRun)
         {
-            _remainingDuration -= Time.deltaTime;
-            _time.text = Mathf.Round(_remainingDuration).ToString();
-            _fill.fillAmount = Mathf.InverseLerp(0, _duration, _remainingDuration);
-            SetProperty();
+            if (_remainingDuration >= 0)
+            {
+                _remainingDuration -= Time.deltaTime;
+                _time.text = Mathf.Round(_remainingDuration).ToString();
+                _fill.fillAmount = Mathf.InverseLerp(0, _duration, _remainingDuration);
+                SetProperty();
+            }
+            else
+            {
+                EndTime();
+            }
         }
-        else
-        {
-            EndTime();
-        }
+    }
+
+    private void OnLevelComplete()
+    {
+        _isRun = false;
     }
 
     private void EndTime()
@@ -86,7 +100,7 @@ public class Timer : MonoBehaviour
 
     private void SetProperty()
     {
-        if(_remainingDuration > TimeBeLow && _isGreenTimer)
+        if (_remainingDuration > TimeBeLow && _isGreenTimer)
         {
             ChangeColor(_startColorTimer);
             _isGreenTimer = false;
@@ -99,7 +113,7 @@ public class Timer : MonoBehaviour
             SizeChanged?.Invoke();
             _isGreenTimer = true;
             _isYellowTimer = false;
-            _isRedTimer = true;         
+            _isRedTimer = true;
         }
         else if (_remainingDuration <= TimeLow && _isRedTimer && _isYellowTimer == false)
         {
@@ -107,7 +121,7 @@ public class Timer : MonoBehaviour
             SizeChanged?.Invoke();
             _isGreenTimer = true;
             _isYellowTimer = true;
-            _isRedTimer = false;                          
+            _isRedTimer = false;
         }
     }
 

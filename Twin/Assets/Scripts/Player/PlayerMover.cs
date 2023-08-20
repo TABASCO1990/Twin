@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,13 +9,14 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotateSpeed;  
 
+    private bool _isMove = true;
     private bool _isRunning;
     private PlayerInput _input;
     private Vector2 _direction;
     private Vector3 _offset;
     private Animator _animator;
 
-    public event UnityAction Running;   
+    //public event UnityAction Running;   
 
     private void Awake()
     {
@@ -33,8 +35,11 @@ public class PlayerMover : MonoBehaviour
     {
         _direction = _input.Player.Movement.ReadValue<Vector2>();
 
-        Move(_direction);
-        Rotate();
+        if (_isMove)
+        {
+            Move(_direction);
+            Rotate();
+        }
     }
 
     public void ResetPlayer()
@@ -42,7 +47,7 @@ public class PlayerMover : MonoBehaviour
         transform.position = _startPosition;
     }
 
-    public void Move(Vector2 direction)
+    private void Move(Vector2 direction)
     {
         if (direction.sqrMagnitude < 0.1)
         {
@@ -54,7 +59,7 @@ public class PlayerMover : MonoBehaviour
         transform.Translate(_offset * _moveSpeed * Time.deltaTime, Space.World);
         _animator.SetBool(nameof(_isRunning), true);
 
-        Running?.Invoke();
+        //Running?.Invoke();
     }
 
     private void Rotate()
@@ -64,5 +69,20 @@ public class PlayerMover : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(_offset, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotateSpeed * Time.deltaTime);
         }
+    }
+
+    public void StopMove()
+    {
+        StartCoroutine(ÑhangeStates());
+       
+    }
+
+    IEnumerator ÑhangeStates()
+    {
+        _isMove = false;
+        _animator.SetBool("_isTakeHit", true);
+        yield return new WaitForSeconds(3);
+        _animator.SetBool("_isTakeHit", false);
+        _isMove = true;
     }
 }

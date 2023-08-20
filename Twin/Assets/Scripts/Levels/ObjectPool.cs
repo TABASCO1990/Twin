@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -15,6 +16,16 @@ public class ObjectPool : MonoBehaviour
         for (int i = 1; i < _pool.Count; i++)
         {
             _pool[i].SetActive(false);
+
+            foreach (var child in _pool[i].GetComponentsInChildren<Transform>(true))
+            {
+                if (child.GetComponent<TimerBonus>() || child.GetComponent<Bomb>())
+                {
+                    child.gameObject.SetActive(true);
+                    DOTween.Play(child);
+                }
+                 
+            }
         }
     }
 
