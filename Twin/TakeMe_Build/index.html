@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>TakeMe</title>
+    <!-- Yandex Games SDK -->
+  <script src="https://yandex.ru/games/sdk/v2"></script>
 </head>
 
 <body style="margin: 0px; overflow: hidden;" oncontextmenu="return false;">
@@ -14,14 +16,22 @@
 
   <div id="progress-bar" style="position: absolute; left: 0%; right: 100%; top: 49%; bottom: 49%; background-color: white;"></div>
 
+  <script>
+        YaGames
+            .init()
+            .then(ysdk => {
+                console.log('Yandex SDK initialized');
+                window.ysdk = ysdk;
+            });
+  </script>
   <script src="Build/TakeMe_Build.loader.js"></script>
   <script>
     const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
 
     const settings = {
-      dataUrl: "Build/f3230e4df67e6fc21e4c71eae80a3894.data.unityweb",
-      frameworkUrl: "Build/617d22ebfb639adb43298d650c995d26.js.unityweb",
-      codeUrl: "Build/954ac98617d4ac0bbcda6515a957074a.wasm.unityweb",
+      dataUrl: "Build/13583fea00cd52d4712ed8adb94ae135.data.unityweb",
+      frameworkUrl: "Build/033b47afe2f31aeb9e6c2ff17d44a7b3.js.unityweb",
+      codeUrl: "Build/10c990315b1ddbc825be7597d4b1a468.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "TABASCO",
       productName: "TakeMe",

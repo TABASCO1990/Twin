@@ -26,8 +26,7 @@ public class LanguageSwitch : MonoBehaviour
 
     private void SetLanguageCountry()
     {
-        //string currentLanguage = GetLang();
-        string currentLanguage = "tr";
+        string currentLanguage = GetLang();
 
         for (int i = 0; i < LeanLocalization.CurrentLanguages.Count; i++)
         {
