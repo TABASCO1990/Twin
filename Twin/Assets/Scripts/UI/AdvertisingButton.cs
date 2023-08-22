@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animation))]
 public class AdvertisingButton : MonoBehaviour
 {
-    [SerializeField] private Timer _timer;
+    [SerializeField] private Watch _watch;
 
     private Animation _animation;
 
@@ -15,15 +15,15 @@ public class AdvertisingButton : MonoBehaviour
 
     private void OnEnable()
     {
-        _timer.SizeChanged += OnSizeChanged;
+        _watch.ShakeButtonAds += OnShakeButtonAds;
     }
 
     private void OnDisable()
     {
-        _timer.SizeChanged -= OnSizeChanged;
+        _watch.ShakeButtonAds -= OnShakeButtonAds;
     }
 
-    private void OnSizeChanged()
+    private void OnShakeButtonAds()
     {
         _animation.Play();
     }

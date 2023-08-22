@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Locations _location;
-    [SerializeField] private Timer _timer;
+    [SerializeField] private Clock _clock;
     [SerializeField] private StageScreen _mainScreen;
     [SerializeField] private MobileInput _mobileInput;
     [SerializeField] private GameOverScreen _gameOverScreen;
@@ -80,18 +80,13 @@ public class Game : MonoBehaviour
         StartGame();
     }
 
-    /*public void OnSettingButtonClick()
-    {
-        _settingScreen.Open();
-    }*/
-
     private void ResetAll()
     {
         _mobileInput.ResetJoystic();
         _stage.ResetPool();       
         _stage.GetComponent<PlayerColor>().ResetColors();
         _stage.GetComponent<ObstacleColor>().ResetColors();
-        _timer.ResetTime();      
+        _clock.ResetTime();
     }
 
     private void StartGame()
@@ -99,6 +94,7 @@ public class Game : MonoBehaviour
         Time.timeScale = 1;
         _stage.GetComponentInChildren<Plant>().ResetTile();
         _player.ResetPlayer();
+        _clock.ResetTime();
     }
 
     private void OnGameOver()
@@ -109,10 +105,6 @@ public class Game : MonoBehaviour
 
     private void OnLevelCompleted()
     {
-        /*Time.timeScale = 0;
-        ResetAll();   
-        _levelCompleteScreen.Open();
-        _activationStages.InitializeStage();*/
         StartCoroutine(DelayShowScreen());
     }
 
