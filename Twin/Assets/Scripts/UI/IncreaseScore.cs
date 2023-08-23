@@ -11,6 +11,11 @@ public class IncreaseScore : MonoBehaviour
     private float _duration = 0.3f;
     private int _countLoops = 2;
 
+    private void Awake()
+    {
+        _score = GetComponent<TMP_Text>();
+    }
+
     private void OnEnable()
     {
         _player.ScoreChanged += OnScoreChanged;
@@ -19,11 +24,6 @@ public class IncreaseScore : MonoBehaviour
     private void OnDisable()
     {
         _player.ScoreChanged -= OnScoreChanged;
-    }
-
-    private void Start()
-    {
-        _score = GetComponent<TMP_Text>();
     }
 
     public void OnScoreChanged(int value)

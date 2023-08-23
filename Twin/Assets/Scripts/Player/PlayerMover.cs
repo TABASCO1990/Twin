@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerMover : MonoBehaviour
@@ -15,8 +14,6 @@ public class PlayerMover : MonoBehaviour
     private Vector2 _direction;
     private Vector3 _offset;
     private Animator _animator;
-
-    //public event UnityAction Running;   
 
     private void Awake()
     {
@@ -58,8 +55,6 @@ public class PlayerMover : MonoBehaviour
         _offset = new Vector3(direction.x, 0, direction.y);
         transform.Translate(_offset * _moveSpeed * Time.deltaTime, Space.World);
         _animator.SetBool(nameof(_isRunning), true);
-
-        //Running?.Invoke();
     }
 
     private void Rotate()

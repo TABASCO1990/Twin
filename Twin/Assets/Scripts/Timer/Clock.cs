@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,7 +13,7 @@ public class Clock : MonoBehaviour
     public event UnityAction<int> ChangedTime;
     public int Duration => _duration;
 
-    private void Awake()
+    private void Start()
     {
         _currentTime = _duration;
     }

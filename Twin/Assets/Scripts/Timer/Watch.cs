@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,11 +20,6 @@ public class Watch : MonoBehaviour
     private bool _isGreenTimer = true;
 
     public event UnityAction ShakeButtonAds;
-
-    private void Awake()
-    {
-        _currentColor = _fill.color;
-    }
 
     private void OnEnable()
     {

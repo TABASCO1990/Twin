@@ -15,11 +15,10 @@ public class Plant : MonoBehaviour
     private List<Tile> _tiles = new List<Tile>();
     private List<int> _numbers;
 
-    private void Start()
+    private void Awake()
     {
         SetTiles();
         _numbers = _numbersTilesGreen.Split(',').Select(x => Convert.ToInt32(x)).ToList();
-        print(_tiles.Count);
     }
 
     public void RemoveTile()

@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Player))]
-//[RequireComponent(typeof(Animator))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
     [SerializeField] private Locations _location;
@@ -30,11 +29,6 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void OnDisable()
     {
         _player.EffectsStarted -= OnEffectsStarted;
-    }
-
-    private void Start()
-    {
-        //_animator = GetComponent<Animator>();
     }
 
     public void ResetCollisoin()
@@ -69,7 +63,5 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void OnEffectsStarted()
     {
         EffectsLaunched?.Invoke();
-    }
-
-    
+    }  
 }
