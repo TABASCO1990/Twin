@@ -1,8 +1,8 @@
 mergeInto(LibraryManager.library, {
    
   GiveMePlayerData: function () {
-	myGameInstance.SendMessage("Yandex", "SetName", player.getName());
-	myGameInstance.SendMessage("Yandex", "SetPhoto", player.getPhoto("medium"));
+	myGameInstance.SendMessage('Yandex', 'SetName', player.getName());
+	myGameInstance.SendMessage('Yandex', 'SetPhoto', player.getPhoto("medium"));
   },
   
   GetLang: function () {
