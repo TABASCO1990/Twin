@@ -9,9 +9,11 @@ public class Clock : MonoBehaviour
     [SerializeField] private Player _player;
 
     private Coroutine _corotineTimer;
+    private int _remainingTime;
 
     public event UnityAction<int> ChangedTime;
     public int Duration => _duration;
+    public int RemainingTime => _remainingTime;
 
     private void Start()
     {
@@ -46,8 +48,9 @@ public class Clock : MonoBehaviour
     }
 
     private void OnLevelComplete()
-    {
-        StopCoroutine(UpdateTime());
+    {       
+        StopCoroutine(_corotineTimer);
+        _remainingTime = _currentTime;
     }
 
     private void OnTimeChanged(float time)
@@ -64,6 +67,7 @@ public class Clock : MonoBehaviour
 
     public void ResetTime()
     {
+        
         _currentTime = _duration;
         StartTime();
     }

@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class Yandex : MonoBehaviour
 {
-    [DllImport("__Internal")] private static extern void Hello();
     [DllImport("__Internal")] private static extern void GiveMePlayerData();
 
     [SerializeField] private TMP_Text _nameText;

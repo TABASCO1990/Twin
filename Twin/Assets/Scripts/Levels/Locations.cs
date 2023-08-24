@@ -7,6 +7,7 @@ public class Locations : MonoBehaviour
 
     public event UnityAction<int> StageInitialised;
 
+    public int CountStage => _stages.Length;
     public int _numberLevel;
 
     private void Start()

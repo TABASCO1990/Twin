@@ -14,7 +14,6 @@ public class Stage : ObjectPool
         }
 
         _pool[_startLevelPrefab].SetActive(true);
-
     }
 
     public void SetLevel()

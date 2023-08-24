@@ -3,14 +3,14 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerMover))]
 [RequireComponent(typeof(PlayerCollisionHandler))]
-
 public class Player : MonoBehaviour
 {
-    private const int MaxCountScore = 17;
+    private const int MaxCountScore = 4;
+
+    [SerializeField] private Progress _progress;
 
     private PlayerMover _mover;
     private PlayerCollisionHandler _collisionHandler;
-
     private int _score;
     private int _countEventsScore;
 
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public event UnityAction GameOver;
 
     public int CountEventsScore => _countEventsScore;
+    public int Score => _score;
 
     private void Start()
     {
@@ -61,9 +62,10 @@ public class Player : MonoBehaviour
     public void CheckLevelCompletion()
     {
         if (CountEventsScore == MaxCountScore)
-        {
+        {           
             EffectsStarted?.Invoke();
             LevelCompleted?.Invoke();
+            _progress.CountScore();
         }
     }
 

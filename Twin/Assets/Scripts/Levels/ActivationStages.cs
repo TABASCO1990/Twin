@@ -30,7 +30,7 @@ public class ActivationStages : MonoBehaviour
                 _launchers[_currentStage].SetButtonSprite(_spriteActive);
             }
             else
-            {
+            {               
                 print("Поздравляем! Вы прошли эту игру.");
             }
         }
