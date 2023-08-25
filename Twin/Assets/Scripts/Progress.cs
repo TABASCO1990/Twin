@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
@@ -8,7 +9,8 @@ using UnityEngine.Events;
 public class PlayerInfo
 {
     //—юда любые данные любых типов
-    public int _sumScores;
+    //public int _sumScores;
+    
     public int[] _scoreStages;
 }
 
@@ -22,27 +24,54 @@ public class Progress : MonoBehaviour
     [SerializeField] private Clock _clock;
     [SerializeField] private Locations _location;
     [SerializeField] private Player _player;
-    [SerializeField] private TextMeshProUGUI _playerInfoText;
+    [SerializeField] private TMP_Text _playerInfoText;
+
+    private int _sumScores;
 
     public PlayerInfo PlayerInfo;
 
     public event UnityAction<int, int, int> CalculateScore;
 
+    public static Progress Instance;
+
     private void Awake()
     {
-        PlayerInfo._scoreStages = new int[_location.CountStage];
+        if(Instance == null)
+        {
+            transform.parent = null;
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+            PlayerInfo._scoreStages = new int[_location.CountStage];
+#if !UNITY_EDITOR && UNITY_WEBGL
         LoadExtern();
+#endif
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
+
 
     public void CountScore()
     {
-        PlayerInfo._scoreStages[_location._numberLevel] = _clock.RemainingTime + _player.Score;
-        SetSumScores();
-        CalculateScore?.Invoke(PlayerInfo._scoreStages[_location._numberLevel], _location._numberLevel, PlayerInfo._sumScores);
-        Save();
+        SetScoreStage();
+        SetTotalScores();
+        //CalculateScore?.Invoke(PlayerInfo._scoreStages[_location._numberLevel], _location._numberLevel, PlayerInfo._sumScores);
+        CalculateScore?.Invoke(PlayerInfo._scoreStages[_location._numberLevel], _location._numberLevel, _sumScores);
+
     }
 
-    private void SetSumScores()
+    private void SetScoreStage()
+    {
+        PlayerInfo._scoreStages[_location._numberLevel] = _clock.RemainingTime + _player.Score;
+#if !UNITY_EDITOR && UNITY_WEBGL
+        Save();
+#endif
+    }
+
+    private void SetTotalScores()
     {
         int sum = 0;
 
@@ -51,7 +80,8 @@ public class Progress : MonoBehaviour
             sum += item;
         }
 
-        PlayerInfo._sumScores = sum;
+        //PlayerInfo._sumScores = sum;
+        _sumScores = sum;
     }
 
     public void Save()
@@ -63,6 +93,9 @@ public class Progress : MonoBehaviour
     public void SetPlayerInfo(string value)
     {
         PlayerInfo = JsonUtility.FromJson<PlayerInfo>(value);
-        _playerInfoText.text = PlayerInfo._sumScores.ToString();
+        
+        SetTotalScores();
+        //_playerInfoText.text = PlayerInfo._sumScores.ToString() + "\n" + PlayerInfo._scoreStages[0];
+        _playerInfoText.text = _sumScores.ToString() + "\n" + PlayerInfo._scoreStages[0];
     }
 }
