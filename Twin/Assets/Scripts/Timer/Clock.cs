@@ -66,8 +66,7 @@ public class Clock : MonoBehaviour
     }
 
     public void ResetTime()
-    {
-        
+    {       
         _currentTime = _duration;
         StartTime();
     }

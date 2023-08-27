@@ -7,6 +7,7 @@ public class ActivationStages : MonoBehaviour
     [SerializeField] private Locations _locations;
     [SerializeField] private Sprite _spriteActive;
 
+    private int _countActiveSprites;
     private int _currentStage;
 
     public event UnityAction<int> StageChanged;
@@ -18,19 +19,31 @@ public class ActivationStages : MonoBehaviour
         _launchers[_currentStage].enabled = true;
     }
 
+    public void ActiveSprites(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            _launchers[i].enabled = true;
+            _launchers[i].SetButtonSprite(_spriteActive);
+        }
+        
+    }
+
     public void InitializeStage()
     {
         if (_locations._numberLevel == _currentStage)
         {
+            
             _currentStage++;
-
+            
             if (_currentStage < _launchers.Length)
             {
                 _launchers[_currentStage].enabled = true;
                 _launchers[_currentStage].SetButtonSprite(_spriteActive);
+                _countActiveSprites++;
             }
             else
-            {               
+            {
                 print("Поздравляем! Вы прошли эту игру.");
             }
         }
