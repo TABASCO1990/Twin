@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
@@ -6,14 +7,14 @@ using UnityEngine.Events;
 [System.Serializable]
 public class PlayerInfo
 {
-    public int[] _scoreStages;
+    public int[] _scores; // Попробовать содать дублирующий массив
 }
 
 public class Progress : MonoBehaviour
 {
-    [DllImport("__Internal")] 
+    [DllImport("__Internal")]
     private static extern void SaveExtern(string date);
-    [DllImport("__Internal")] 
+    [DllImport("__Internal")]
     private static extern void LoadExtern();
 
     [SerializeField] private Clock _clock;
@@ -21,34 +22,43 @@ public class Progress : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private TMP_Text _text;
 
-    public PlayerInfo PlayerInfo;
+    private int[] _scoreStages;
+    private int _sumScores;   
     public event UnityAction<int, int, int> CalculateScore;
-    private int _sumScores;
+    public PlayerInfo PlayerInfo;
 
     private void Awake()
-    {
-        PlayerInfo._scoreStages = new int[_location.CountStage];
+    {       
+#if !UNITY_EDITOR && UNITY_WEBGL
         LoadExtern();
+#endif
+    }
+
+    private void Start()
+    {
+        _scoreStages = new int[_location.CountStage];
     }
 
     public void CountScore()
     {
-        SetScoreStage();
-        SetTotalScores();
-        CalculateScore?.Invoke(PlayerInfo._scoreStages[_location._numberLevel], _location._numberLevel, _sumScores);
+        SetStageScores();
+        CountTotalScores();
+        CalculateScore?.Invoke(_scoreStages[_location._numberLevel], _location._numberLevel, _sumScores);
+    }
+
+    private void SetStageScores() {
+        _scoreStages[_location._numberLevel] = _clock.RemainingTime + _player.Score;
+        // копировать массив
+#if !UNITY_EDITOR && UNITY_WEBGL
         Save();
+#endif
     }
 
-    private void SetScoreStage()
-    {
-        PlayerInfo._scoreStages[_location._numberLevel] = _clock.RemainingTime + _player.Score;        
-    }
-
-    private void SetTotalScores()
+    private void CountTotalScores()
     {
         int sum = 0;
 
-        foreach (var item in PlayerInfo._scoreStages)
+        foreach (var item in _scoreStages)
         {
             sum += item;
         }
@@ -65,22 +75,19 @@ public class Progress : MonoBehaviour
     public void SetPlayerInfo(string value)
     {
         PlayerInfo = JsonUtility.FromJson<PlayerInfo>(value);
-        SetTotalScores();
 
-        _text.text = "Total score: " + _sumScores + "\n"
-    
-           + "[0]: " + PlayerInfo._scoreStages[0] + "\n"
-           + "[1]: " + PlayerInfo._scoreStages[1] + "\n"
-           + "[2]: " + PlayerInfo._scoreStages[2] + "\n"
-           + "[3]: " + PlayerInfo._scoreStages[3] + "\n"
-           + "[4]: " + PlayerInfo._scoreStages[4] + "\n"
-           + "[5]: " + PlayerInfo._scoreStages[5] + "\n"
-           + "[6]: " + PlayerInfo._scoreStages[6] + "\n"
-           + "[7]: " + PlayerInfo._scoreStages[7] + "\n";
+        _text.text = PlayerInfo._scores[0] + "\n"+
+            PlayerInfo._scores[1] + "\n" +
+            PlayerInfo._scores[2] + "\n" +
+            PlayerInfo._scores[3] + "\n" +
+            PlayerInfo._scores[4] + "\n" +
+            PlayerInfo._scores[5] + "\n" +
+            PlayerInfo._scores[6] + "\n" +
+            PlayerInfo._scores[7] + "\n";
 
-        for (int i = 0; i < PlayerInfo._scoreStages.Length; i++)
+       /* for (int i = 0; i < _scoreStages.Length; i++)
         {
-            CalculateScore?.Invoke(PlayerInfo._scoreStages[i], i, _sumScores);
-        }
+            CalculateScore?.Invoke(_scoreStages[i], i, _sumScores);
+        }*/
     }
 }
