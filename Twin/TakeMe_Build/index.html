@@ -15,7 +15,7 @@
   </canvas>
 
   <div id="progress-bar" style="position: absolute; left: 0%; right: 100%; top: 49%; bottom: 49%; background-color: white;"></div>
-	<script>
+  <script>
 	YaGames
     .init()
     .then(ysdk => {
@@ -34,7 +34,6 @@
         });
 	}
 	
-
 	function auth(){
 	initPlayer().then(_player => {
         if (_player.getMode() === 'lite') {
@@ -51,18 +50,16 @@
     }).catch(err => {
         // Ошибка при инициализации объекта Player.
     });
-	}
-	
-	
-	</script>
+	}	
+  </script>
   <script src="Build/TakeMe_Build.loader.js"></script>
   <script>
     const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
 
     const settings = {
-      dataUrl: "Build/c4a127933fc2ea5eecfb6a3daa68d139.data.unityweb",
-      frameworkUrl: "Build/12e3553ac3b2cd102ded84a694a67a0b.js.unityweb",
-      codeUrl: "Build/d8cb26ff2b96d2356ba3bae5a285f426.wasm.unityweb",
+      dataUrl: "Build/96ef09ecb03d56b31e266968b5a928c3.data.unityweb",
+      frameworkUrl: "Build/e8a090d6352b6d0fca2ec1d1b2a912f3.js.unityweb",
+      codeUrl: "Build/de13073ba9339564770c21ef13e80b72.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "TABASCO",
       productName: "TakeMe",

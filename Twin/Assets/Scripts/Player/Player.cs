@@ -62,10 +62,10 @@ public class Player : MonoBehaviour
     public void CheckLevelCompletion()
     {
         if (CountEventsScore == MaxCountScore)
-        {
-            _progress.CountScore();
+        {          
             EffectsStarted?.Invoke();
-            LevelCompleted?.Invoke();         
+            LevelCompleted?.Invoke();
+            _progress.CountScore();
         }
     }
 

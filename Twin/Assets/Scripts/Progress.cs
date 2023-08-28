@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
@@ -7,7 +6,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class PlayerInfo
 {
-    public int[] _scores; // Попробовать содать дублирующий массив
+    public int[] _scores;
 }
 
 public class Progress : MonoBehaviour
@@ -28,7 +27,8 @@ public class Progress : MonoBehaviour
     public PlayerInfo PlayerInfo;
 
     private void Awake()
-    {       
+    {
+        _scoreStages = new int[_location.CountStage];
 #if !UNITY_EDITOR && UNITY_WEBGL
         LoadExtern();
 #endif
@@ -36,7 +36,7 @@ public class Progress : MonoBehaviour
 
     private void Start()
     {
-        _scoreStages = new int[_location.CountStage];
+       PlayerInfo._scores = new int[_location.CountStage];
     }
 
     public void CountScore()
@@ -48,7 +48,7 @@ public class Progress : MonoBehaviour
 
     private void SetStageScores() {
         _scoreStages[_location._numberLevel] = _clock.RemainingTime + _player.Score;
-        // копировать массив
+        _scoreStages.CopyTo(PlayerInfo._scores, 0);
 #if !UNITY_EDITOR && UNITY_WEBGL
         Save();
 #endif
@@ -58,7 +58,7 @@ public class Progress : MonoBehaviour
     {
         int sum = 0;
 
-        foreach (var item in _scoreStages)
+        foreach (var item in PlayerInfo._scores)
         {
             sum += item;
         }
@@ -75,19 +75,20 @@ public class Progress : MonoBehaviour
     public void SetPlayerInfo(string value)
     {
         PlayerInfo = JsonUtility.FromJson<PlayerInfo>(value);
+        CountTotalScores();
 
-        _text.text = PlayerInfo._scores[0] + "\n"+
-            PlayerInfo._scores[1] + "\n" +
-            PlayerInfo._scores[2] + "\n" +
-            PlayerInfo._scores[3] + "\n" +
-            PlayerInfo._scores[4] + "\n" +
-            PlayerInfo._scores[5] + "\n" +
-            PlayerInfo._scores[6] + "\n" +
-            PlayerInfo._scores[7] + "\n";
+        _text.text = PlayerInfo._scores[0].ToString() + "\n"+
+            PlayerInfo._scores[1].ToString() + "\n" +
+            PlayerInfo._scores[2].ToString() + "\n" +
+            PlayerInfo._scores[3].ToString() + "\n" +
+            PlayerInfo._scores[4].ToString() + "\n" +
+            PlayerInfo._scores[5].ToString() + "\n" +
+            PlayerInfo._scores[6].ToString() + "\n" +
+            PlayerInfo._scores[7].ToString() + "\n";
 
-       /* for (int i = 0; i < _scoreStages.Length; i++)
+        for (int i = 0; i < PlayerInfo._scores.Length; i++)
         {
-            CalculateScore?.Invoke(_scoreStages[i], i, _sumScores);
-        }*/
+            CalculateScore?.Invoke(PlayerInfo._scores[i], i, _sumScores);
+        }
     }
 }
