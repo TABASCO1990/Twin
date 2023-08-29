@@ -33,12 +33,16 @@ mergeInto(LibraryManager.library, {
   	});
   },
 
-  GetLeaderboards: function(){
+  GiveLeaderRank: function(){
 		ysdk.getLeaderboards()
-  		.then(lb => {
-    // С использованием всех значений по умолчанию
-    lb.getLeaderboardEntries('Scores')
-      .then(res => console.log(res));
-  	});
+  		.then(lb => lb.getLeaderboardPlayerEntry('leaderboard2021'))
+  		.then(res => console.log(res.rank))
+  		.catch(err => {
+    	if (err.code === 'LEADERBOARD_PLAYER_NOT_PRESENT') {
+      // Срабатывает, если у игрока нет записи в лидерборде
+    }
+  });
   },
+
+  
 });

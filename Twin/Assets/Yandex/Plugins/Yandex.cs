@@ -7,18 +7,25 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+
 public class Yandex : MonoBehaviour
 {
     [DllImport("__Internal")] private static extern void GiveMePlayerData();
 
-    [DllImport("__Internal")] private static extern void GetLeaderboards();
+    [DllImport("__Internal")] private static extern void GiveLeaderRank();
 
     [SerializeField] private TMP_Text _nameText;
+    [SerializeField] private TMP_Text _rankText;
     [SerializeField] private RawImage _photo;
 
     public void HelloButton()
     {
-        GetLeaderboards();
+        GiveLeaderRank();
+    }
+
+    public void SetRank(string rankText)
+    {     
+        _rankText.text = rankText;
     }
 
     public void SetName(string name)
