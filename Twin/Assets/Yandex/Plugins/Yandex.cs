@@ -11,12 +11,14 @@ public class Yandex : MonoBehaviour
 {
     [DllImport("__Internal")] private static extern void GiveMePlayerData();
 
+    [DllImport("__Internal")] private static extern void GetLeaderboards();
+
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private RawImage _photo;
 
     public void HelloButton()
     {
-        GiveMePlayerData();
+        GetLeaderboards();
     }
 
     public void SetName(string name)

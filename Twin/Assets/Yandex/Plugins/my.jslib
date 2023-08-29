@@ -25,4 +25,20 @@ mergeInto(LibraryManager.library, {
 		  myGameInstance.SendMessage('Progress', 'SetPlayerInfo', myJSON);
 	  });
   },
+
+  SetToLeaderboard: function(value){
+  	ysdk.getLeaderboards()
+  		.then(lb => {
+    	lb.setLeaderboardScore('Scores', value);
+  	});
+  },
+
+  GetLeaderboards: function(){
+		ysdk.getLeaderboards()
+  		.then(lb => {
+    // С использованием всех значений по умолчанию
+    lb.getLeaderboardEntries('Scores')
+      .then(res => console.log(res));
+  	});
+  },
 });

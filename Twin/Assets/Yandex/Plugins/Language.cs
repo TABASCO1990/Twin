@@ -1,6 +1,4 @@
 using Lean.Localization;
-using System.Collections;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
@@ -11,9 +9,4 @@ public class Language : MonoBehaviour
 
     private LeanLocalization _leanLocalization;
     public string CurrentLanguage;
-
-   /* private void Awake()
-    {
-        _leanLocalization.CurrentLanguage = GetLang();
-    }*/
 }

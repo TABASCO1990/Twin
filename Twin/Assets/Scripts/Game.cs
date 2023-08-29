@@ -110,11 +110,12 @@ public class Game : MonoBehaviour
     IEnumerator DelayShowScreen()
     {
         _player.GetComponent<PlayerMover>().enabled = false;
+        _activationStages.InitializeStage();
         yield return new WaitForSeconds(2.0f);
         Time.timeScale = 0;
         ResetAll();      
         _levelCompleteScreen.Open();
-        _activationStages.InitializeStage();
+        //_activationStages.InitializeStage();
         _player.GetComponent<PlayerMover>().enabled = true;
     }
 
