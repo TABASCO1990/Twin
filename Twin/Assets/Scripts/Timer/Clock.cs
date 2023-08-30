@@ -12,6 +12,7 @@ public class Clock : MonoBehaviour
     private int _remainingTime;
 
     public event UnityAction<int> ChangedTime;
+    public event UnityAction<int> FixedTime;
     public int Duration => _duration;
     public int RemainingTime => _remainingTime;
 
@@ -51,6 +52,7 @@ public class Clock : MonoBehaviour
     {       
         StopCoroutine(_corotineTimer);
         _remainingTime = _currentTime;
+        FixedTime?.Invoke(_remainingTime);
     }
 
     private void OnTimeChanged(float time)
