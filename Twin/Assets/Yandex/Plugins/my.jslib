@@ -33,15 +33,18 @@ mergeInto(LibraryManager.library, {
   	});
   },
 
-  GiveLeaderRank: function(){
+  GetPlayerRank: function(){
 		ysdk.getLeaderboards()
-  		.then(lb => lb.getLeaderboardPlayerEntry('leaderboard2021'))
-  		.then(res => console.log(res.rank))
+  		.then(lb => lb.getLeaderboardPlayerEntry('Scores'))
+  		.then(res => {
+  			console.log(res);
+  			myGameInstance.SendMessage('Progress', 'SetInfo', res.rank);
+  		})
   		.catch(err => {
     	if (err.code === 'LEADERBOARD_PLAYER_NOT_PRESENT') {
-      // Срабатывает, если у игрока нет записи в лидерборде
-    }
-  });
+      // Срабатывает, если у игрока нет записи в лидерборде    		
+    	}
+  	});
   },
 
   

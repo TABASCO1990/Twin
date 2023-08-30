@@ -10,23 +10,25 @@ using UnityEngine.UI;
 
 public class Yandex : MonoBehaviour
 {
-    [DllImport("__Internal")] private static extern void GiveMePlayerData();
+    [DllImport("__Internal")] 
+    private static extern void GiveMePlayerData();
 
-    [DllImport("__Internal")] private static extern void GiveLeaderRank();
+    /*[DllImport("__Internal")] 
+    private static extern void GiveLeaderRank();*/
 
     [SerializeField] private TMP_Text _nameText;
-    [SerializeField] private TMP_Text _rankText;
+    /*[SerializeField] private TMP_Text _rankText;*/
     [SerializeField] private RawImage _photo;
 
-    public void HelloButton()
+  /*  public void HelloButton()
     {
         GiveLeaderRank();
     }
 
-    public void SetRank(string rankText)
+    public void GetRank(int rating)
     {     
-        _rankText.text = rankText;
-    }
+        _rankText.text = rating.ToString();
+    }*/
 
     public void SetName(string name)
     {

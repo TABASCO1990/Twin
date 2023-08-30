@@ -24,6 +24,7 @@ public class Progress : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private TMP_Text _text;
     [SerializeField] private ActivationStages _activationStages;
+    [SerializeField] private PlayerRank _playerRank;
 
     private int[] _scoreStages;
     private int _sumScores;   
@@ -41,7 +42,7 @@ public class Progress : MonoBehaviour
     }
 
     private void Start()
-    {       
+    {
         PlayerInfo._scores = new int[_location.CountStage];
     }
 
@@ -70,6 +71,7 @@ public class Progress : MonoBehaviour
         }
 
         _sumScores = sum;
+        _playerRank.ShowInfo();
 #if !UNITY_EDITOR && UNITY_WEBGL
         SetToLeaderboard(_sumScores);
 #endif
