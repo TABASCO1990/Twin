@@ -65,6 +65,7 @@ mergeInto(LibraryManager.library, {
 			callbacks: {
 				onOpen: () => {
 					console.log('Video ad open.');
+					myGameInstance.SendMessage('Yandex','PauseGame');
 				},
 				onRewarded: () => {
 					console.log('Rewarded!');
