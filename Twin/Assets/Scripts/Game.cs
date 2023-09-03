@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,6 @@ public class Game : MonoBehaviour
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PauseScreen _pauseScreen;
     [SerializeField] private LevelComplete _levelCompleteScreen;
-    //[SerializeField] private SettingScreen _settingScreen;
     [SerializeField] private ActivationStages _activationStages;
 
     [Header("Stages")]
@@ -26,7 +26,10 @@ public class Game : MonoBehaviour
 
     [Header("Current stage")]
     [SerializeField] private Stage _stage;
-   
+
+    [DllImport("__Internal")]
+    private static extern void ExitGame();
+
     private void OnEnable()
     {      
         _launcherStage_1.InitializeStage += OnPlayButtonClick;
@@ -37,7 +40,6 @@ public class Game : MonoBehaviour
         _launcherStage_6.InitializeStage += OnPlayButtonClick;
         _launcherStage_7.InitializeStage += OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
-        //_settingScreen.SettingButtonClick += OnSettingButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;   
         _player.LevelCompleted += OnLevelCompleted;     
@@ -127,8 +129,7 @@ public class Game : MonoBehaviour
 
     public void ExitPlay()
     {
-        print("Выход");
-        Application.Quit();
+        ExitGame();
     }
 
     public void ReloadScene()

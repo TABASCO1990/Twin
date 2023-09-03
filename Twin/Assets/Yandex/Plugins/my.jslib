@@ -1,10 +1,5 @@
 mergeInto(LibraryManager.library, {
-	
-	GiveMePlayerData: function () {
-		myGameInstance.SendMessage('Yandex', 'SetName', player.getName());
-		myGameInstance.SendMessage('Yandex', 'SetPhoto', player.getPhoto("medium"));
-	},
-	
+
 	GetLang: function () {
 		var lang = ysdk.environment.i18n.lang;
 		var bufferSize = lengthBytesUTF8(lang) + 1;
@@ -13,17 +8,40 @@ mergeInto(LibraryManager.library, {
 		return buffer;
 	},
 	
-	SaveExtern: function(date){
-		var dateString = UTF8ToString(date);
-		var myobj = JSON.parse(dateString);
-		player.setData(myobj);
+	SaveExtern: function (data) {
+		try {
+
+			var dataString = UTF8ToString(data);
+			var myobj = JSON.parse(dataString);
+			player.setData(myobj);
+
+		} catch (e) {
+
+			console.log('non save');
+		}
 	},
 	
 	LoadExtern: function(){
-		player.getData().then(_date => {
-			const myJSON = JSON.stringify(_date);
-			myGameInstance.SendMessage('Progress', 'SetPlayerInfo', myJSON);
-		});
+		try {
+			if (!PlayerExist) {
+				myGameInstance.SendMessage('Progress','LoadEmpty'); 
+			} else {
+				console.log('LoadExternBeforeGetData');
+				player.getData().then(_date => {
+					const myJSON = JSON.stringify(_date);
+					myGameInstance.SendMessage('Progress', 'SetPlayerInfo', myJSON);
+				});
+			}
+
+		} catch (e) {			
+			console.log('non load');
+		}
+	},
+
+	OpenAuthDialog: function(){
+		if (player.getMode() === 'lite'){
+			ysdk.auth.openAuthDialog();
+		}
 	},
 
 	SetToLeaderboard: function(value){
@@ -79,5 +97,9 @@ mergeInto(LibraryManager.library, {
 				}
 			}
 		})
+	},
+
+	ExitGame: function{
+		ysdk.dispatchEvent(ysdk.EVENTS.EXIT);
 	},
 });

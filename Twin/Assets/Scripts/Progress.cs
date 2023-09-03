@@ -18,6 +18,8 @@ public class Progress : MonoBehaviour
     private static extern void LoadExtern();
     [DllImport("__Internal")]
     private static extern void SetToLeaderboard(int value);
+    [DllImport("__Internal")]
+    private static extern void OpenAuthDialog();
 
     [SerializeField] private Clock _clock;
     [SerializeField] private Locations _location;
@@ -43,6 +45,7 @@ public class Progress : MonoBehaviour
 
     private void Start()
     {
+        OpenAuthDialog();
         PlayerInfo._scores = new int[_location.CountStage];
     }
 
