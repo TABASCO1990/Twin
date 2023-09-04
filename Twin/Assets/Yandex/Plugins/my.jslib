@@ -32,16 +32,19 @@ mergeInto(LibraryManager.library, {
 					myGameInstance.SendMessage('Progress', 'SetPlayerInfo', myJSON);
 				});
 			}
-
 		} catch (e) {			
 			console.log('non load');
 		}
 	},
 
-	OpenAuthDialog: function(){
+	ShowWindowAuthorization: function(){
 		if (player.getMode() === 'lite'){
-			ysdk.auth.openAuthDialog();
+			myGameInstance.SendMessage('Yandex', 'ShowScreen');
 		}
+	},
+
+	InitAuthorization: function(){
+		 ysdk.auth.openAuthDialog();
 	},
 
 	SetToLeaderboard: function(value){
@@ -99,7 +102,7 @@ mergeInto(LibraryManager.library, {
 		})
 	},
 
-	ExitGame: function{
+	ExitGame: function(){
 		ysdk.dispatchEvent(ysdk.EVENTS.EXIT);
 	},
 });

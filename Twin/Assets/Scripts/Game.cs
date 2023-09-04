@@ -117,7 +117,6 @@ public class Game : MonoBehaviour
         Time.timeScale = 0;
         ResetAll();      
         _levelCompleteScreen.Open();
-        //_activationStages.InitializeStage();
         _player.GetComponent<PlayerMover>().enabled = true;
     }
 
