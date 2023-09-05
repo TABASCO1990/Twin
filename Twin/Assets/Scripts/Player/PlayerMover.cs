@@ -8,17 +8,16 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotateSpeed;  
 
-    private bool _isMove = true;
-    private bool _isRunning;
     private PlayerInput _input;
     private Vector2 _direction;
     private Vector3 _offset;
     private Animator _animator;
+    private bool _isMove = true;
+    private bool _isRunning;
 
     private void Awake()
     {
         _input = new PlayerInput();       
-
         _input.Enable();   
     }
 
@@ -68,8 +67,7 @@ public class PlayerMover : MonoBehaviour
 
     public void StopMove()
     {
-        StartCoroutine(ÑhangeStates());
-       
+        StartCoroutine(ÑhangeStates());    
     }
 
     IEnumerator ÑhangeStates()

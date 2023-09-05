@@ -29,7 +29,6 @@ public class Stage : ObjectPool
     private void InitializeObstacle(GameObject level)
     {
         int numberCurrentLevel = _pool.IndexOf(level) - 1;
- 
         _pool[numberCurrentLevel].SetActive(false); 
         level.SetActive(true);
     }

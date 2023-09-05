@@ -8,6 +8,7 @@ public class PlayerInfo
 {
     public int[] _scores;
     public int _countActiveStages;
+    public bool isOnMusic;
 }
 
 public class Progress : MonoBehaviour
@@ -25,6 +26,7 @@ public class Progress : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     [SerializeField] private ActivationStages _activationStages;
     [SerializeField] private PlayerRank _playerRank;
+    [SerializeField] private Sound _sound;
 
     private int[] _scoreStages;
     private int _sumScores;   
@@ -104,11 +106,11 @@ public class Progress : MonoBehaviour
             CalculateScore?.Invoke(PlayerInfo._scores[i], i, _sumScores);
         }
 
-
         for (int i = 0; i <= PlayerInfo._countActiveStages; i++)
         {
             _activationStages.SetActivatedStages(i);
         }
 
+        _sound.OffSound();
     }
 }

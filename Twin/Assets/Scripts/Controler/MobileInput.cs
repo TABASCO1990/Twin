@@ -9,11 +9,11 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private RectTransform _knobJoystick;
     [SerializeField] private RectTransform _stickJoystic;
 
-    private RectTransform _canvasRectTransform;
-    private Vector2 _startPosition;
     private Image _image;
+    private RectTransform _canvasRectTransform;
     private OnScreenStick _stick;
-
+    private Vector2 _startPosition;
+    
     void Start()
     {
         _image = GetComponent<Image>();
@@ -25,7 +25,7 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void ResetJoystic()
     {
         _knobJoystick.GetComponent<Image>().enabled = false;
-        _stickJoystic.GetComponent<Image>().enabled=false;
+        _stickJoystic.GetComponent<Image>().enabled = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -34,10 +34,10 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     public void OnPointerDown(PointerEventData eventData)
-    {     
+    {
         Vector2 localPoint;
-        
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRectTransform, eventData.position,eventData.pressEventCamera,out localPoint))
+
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRectTransform, eventData.position, eventData.pressEventCamera, out localPoint))
         {
             _knobJoystick.anchoredPosition = localPoint;
             _stickJoystic.anchoredPosition = localPoint;
@@ -45,11 +45,11 @@ public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _stickJoystic.GetComponent<Image>().enabled = true;
             _stick.OnPointerDown(eventData);
             _stick.GetComponent<Image>().enabled = true;
-        }    
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
-    {   
+    {
         _stick.OnPointerUp(eventData);
         _image.enabled = true;
         _knobJoystick.anchoredPosition = _startPosition;

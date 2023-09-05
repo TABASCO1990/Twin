@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -32,7 +33,7 @@ public class Game : MonoBehaviour
 
     private void OnEnable()
     {      
-        _launcherStage_1.InitializeStage += OnPlayButtonClick;
+        _launcherStage_1.InitializeStage += OnPlayButtonClickFirst;
         _launcherStage_2.InitializeStage += OnPlayButtonClick;
         _launcherStage_3.InitializeStage += OnPlayButtonClick;
         _launcherStage_4.InitializeStage += OnPlayButtonClick;
@@ -47,7 +48,7 @@ public class Game : MonoBehaviour
 
     private void OnDisable()
     {
-        _launcherStage_1.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_1.InitializeStage -= OnPlayButtonClickFirst;
         _launcherStage_2.InitializeStage -= OnPlayButtonClick;
         _launcherStage_3.InitializeStage -= OnPlayButtonClick;
         _launcherStage_4.InitializeStage -= OnPlayButtonClick;
@@ -55,16 +56,26 @@ public class Game : MonoBehaviour
         _launcherStage_6.InitializeStage -= OnPlayButtonClick;
         _launcherStage_7.InitializeStage -= OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
-        //_settingScreen.SettingButtonClick -= OnSettingButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
         _player.LevelCompleted -= OnLevelCompleted;    
-    }
+    } 
 
     private void Start()
     {
         Time.timeScale = 0;
         _mainScreen.Open();
+    }
+
+    private void OnPlayButtonClickFirst(Stage stage)
+    {
+        _location.ResetStages();
+        _stage = stage;
+        Time.timeScale = 1;
+        _stage.GetComponentInChildren<Plant>().ResetTile();
+        _player.ResetPlayer();
+        StartInstruction.Instance.ShowInfo();
+        StartCoroutine(DeleyStartTimer());
     }
 
     private void OnPlayButtonClick(Stage stage)
@@ -118,6 +129,12 @@ public class Game : MonoBehaviour
         ResetAll();      
         _levelCompleteScreen.Open();
         _player.GetComponent<PlayerMover>().enabled = true;
+    }
+
+    IEnumerator DeleyStartTimer()
+    {
+        yield return new WaitForSeconds(3);
+        _clock.ResetTime();
     }
 
     private void OnContinueButtonClick()
