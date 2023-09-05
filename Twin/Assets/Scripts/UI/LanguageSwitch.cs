@@ -10,6 +10,7 @@ public class LanguageSwitch : MonoBehaviour
     const int LanguageEnglish = 1;
 
     [DllImport("__Internal")] public static extern string GetLang();
+
     [SerializeField] private Sprite[] _flags;
     [SerializeField] private Image _imageFlag;
 

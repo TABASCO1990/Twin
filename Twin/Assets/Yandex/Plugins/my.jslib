@@ -41,6 +41,9 @@ mergeInto(LibraryManager.library, {
 		if (player.getMode() === 'lite'){
 			myGameInstance.SendMessage('Yandex', 'ShowScreen');
 		}
+		else{
+			myGameInstance.SendMessage('Yandex', 'CloseScreen');
+		}
 	},
 
 	InitAuthorization: function(){
