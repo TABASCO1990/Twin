@@ -8,7 +8,8 @@ public class PlayerInfo
 {
     public int[] _scores;
     public int _countActiveStages;
-    public bool isOnMusic;
+    public bool isSound;
+    public bool isEffects;
 }
 
 public class Progress : MonoBehaviour
@@ -27,6 +28,7 @@ public class Progress : MonoBehaviour
     [SerializeField] private ActivationStages _activationStages;
     [SerializeField] private PlayerRank _playerRank;
     [SerializeField] private Sound _sound;
+    [SerializeField] private Effects _effects;
 
     private int[] _scoreStages;
     private int _sumScores;   
@@ -71,7 +73,7 @@ public class Progress : MonoBehaviour
         {
             sum += item;
         }
-
+        
         _sumScores = sum;
         _playerRank.ShowInfo();
 #if !UNITY_EDITOR && UNITY_WEBGL
@@ -111,6 +113,7 @@ public class Progress : MonoBehaviour
             _activationStages.SetActivatedStages(i);
         }
 
-        _sound.OffSound();
+        _sound.SetStatus();
+        _effects.SetStatus();
     }
 }

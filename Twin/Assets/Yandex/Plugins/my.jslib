@@ -10,13 +10,10 @@ mergeInto(LibraryManager.library, {
 	
 	SaveExtern: function (data) {
 		try {
-
 			var dataString = UTF8ToString(data);
 			var myobj = JSON.parse(dataString);
 			player.setData(myobj);
-
 		} catch (e) {
-
 			console.log('non save');
 		}
 	},
@@ -24,7 +21,7 @@ mergeInto(LibraryManager.library, {
 	LoadExtern: function(){
 		try {
 			if (!PlayerExist) {
-				myGameInstance.SendMessage('Progress','LoadEmpty'); 
+				console.log('LoadEmpty');
 			} else {
 				console.log('LoadExternBeforeGetData');
 				player.getData().then(_date => {
@@ -53,13 +50,13 @@ mergeInto(LibraryManager.library, {
 	SetToLeaderboard: function(value){
 		ysdk.getLeaderboards()
 		.then(lb => {
-			lb.setLeaderboardScore('Scores', value);
+			lb.setLeaderboardScore('ScoresPlayers', value);
 		});
 	},
 
 	GetPlayerRank: function(){
 		ysdk.getLeaderboards()
-		.then(lb => lb.getLeaderboardPlayerEntry('Scores'))
+		.then(lb => lb.getLeaderboardPlayerEntry('ScoresPlayers'))
 		.then(res => {
 			console.log(res);
 			myGameInstance.SendMessage('Progress', 'SetInfo', res.rank);
