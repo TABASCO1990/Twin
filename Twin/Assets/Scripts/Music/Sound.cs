@@ -1,26 +1,58 @@
 using UnityEngine.UI;
+using UnityEngine;
 
-public class Sound : Music
+public class Sound : MonoBehaviour
 {
-    public override void SetStatus()
+    [SerializeField] private Button _button;
+    [SerializeField] private Sprite enableSprite;
+    [SerializeField] private Sprite disableSprite;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private Image image;
+
+    private bool audioEnabled;
+
+    public bool AudioEnabled
     {
-        if (Progress.Inststance.PlayerInfo.isEffects)
+        get
         {
-            Progress.Inststance.PlayerInfo.isEffects = false;
-            _audioEffects.enabled = false;
-            _musicImage.GetComponent<Image>().sprite = offMusic;
+            return audioEnabled;
+        }
+        set
+        {
+            SetAudio(value);
+        }
+    }
+
+    private void Start()
+    {
+        SetAudio(AudioEnabled);
+    }
+
+    public void SetAudio(bool enabled)
+    {
+        if (enabled)
+        {           
+            _audioSource.enabled = true;
+            image.GetComponent<Image>().sprite = enableSprite;
+            print("Enable Sound");
         }
         else
         {
-            Progress.Inststance.PlayerInfo.isEffects = true;
-            _audioEffects.enabled = true;
-            _musicImage.GetComponent<Image>().sprite = onMusic;
+            _audioSource.enabled = false;
+            image.GetComponent<Image>().sprite = disableSprite;
+            print("Disable Sound");
         }
 
-        Progress.Inststance.PlayerInfo.isSound = !Progress.Inststance.PlayerInfo.isEffects;
-
+        audioEnabled = enabled;
+        Progress.Inststance.PlayerInfo._isSound = audioEnabled;
 #if !UNITY_EDITOR && UNITY_WEBGL
         Progress.Inststance.Save();
 #endif
     }
+
+    public void SwitchAudio()
+    {
+        AudioEnabled = !AudioEnabled;
+    }
 }
+

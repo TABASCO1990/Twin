@@ -8,7 +8,7 @@ public class PlayerInfo
 {
     public int[] _scores;
     public int _countActiveStages;
-    public bool isSound;
+    public bool _isSound;
     public bool isEffects;
 }
 
@@ -93,7 +93,7 @@ public class Progress : MonoBehaviour
         PlayerInfo._scores.CopyTo(_scoreStages, 0);
         SetTotalScores();
 
-        _text.text = PlayerInfo._scores[0].ToString() + "\n"+
+        _text.text = PlayerInfo._scores[0].ToString() + "\n" +
             PlayerInfo._scores[1].ToString() + "\n" +
             PlayerInfo._scores[2].ToString() + "\n" +
             PlayerInfo._scores[3].ToString() + "\n" +
@@ -101,7 +101,8 @@ public class Progress : MonoBehaviour
             PlayerInfo._scores[5].ToString() + "\n" +
             PlayerInfo._scores[6].ToString() + "\n" +
             PlayerInfo._scores[7].ToString() + "\n\n" +
-            "Count Stage:" + PlayerInfo._countActiveStages;
+            "Count Stage:" + PlayerInfo._countActiveStages + "\n\n" +
+            "Progress: " + Inststance.PlayerInfo._isSound;
 
         for (int i = 0; i < PlayerInfo._scores.Length; i++)
         {
@@ -113,7 +114,6 @@ public class Progress : MonoBehaviour
             _activationStages.SetActivatedStages(i);
         }
 
-        _sound.SetStatus();
-        _effects.SetStatus();
+        _sound.AudioEnabled = Inststance.PlayerInfo._isSound;
     }
 }
