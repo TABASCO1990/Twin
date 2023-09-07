@@ -9,7 +9,7 @@ public class PlayerInfo
     public int[] _scores;
     public int _countActiveStages;
     public bool _isSound;
-    public bool isEffects;
+    public bool _isEffects = true;
 }
 
 public class Progress : MonoBehaviour
@@ -34,11 +34,11 @@ public class Progress : MonoBehaviour
     private int _sumScores;   
     public event UnityAction<int, int, int> CalculateScore;
     public PlayerInfo PlayerInfo;
-    public static Progress Inststance;
+    public static Progress Instance;
 
     private void Awake()
     {
-        Inststance = this;
+        Instance = this;
         _scoreStages = new int[_location.CountStage];
 #if !UNITY_EDITOR && UNITY_WEBGL
         LoadExtern();
@@ -102,7 +102,7 @@ public class Progress : MonoBehaviour
             PlayerInfo._scores[6].ToString() + "\n" +
             PlayerInfo._scores[7].ToString() + "\n\n" +
             "Count Stage:" + PlayerInfo._countActiveStages + "\n\n" +
-            "Progress: " + Inststance.PlayerInfo._isSound;
+            "Progress: " + Instance.PlayerInfo._isSound;
 
         for (int i = 0; i < PlayerInfo._scores.Length; i++)
         {
@@ -114,6 +114,6 @@ public class Progress : MonoBehaviour
             _activationStages.SetActivatedStages(i);
         }
 
-        _sound.AudioEnabled = Inststance.PlayerInfo._isSound;
+        //_sound.AudioEnabled = Inststance.PlayerInfo._isSound;
     }
 }

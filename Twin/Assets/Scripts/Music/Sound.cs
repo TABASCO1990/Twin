@@ -3,19 +3,16 @@ using UnityEngine;
 
 public class Sound : MonoBehaviour
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private Sprite enableSprite;
-    [SerializeField] private Sprite disableSprite;
+    [SerializeField] private Sprite _enableSprite;
+    [SerializeField] private Sprite _disableSprite;
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private Image image;
-
-    private bool audioEnabled;
+    [SerializeField] private Image _image;
 
     public bool AudioEnabled
     {
         get
         {
-            return audioEnabled;
+            return Progress.Instance.PlayerInfo._isSound;
         }
         set
         {
@@ -31,22 +28,19 @@ public class Sound : MonoBehaviour
     public void SetAudio(bool enabled)
     {
         if (enabled)
-        {           
+        {
             _audioSource.enabled = true;
-            image.GetComponent<Image>().sprite = enableSprite;
-            print("Enable Sound");
+            _image.GetComponent<Image>().sprite = _enableSprite;
         }
         else
         {
             _audioSource.enabled = false;
-            image.GetComponent<Image>().sprite = disableSprite;
-            print("Disable Sound");
+            _image.GetComponent<Image>().sprite = _disableSprite;
         }
 
-        audioEnabled = enabled;
-        Progress.Inststance.PlayerInfo._isSound = audioEnabled;
+        Progress.Instance.PlayerInfo._isSound = enabled;
 #if !UNITY_EDITOR && UNITY_WEBGL
-        Progress.Inststance.Save();
+        Progress.Instance.Save();
 #endif
     }
 
@@ -55,4 +49,3 @@ public class Sound : MonoBehaviour
         AudioEnabled = !AudioEnabled;
     }
 }
-

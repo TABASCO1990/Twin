@@ -17,12 +17,12 @@ public class ActivationStages : MonoBehaviour
     private void Start()
     {
         _launchers[_currentStage].enabled = true;
-        _currentStage = Progress.Inststance.PlayerInfo._countActiveStages;
+        _currentStage = Progress.Instance.PlayerInfo._countActiveStages;
     }
 
     private void _countStageActive()
     {
-        Progress.Inststance.PlayerInfo._countActiveStages = Math.Max(Progress.Inststance.PlayerInfo._countActiveStages, CurrentStage);
+        Progress.Instance.PlayerInfo._countActiveStages = Math.Max(Progress.Instance.PlayerInfo._countActiveStages, CurrentStage);
 
 #if !UNITY_EDITOR && UNITY_WEBGL
         Progress.Inststance.Save();

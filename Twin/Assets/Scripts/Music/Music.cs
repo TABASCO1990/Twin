@@ -3,26 +3,32 @@ using UnityEngine.UI;
 
 public abstract class Music : MonoBehaviour
 {
-    [SerializeField] protected Button _button;
-    [SerializeField] protected AudioSource _audioEffects;
-    [SerializeField] protected Image _musicImage;
-    [SerializeField] protected Sprite onMusic;
-    [SerializeField] protected Sprite offMusic;
+    [SerializeField] protected Sprite EnableSprite;
+    [SerializeField] protected Sprite DisableSprite;
+    [SerializeField] protected AudioSource AudioSource;
+    [SerializeField] protected Image Image;
 
-    private void OnEnable()
+    public virtual bool AudioEnabled
     {
-        _button.onClick.AddListener(OnButtonClick);
+        get
+        {
+            return AudioEnabled;
+        }
+        set
+        {
+            SetAudio(value);
+        }
     }
 
-    private void OnDisable()
+    private void Start()
     {
-        _button.onClick.RemoveListener(OnButtonClick);
+        SetAudio(AudioEnabled);
     }
 
-    private void OnButtonClick()
-    {
-        SetStatus();
-    }
+    protected abstract void SetAudio(bool enabled);
 
-    public abstract void SetStatus();
+    public void SwitchAudio()
+    {
+        AudioEnabled = !AudioEnabled;
+    }
 }

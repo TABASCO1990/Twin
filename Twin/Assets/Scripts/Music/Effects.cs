@@ -1,26 +1,52 @@
+using UnityEngine;
 using UnityEngine.UI;
 
-public class Effects : Music
+public class Effects : MonoBehaviour
 {
-    public override void SetStatus()
+    [SerializeField] private Sprite _enableSprite;
+    [SerializeField] private Sprite _disableSprite;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private Image _image;
+
+    public bool AudioEnabled
     {
-        if (Progress.Inststance.PlayerInfo.isEffects)
+        get
         {
-            Progress.Inststance.PlayerInfo.isEffects = false;
-            _audioEffects.enabled = false;
-            _musicImage.GetComponent<Image>().sprite = offMusic;
+            return Progress.Instance.PlayerInfo._isEffects;
+        }
+        set
+        {
+            SetAudio(value);
+        }
+    }
+
+    private void Start()
+    {
+        SetAudio(AudioEnabled);
+    }
+
+    public void SetAudio(bool enabled)
+    {
+        if (enabled)
+        {
+            _audioSource.enabled = true;
+            _image.GetComponent<Image>().sprite = _enableSprite;
         }
         else
         {
-            Progress.Inststance.PlayerInfo.isEffects = true;
-            _audioEffects.enabled = true;
-            _musicImage.GetComponent<Image>().sprite = onMusic;
+            _audioSource.enabled = false;
+            _image.GetComponent<Image>().sprite = _disableSprite;
         }
 
-        Progress.Inststance.PlayerInfo.isEffects = !Progress.Inststance.PlayerInfo.isEffects;
-
+        Progress.Instance.PlayerInfo._isEffects = enabled;
 #if !UNITY_EDITOR && UNITY_WEBGL
-        Progress.Inststance.Save();
+        Progress.Instance.Save();
 #endif
     }
+
+    public void SwitchAudio()
+    {
+        AudioEnabled = !AudioEnabled;
+    }
 }
+
