@@ -6,6 +6,7 @@ public class Marketing : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private PauseScreen _pauseScreen;
     [SerializeField] private int _seconds;
+    [SerializeField] private AudioSource _audioSource;
 
     [DllImport("__Internal")]
     private static extern void ShowFullScreenAdv();
@@ -18,6 +19,11 @@ public class Marketing : MonoBehaviour
 #if !UNITY_EDITOR && UNITY_WEBGL
     ShowFullScreenAdv();
 #endif
+    }
+
+    public void ContinuePlaySound()
+    {
+        _audioSource.Play();
     }
 
     public void ShowAdvReward()

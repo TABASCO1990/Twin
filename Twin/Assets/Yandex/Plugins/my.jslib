@@ -72,7 +72,7 @@ mergeInto(LibraryManager.library, {
 		ysdk.adv.showFullscreenAdv({
 			callbacks: {
 				onClose: function(wasShown) {
-          // some action after close
+          			myGameInstance.SendMessage('Yandex','ContinuePlaySound');
 				},
 				onError: function(error) {
           // some action on error
@@ -93,7 +93,7 @@ mergeInto(LibraryManager.library, {
 					myGameInstance.SendMessage('Yandex','AddTime',value);
 				},
 				onClose: () => {
-					console.log('Video ad closed.');
+					myGameInstance.SendMessage('Yandex','ContinuePlaySound');
 				}, 
 				onError: (e) => {
 					console.log('Error while open video ad:', e);
