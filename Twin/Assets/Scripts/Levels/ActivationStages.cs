@@ -25,7 +25,7 @@ public class ActivationStages : MonoBehaviour
         Progress.Instance.PlayerInfo._countActiveStages = Math.Max(Progress.Instance.PlayerInfo._countActiveStages, CurrentStage);
 
 #if !UNITY_EDITOR && UNITY_WEBGL
-        Progress.Inststance.Save();
+        Progress.Instance.Save();
 #endif
     }
 

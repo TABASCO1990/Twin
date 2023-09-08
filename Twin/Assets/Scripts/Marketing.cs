@@ -15,7 +15,9 @@ public class Marketing : MonoBehaviour
 
     public void ShowFullScreenAdvertisement()
     {
-        ShowFullScreenAdv();
+#if !UNITY_EDITOR && UNITY_WEBGL
+    ShowFullScreenAdv();
+#endif
     }
 
     public void ShowAdvReward()

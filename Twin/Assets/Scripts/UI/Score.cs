@@ -20,6 +20,7 @@ public class Score : MonoBehaviour
 
     private void OnDisable()
     {
+        _player.ScoreChanged -= OnScoreChanged;// Почемуто небыло
         _player.ScoreCountChanged -= OnScoreCountChanged;
     }
 

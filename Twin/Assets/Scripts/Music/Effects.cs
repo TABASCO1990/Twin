@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
 public class Effects : MonoBehaviour
 {
@@ -8,16 +8,10 @@ public class Effects : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private Image _image;
 
-    public bool AudioEnabled
+    private bool AudioEnabled
     {
-        get
-        {
-            return Progress.Instance.PlayerInfo._isEffects;
-        }
-        set
-        {
-            SetAudio(value);
-        }
+        get => Progress.Instance.PlayerInfo._isEffects;
+        set => SetAudio(value);
     }
 
     private void Start()
@@ -25,22 +19,15 @@ public class Effects : MonoBehaviour
         SetAudio(AudioEnabled);
     }
 
-    public void SetAudio(bool enabled)
+    private void SetAudio(bool enabled)
     {
-        if (enabled)
-        {
-            _audioSource.enabled = true;
-            _image.GetComponent<Image>().sprite = _enableSprite;
-        }
-        else
-        {
-            _audioSource.enabled = false;
-            _image.GetComponent<Image>().sprite = _disableSprite;
-        }
+        _audioSource.enabled = enabled;
+        _image.GetComponent<Image>().sprite = enabled ? _enableSprite : _disableSprite;
 
         Progress.Instance.PlayerInfo._isEffects = enabled;
+
 #if !UNITY_EDITOR && UNITY_WEBGL
-        Progress.Instance.Save();
+    Progress.Instance.Save();
 #endif
     }
 

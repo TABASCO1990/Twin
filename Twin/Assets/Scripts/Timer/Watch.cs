@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class Watch : MonoBehaviour
 {
+    private const float TimeBeLow = 10f;
+    private const float TimeLow = 5f;
+
     [SerializeField] private TMP_Text _time;
     [SerializeField] private Image _fill;
     [SerializeField] private Color _colorRed;
     [SerializeField] private Color _colorYellow;
     [SerializeField] private Color _currentColor;
-
     [SerializeField] private Clock _clock;
 
-    private const float TimeBeLow = 10f;
-    private const float TimeLow = 5f;
     private bool _isYellowTimer = true;
     private bool _isRedTimer = true;
     private bool _isGreenTimer = true;

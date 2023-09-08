@@ -1,23 +1,17 @@
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
-public abstract class Music : MonoBehaviour
+public class Music : MonoBehaviour
 {
-    [SerializeField] protected Sprite EnableSprite;
-    [SerializeField] protected Sprite DisableSprite;
-    [SerializeField] protected AudioSource AudioSource;
-    [SerializeField] protected Image Image;
+    [SerializeField] private Sprite _enableSprite;
+    [SerializeField] private Sprite _disableSprite;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private Image _image;
 
-    public virtual bool AudioEnabled
+    private bool AudioEnabled
     {
-        get
-        {
-            return AudioEnabled;
-        }
-        set
-        {
-            SetAudio(value);
-        }
+        get => Progress.Instance.PlayerInfo._isMusic;
+        set => SetAudio(value);
     }
 
     private void Start()
@@ -25,7 +19,17 @@ public abstract class Music : MonoBehaviour
         SetAudio(AudioEnabled);
     }
 
-    protected abstract void SetAudio(bool enabled);
+    private void SetAudio(bool enabled)
+    {
+        _audioSource.enabled = enabled;
+        _image.GetComponent<Image>().sprite = enabled ? _enableSprite : _disableSprite;
+
+        Progress.Instance.PlayerInfo._isMusic = enabled;
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+    Progress.Instance.Save();
+#endif
+    }
 
     public void SwitchAudio()
     {

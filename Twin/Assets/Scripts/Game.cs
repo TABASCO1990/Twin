@@ -125,10 +125,11 @@ public class Game : MonoBehaviour
         _player.GetComponent<PlayerMover>().enabled = false;
         _activationStages.InitializeStage();
         yield return new WaitForSeconds(2.0f);
+        _player.GetComponent<PlayerMover>().enabled = true;
         Time.timeScale = 0;
         ResetAll();      
         _levelCompleteScreen.Open();
-        _player.GetComponent<PlayerMover>().enabled = true;
+        
     }
 
     IEnumerator DeleyStartTimer()

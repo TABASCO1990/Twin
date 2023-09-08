@@ -8,7 +8,7 @@ public class PlayerInfo
 {
     public int[] _scores;
     public int _countActiveStages;
-    public bool _isSound;
+    public bool _isMusic;
     public bool _isEffects = true;
 }
 
@@ -27,7 +27,7 @@ public class Progress : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     [SerializeField] private ActivationStages _activationStages;
     [SerializeField] private PlayerRank _playerRank;
-    [SerializeField] private Sound _sound;
+    [SerializeField] private Music _sound;
     [SerializeField] private Effects _effects;
 
     private int[] _scoreStages;
@@ -40,6 +40,7 @@ public class Progress : MonoBehaviour
     {
         Instance = this;
         _scoreStages = new int[_location.CountStage];
+        Instance.PlayerInfo._isEffects = true;
 #if !UNITY_EDITOR && UNITY_WEBGL
         LoadExtern();
 #endif
@@ -102,7 +103,8 @@ public class Progress : MonoBehaviour
             PlayerInfo._scores[6].ToString() + "\n" +
             PlayerInfo._scores[7].ToString() + "\n\n" +
             "Count Stage:" + PlayerInfo._countActiveStages + "\n\n" +
-            "Progress: " + Instance.PlayerInfo._isSound;
+            "Effects Player Info: " + Instance.PlayerInfo._isEffects;
+        
 
         for (int i = 0; i < PlayerInfo._scores.Length; i++)
         {
@@ -113,7 +115,5 @@ public class Progress : MonoBehaviour
         {
             _activationStages.SetActivatedStages(i);
         }
-
-        //_sound.AudioEnabled = Inststance.PlayerInfo._isSound;
     }
 }
