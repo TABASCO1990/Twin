@@ -14,24 +14,19 @@ public class PlayerInfo
 
 public class Progress : MonoBehaviour
 {
-    [DllImport("__Internal")]
-    private static extern void SaveExtern(string date);
-    [DllImport("__Internal")]
-    private static extern void LoadExtern();
-    [DllImport("__Internal")]
-    private static extern void SetToLeaderboard(int value);
+    [DllImport("__Internal")] private static extern void SaveExtern(string date);
+    [DllImport("__Internal")] private static extern void LoadExtern();
+    [DllImport("__Internal")] private static extern void SetToLeaderboard(int value);
 
     [SerializeField] private Clock _clock;
     [SerializeField] private Locations _location;
     [SerializeField] private Player _player;
-    [SerializeField] private TMP_Text _text;
     [SerializeField] private ActivationStages _activationStages;
     [SerializeField] private PlayerRank _playerRank;
-    [SerializeField] private Music _sound;
-    [SerializeField] private Effects _effects;
 
     private int[] _scoreStages;
-    private int _sumScores;   
+    private int _sumScores; 
+    
     public event UnityAction<int, int, int> CalculateScore;
     public PlayerInfo PlayerInfo;
     public static Progress Instance;
@@ -93,18 +88,6 @@ public class Progress : MonoBehaviour
         PlayerInfo = JsonUtility.FromJson<PlayerInfo>(value);
         PlayerInfo._scores.CopyTo(_scoreStages, 0);
         SetTotalScores();
-
-        _text.text = PlayerInfo._scores[0].ToString() + "\n" +
-            PlayerInfo._scores[1].ToString() + "\n" +
-            PlayerInfo._scores[2].ToString() + "\n" +
-            PlayerInfo._scores[3].ToString() + "\n" +
-            PlayerInfo._scores[4].ToString() + "\n" +
-            PlayerInfo._scores[5].ToString() + "\n" +
-            PlayerInfo._scores[6].ToString() + "\n" +
-            PlayerInfo._scores[7].ToString() + "\n\n" +
-            "Count Stage:" + PlayerInfo._countActiveStages + "\n\n" +
-            "Effects Player Info: " + Instance.PlayerInfo._isEffects;
-        
 
         for (int i = 0; i < PlayerInfo._scores.Length; i++)
         {

@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class Launcher : MonoBehaviour
 {
-    [SerializeField] private Stage _stage; //активировать его будем
-    [SerializeField] private Locations _location; //передаём номер уровня сюда
-    [SerializeField] private int _numberStage; //номер уровня
+    [SerializeField] private Stage _stage; 
+    [SerializeField] private Locations _location;
+    [SerializeField] private int _numberStage;
     [SerializeField] private GameObject _buttonStart;
     [SerializeField] protected GameObject[] ObjectsDisabled;
     [SerializeField] protected GameObject _joystick;

@@ -17,5 +17,4 @@ public class SoundController : MonoBehaviour
         AudioListener.pause = silence;
         AudioListener.volume = silence ? 0 : 1;
     }
-
 }

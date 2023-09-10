@@ -4,11 +4,9 @@ using UnityEngine.UI;
 
 public class Authorization : MonoBehaviour
 {
-    [DllImport("__Internal")]
-    public static extern void ShowWindowAuthorization();
+    [DllImport("__Internal")] public static extern void ShowWindowAuthorization();
 
-    [DllImport("__Internal")]
-    private static extern void InitAuthorization();
+    [DllImport("__Internal")] private static extern void InitAuthorization();
 
     [SerializeField] private Button _login;
     [SerializeField] private GameObject AreaLogin;

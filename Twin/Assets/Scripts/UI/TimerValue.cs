@@ -13,5 +13,4 @@ public class Bonus : MonoBehaviour
         _timerBonus = GetComponent<TimerBonus>();
         _value.text = "+" + _timerBonus.Value;
     }
-
 }

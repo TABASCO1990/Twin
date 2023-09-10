@@ -38,7 +38,6 @@ public class RendererChanged : MonoBehaviour
     private void SetShaded()
     {
         float _value = 0.66f;
-
         Color.RGBToHSV(_colors[_colorValue], out float H, out float S, out float V);
         Color color = Color.HSVToRGB(H, S, _value);
         _material.SetColor(_shadedName, color);       

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class LevelComplete : ScreenBase
 {
     [SerializeField] private AudioSource _audioSource;

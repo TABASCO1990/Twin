@@ -2,21 +2,31 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 02.2-BlueprintGrid-Mug-14
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
-  m_ShaderKeywords: DR_OUTLINE_ON _CELPRIMARYMODE_STEPS _FLAT_RIM_ENABLED _FLAT_SHADOWS_ENABLED
-    _FLAT_SPECULAR_ENABLED _TEXTUREBLENDINGMODE_MULTIPLY _UNITYSHADOWMODE_MULTIPLY
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _CELPRIMARYMODE_STEPS
+  - _TEXTUREBLENDINGMODE_MULTIPLY
+  - _UNITYSHADOWMODE_MULTIPLY
+  m_InvalidKeywords:
+  - DR_OUTLINE_ON
+  - _FLAT_RIM_ENABLED
+  - _FLAT_SHADOWS_ENABLED
+  - _FLAT_SPECULAR_ENABLED
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -68,6 +78,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
@@ -147,12 +158,12 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.9843138, g: 0.7019608, b: 0.2235294, a: 1}
-    - _Color: {r: 0.9843138, g: 0.7019608, b: 0.22352943, a: 1}
+    - _Color: {r: 0.4339623, g: 0.29089302, b: 0, a: 1}
     - _ColorCelShadow: {r: 0.38581347, g: 0.38787434, b: 0.9622642, a: 1}
     - _ColorDim: {r: 0.764151, g: 0.4634977, b: 0.34963512, a: 1}
     - _ColorDimCurve: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimExtra: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
-    - _ColorDimSteps: {r: 0.69411767, g: 0.44705886, b: 0.39607847, a: 1}
+    - _ColorDimSteps: {r: 1, g: 0.9989038, b: 0.6933962, a: 1}
     - _ColorGradient: {r: 0.9911022, g: 0.8307701, b: 0.5457247, a: 1}
     - _ColorSecondary: {r: 1, g: 0.55879205, b: 0, a: 1}
     - _ColorShadow: {r: 0.5, g: 0.5, b: 0.5, a: 1}

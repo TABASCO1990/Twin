@@ -8,11 +8,9 @@ public class Marketing : MonoBehaviour
     [SerializeField] private int _seconds;
     [SerializeField] private AudioSource _audioSource;
 
-    [DllImport("__Internal")]
-    private static extern void ShowFullScreenAdv();
+    [DllImport("__Internal")] private static extern void ShowFullScreenAdv();
 
-    [DllImport("__Internal")]
-    private static extern void AddTimeForAdv(int value); 
+    [DllImport("__Internal")] private static extern void AddTimeForAdv(int value); 
 
     public void ShowFullScreenAdvertisement()
     {

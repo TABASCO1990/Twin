@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -128,8 +127,7 @@ public class Game : MonoBehaviour
         _player.GetComponent<PlayerMover>().enabled = true;
         Time.timeScale = 0;
         ResetAll();      
-        _levelCompleteScreen.Open();
-        
+        _levelCompleteScreen.Open();      
     }
 
     IEnumerator DeleyStartTimer()

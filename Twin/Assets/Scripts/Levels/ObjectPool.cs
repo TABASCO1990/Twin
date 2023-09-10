@@ -23,8 +23,7 @@ public class ObjectPool : MonoBehaviour
                 {
                     child.gameObject.SetActive(true);
                     DOTween.Play(child);
-                }
-                 
+                }            
             }
         }
     }
