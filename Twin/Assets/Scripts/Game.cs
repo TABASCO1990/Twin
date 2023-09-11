@@ -23,6 +23,9 @@ public class Game : MonoBehaviour
     [SerializeField] private Launcher _launcherStage_5;
     [SerializeField] private Launcher _launcherStage_6;
     [SerializeField] private Launcher _launcherStage_7;
+    [SerializeField] private Launcher _launcherStage_8;
+    [SerializeField] private Launcher _launcherStage_9;
+    [SerializeField] private Launcher _launcherStage_10;
 
     [Header("Current stage")]
     [SerializeField] private Stage _stage;
@@ -39,6 +42,9 @@ public class Game : MonoBehaviour
         _launcherStage_5.InitializeStage += OnPlayButtonClick;
         _launcherStage_6.InitializeStage += OnPlayButtonClick;
         _launcherStage_7.InitializeStage += OnPlayButtonClick;
+        _launcherStage_8.InitializeStage += OnPlayButtonClick;
+        _launcherStage_9.InitializeStage += OnPlayButtonClick;
+        _launcherStage_10.InitializeStage += OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock += OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick += OnContinueButtonClick;
         _player.GameOver += OnGameOver;   
@@ -54,6 +60,9 @@ public class Game : MonoBehaviour
         _launcherStage_5.InitializeStage -= OnPlayButtonClick;
         _launcherStage_6.InitializeStage -= OnPlayButtonClick;
         _launcherStage_7.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_8.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_9.InitializeStage -= OnPlayButtonClick;
+        _launcherStage_10.InitializeStage -= OnPlayButtonClick;
         _gameOverScreen.RestartButtonClock -= OnRestartButtonClick;
         _pauseScreen.ContinueButtonClick -= OnContinueButtonClick;
         _player.GameOver -= OnGameOver;
@@ -132,8 +141,10 @@ public class Game : MonoBehaviour
 
     IEnumerator DeleyStartTimer()
     {
+        _player.GetComponent<PlayerMover>().enabled = false;
         yield return new WaitForSeconds(3);
         _clock.ResetTime();
+        _player.GetComponent<PlayerMover>().enabled = true;
     }
 
     private void OnContinueButtonClick()

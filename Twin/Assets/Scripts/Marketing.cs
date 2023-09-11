@@ -19,6 +19,13 @@ public class Marketing : MonoBehaviour
 #endif
     }
 
+    private void Awake()
+    {
+#if !UNITY_EDITOR && UNITY_WEBGL
+    ShowFullScreenAdv();
+#endif
+    }
+
     public void ContinuePlaySound()
     {
         _audioSource.Play();
