@@ -22,7 +22,7 @@ public class ScreenProgress : MonoBehaviour
     private void OnCalculateScore(int score, int index, int sumscore)
     {
         _scoreStage[index].text = score.ToString();
-        _sumScoreSelectedScreen.text = "TOTAL SCORE: " + sumscore;
+        _sumScoreSelectedScreen.text = sumscore.ToString();
         _sumScoreGameScreen.text = sumscore.ToString();
         _sumScoreLevelCompleteScreen.text = sumscore.ToString();
     }

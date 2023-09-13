@@ -4,7 +4,7 @@ public class SoundController : MonoBehaviour
 {
     void OnApplicationFocus(bool hasFocus)
     {
-        Silence(!hasFocus);
+        Silence(!hasFocus);  
     }
 
     void OnApplicationPause(bool isPaused)
