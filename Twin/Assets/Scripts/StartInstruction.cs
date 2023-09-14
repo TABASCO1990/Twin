@@ -42,5 +42,4 @@ public class StartInstruction : MonoBehaviour
         _navigation.SetActive(false);
         _hintTimer.SetActive(false);
     }
-
 }
