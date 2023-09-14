@@ -44,7 +44,7 @@ mergeInto(LibraryManager.library, {
 	},
 
 	InitAuthorization: function(){
-		 ysdk.auth.openAuthDialog();
+		ysdk.auth.openAuthDialog();
 	},
 
 	SetToLeaderboard: function(value){
@@ -72,7 +72,7 @@ mergeInto(LibraryManager.library, {
 		ysdk.adv.showFullscreenAdv({
 			callbacks: {
 				onClose: function(wasShown) {
-          			myGameInstance.SendMessage('Yandex','ContinuePlaySound');
+					myGameInstance.SendMessage('Yandex','ContinuePlaySound');
 				},
 				onError: function(error) {
           // some action on error
@@ -104,5 +104,16 @@ mergeInto(LibraryManager.library, {
 
 	ExitGame: function(){
 		ysdk.dispatchEvent(ysdk.EVENTS.EXIT);
+	},
+
+	DeviceInfo: function(){
+		var device = ysdk.deviceInfo.type;
+		console.log('deviceInfoDesktop - ' + device);
+		if(device === 'desktop'){
+			myGameInstance.SendMessage('Main Camera','SetKeyboard');
+		}
+		else{
+			myGameInstance.SendMessage('Main Camera','SetJoystick');
+		}
 	},
 });
