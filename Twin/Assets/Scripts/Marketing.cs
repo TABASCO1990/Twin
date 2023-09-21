@@ -19,7 +19,7 @@ public class Marketing : MonoBehaviour
 #endif
     }
 
-    private void Awake()
+    private void Start()
     {
 #if !UNITY_EDITOR && UNITY_WEBGL
     ShowFullScreenAdv();
