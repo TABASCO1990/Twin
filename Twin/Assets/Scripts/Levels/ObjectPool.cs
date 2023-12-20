@@ -1,44 +1,47 @@
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
 using DG.Tweening;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+namespace Levels
 {
-    [SerializeField] private GameObject _container;
-
-    protected List<GameObject> _pool = new List<GameObject>();
-
-    public void ResetPool()
+    public class ObjectPool : MonoBehaviour
     {
-        _pool[0].SetActive(true);
+        [SerializeField] private GameObject _container;
 
-        for (int i = 1; i < _pool.Count; i++)
+        protected List<GameObject> _pool = new List<GameObject>();
+
+        public void ResetPool()
         {
-            _pool[i].SetActive(false);
+            _pool[0].SetActive(true);
 
-            foreach (var child in _pool[i].GetComponentsInChildren<Transform>(true))
+            for (int i = 1; i < _pool.Count; i++)
             {
-                if (child.GetComponent<TimerBonus>() || child.GetComponent<Bomb>())
+                _pool[i].SetActive(false);
+
+                foreach (var child in _pool[i].GetComponentsInChildren<Transform>(true))
                 {
-                    child.gameObject.SetActive(true);
-                    DOTween.Play(child);
-                }            
+                    if (child.GetComponent<TimerBonus>() || child.GetComponent<Bomb>())
+                    {
+                        child.gameObject.SetActive(true);
+                        DOTween.Play(child);
+                    }
+                }
             }
         }
-    }
 
-    protected void Initialize(GameObject prefab)
-    {
-        GameObject spawn = Instantiate(prefab, _container.transform);
-        spawn.SetActive(false);
-        _pool.Add(spawn);
-    }
+        protected void Initialize(GameObject prefab)
+        {
+            GameObject spawn = Instantiate(prefab, _container.transform);
+            spawn.SetActive(false);
+            _pool.Add(spawn);
+        }
 
-    protected bool TryGetNextObject(out GameObject result)
-    {  
-        result = _pool.SkipWhile(x => x.activeSelf == false).Skip(1).FirstOrDefault();
+        protected bool TryGetNextObject(out GameObject result)
+        {
+            result = _pool.SkipWhile(x => x.activeSelf == false).Skip(1).FirstOrDefault();
 
-        return result != null;
+            return result != null;
+        }
     }
 }

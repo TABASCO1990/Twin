@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StartInstruction : MonoBehaviour
 {
-    [DllImport("__Internal")] private static extern void DeviceInfo();
-
     [SerializeField] private GameObject _navigation;
     [SerializeField] private GameObject _hintTimer;
     [SerializeField] private GameObject _keyboard;
@@ -34,12 +32,14 @@ public class StartInstruction : MonoBehaviour
         _joystick.SetActive(true);
     }
 
-    IEnumerator SetManual()
-    {       
+    private IEnumerator SetManual()
+    {
         _navigation.SetActive(true);
         _hintTimer.SetActive(true);
-        yield return new WaitForSeconds(3f); 
+        yield return new WaitForSeconds(3f);
         _navigation.SetActive(false);
         _hintTimer.SetActive(false);
     }
+
+    [DllImport("__Internal")] private static extern void DeviceInfo();
 }

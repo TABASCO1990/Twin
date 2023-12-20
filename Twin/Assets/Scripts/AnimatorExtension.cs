@@ -14,4 +14,3 @@ public class AnimatorExtension : MonoBehaviour
 
     public void SetBoolFalse(string name) => _animator.SetBool(name, false);
 }
-

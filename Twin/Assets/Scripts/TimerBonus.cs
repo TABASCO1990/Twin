@@ -1,5 +1,5 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public class TimerBonus : MonoBehaviour
 {
@@ -13,13 +13,13 @@ public class TimerBonus : MonoBehaviour
     public float Value => _value;
 
     private void Start()
-    { 
+    {
         SetAnimation();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Player player))
+        if (other.TryGetComponent(out Player.Player player))
         {
             player.IncreaseTime(_value);
             DOTween.Pause(transform);
@@ -28,7 +28,7 @@ public class TimerBonus : MonoBehaviour
     }
 
     private void SetAnimation()
-    {    
+    {
         transform.DORotate(_valueRorate, _durationRotate).SetLoops(_countLoops, LoopType.Yoyo);
         transform.DOMove(new Vector3(transform.position.x, _pozitionY, transform.position.z), 0.5f).SetLoops(_countLoops, LoopType.Yoyo);
     }

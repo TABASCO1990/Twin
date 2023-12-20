@@ -64,6 +64,7 @@ public class Watch : MonoBehaviour
             _isRedTimer = false;
         }
     }
+
     private void ChangeColor(Color color)
     {
         _time.color = color;

@@ -1,35 +1,23 @@
 using System.Runtime.InteropServices;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class PlayerInfo
-{
-    public int[] _scores;
-    public int _countActiveStages;
-    public bool _isMusic;
-    public bool _isEffects = true;
-}
-
 public class Progress : MonoBehaviour
 {
-    [DllImport("__Internal")] private static extern void SaveExtern(string date);
-    [DllImport("__Internal")] private static extern void LoadExtern();
-    [DllImport("__Internal")] private static extern void SetToLeaderboard(int value);
+    public static Progress Instance;
 
     [SerializeField] private Clock _clock;
-    [SerializeField] private Locations _location;
-    [SerializeField] private Player _player;
-    [SerializeField] private ActivationStages _activationStages;
+    [SerializeField] private Levels.Locations _location;
+    [SerializeField] private Player.Player _player;
+    [SerializeField] private Levels.StageSelector _activationStages;
     [SerializeField] private PlayerRank _playerRank;
 
     private int[] _scoreStages;
-    private int _sumScores; 
-    
-    public event UnityAction<int, int, int> CalculateScore;
+    private int _sumScores;
+
     public PlayerInfo PlayerInfo;
-    public static Progress Instance;
+
+    public event UnityAction<int, int, int> CalculateScore;
 
     private void Awake()
     {
@@ -50,31 +38,7 @@ public class Progress : MonoBehaviour
     {
         SetStageScores();
         SetTotalScores();
-        CalculateScore?.Invoke(_scoreStages[_location._numberLevel], _location._numberLevel, _sumScores);
-    }
-
-    private void SetStageScores() {
-        _scoreStages[_location._numberLevel] = _clock.RemainingTime + _player.Score;
-        _scoreStages.CopyTo(PlayerInfo._scores, 0);        
-#if !UNITY_EDITOR && UNITY_WEBGL
-        Save();
-#endif
-    }
-
-    private void SetTotalScores()
-    {
-        int sum = 0;
-
-        foreach (var item in PlayerInfo._scores)
-        {
-            sum += item;
-        }
-        
-        _sumScores = sum;
-        _playerRank.ShowInfo();
-#if !UNITY_EDITOR && UNITY_WEBGL
-        SetToLeaderboard(_sumScores);
-#endif
+        CalculateScore?.Invoke(_scoreStages[_location.NumberLevel], _location.NumberLevel, _sumScores);
     }
 
     public void Save()
@@ -99,4 +63,35 @@ public class Progress : MonoBehaviour
             _activationStages.SetActivatedStages(i);
         }
     }
+
+    private void SetStageScores()
+    {
+        _scoreStages[_location.NumberLevel] = _clock.RemainingTime + _player.Score;
+        _scoreStages.CopyTo(PlayerInfo._scores, 0);
+#if !UNITY_EDITOR && UNITY_WEBGL
+        Save();
+#endif
+    }
+
+    private void SetTotalScores()
+    {
+        int sum = 0;
+
+        foreach (var item in PlayerInfo._scores)
+        {
+            sum += item;
+        }
+        
+        _sumScores = sum;
+        _playerRank.ShowInfo();
+#if !UNITY_EDITOR && UNITY_WEBGL
+        SetToLeaderboard(_sumScores);
+#endif
+    }
+
+    [DllImport("__Internal")] private static extern void SaveExtern(string date);
+
+    [DllImport("__Internal")] private static extern void LoadExtern();
+
+    [DllImport("__Internal")] private static extern void SetToLeaderboard(int value);
 }

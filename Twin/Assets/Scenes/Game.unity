@@ -157,10 +157,10 @@ RectTransform:
   m_Father: {fileID: 501176283}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 52.321}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 83.804, y: -42.3215}
+  m_SizeDelta: {x: 157.48, y: 52.321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9871041
 MonoBehaviour:
@@ -11342,16 +11342,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1413096938}
-  _location: {fileID: 793927217}
-  _numberStage: 6
-  _buttonStart: {fileID: 2010143934}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1413096938}
+  _location: {fileID: 793927217}
+  _numberStage: 6
+  _buttonStart: {fileID: 2010143934}
 --- !u!1 &403101460
 GameObject:
   m_ObjectHideFlags: 0
@@ -28893,16 +28893,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1388510059}
-  _location: {fileID: 793927217}
-  _numberStage: 1
-  _buttonStart: {fileID: 219035936}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1388510059}
+  _location: {fileID: 793927217}
+  _numberStage: 1
+  _buttonStart: {fileID: 219035936}
 --- !u!1 &693942670
 GameObject:
   m_ObjectHideFlags: 0
@@ -35387,7 +35387,6 @@ MonoBehaviour:
   - {fileID: 909095339}
   - {fileID: 1267270031}
   - {fileID: 1260586286}
-  _numberLevel: 0
 --- !u!1 &801954102
 GameObject:
   m_ObjectHideFlags: 0
@@ -52918,16 +52917,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1267270031}
-  _location: {fileID: 793927217}
-  _numberStage: 8
-  _buttonStart: {fileID: 1774580886}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1267270031}
+  _location: {fileID: 793927217}
+  _numberStage: 8
+  _buttonStart: {fileID: 1774580886}
 --- !u!222 &983183968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -64076,10 +64075,10 @@ RectTransform:
   m_Father: {fileID: 501176283}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 204.919, y: -42.321495}
-  m_SizeDelta: {x: 74.75, y: 55.339}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 55.339}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1060308634
 MonoBehaviour:
@@ -71848,16 +71847,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1348520770}
-  _location: {fileID: 793927217}
-  _numberStage: 2
-  _buttonStart: {fileID: 1360385202}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1348520770}
+  _location: {fileID: 793927217}
+  _numberStage: 2
+  _buttonStart: {fileID: 1360385202}
 --- !u!1 &1267270027
 GameObject:
   m_ObjectHideFlags: 0
@@ -90050,16 +90049,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1241912549}
-  _location: {fileID: 793927217}
-  _numberStage: 4
-  _buttonStart: {fileID: 1634804883}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1241912549}
+  _location: {fileID: 793927217}
+  _numberStage: 4
+  _buttonStart: {fileID: 1634804883}
 --- !u!1 &1492857842
 GameObject:
   m_ObjectHideFlags: 0
@@ -95221,16 +95220,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1260586286}
-  _location: {fileID: 793927217}
-  _numberStage: 9
-  _buttonStart: {fileID: 925517878}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1260586286}
+  _location: {fileID: 793927217}
+  _numberStage: 9
+  _buttonStart: {fileID: 925517878}
 --- !u!222 &1504402516
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -95299,16 +95298,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1066675616}
-  _location: {fileID: 793927217}
-  _numberStage: 3
-  _buttonStart: {fileID: 284561979}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1066675616}
+  _location: {fileID: 793927217}
+  _numberStage: 3
+  _buttonStart: {fileID: 284561979}
 --- !u!1 &1523800818
 GameObject:
   m_ObjectHideFlags: 0
@@ -96212,16 +96211,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1525556555}
-  _location: {fileID: 793927217}
-  _numberStage: 5
-  _buttonStart: {fileID: 974868808}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1525556555}
+  _location: {fileID: 793927217}
+  _numberStage: 5
+  _buttonStart: {fileID: 974868808}
 --- !u!1 &1610497769
 GameObject:
   m_ObjectHideFlags: 0
@@ -96874,7 +96873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8956301}
   m_AnchorMax: {x: 0, y: 0.8956301}
-  m_AnchoredPosition: {x: 50, y: -5}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641299792
@@ -99171,16 +99170,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 909095339}
-  _location: {fileID: 793927217}
-  _numberStage: 7
-  _buttonStart: {fileID: 1848971053}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 909095339}
+  _location: {fileID: 793927217}
+  _numberStage: 7
+  _buttonStart: {fileID: 1848971053}
 --- !u!222 &1748371056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -105964,9 +105963,9 @@ RectTransform:
   m_Father: {fileID: 1010885884}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 165.21, y: -34.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 165.21, y: 0}
   m_SizeDelta: {x: 0, y: 55.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2005635941
@@ -106485,16 +106484,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437abb4254e5adf419f35e06814e4956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stage: {fileID: 1918362608}
-  _location: {fileID: 793927217}
-  _numberStage: 0
-  _buttonStart: {fileID: 341223017}
   ObjectsDisabled:
   - {fileID: 1155638437}
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
   _joystick: {fileID: 2100365764}
+  _stage: {fileID: 1918362608}
+  _location: {fileID: 793927217}
+  _numberStage: 0
+  _buttonStart: {fileID: 341223017}
 --- !u!1 &2076274940
 GameObject:
   m_ObjectHideFlags: 0

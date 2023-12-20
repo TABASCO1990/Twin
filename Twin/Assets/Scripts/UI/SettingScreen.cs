@@ -1,19 +1,21 @@
 using UnityEngine;
 
-public class SettingScreen : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private CanvasGroup _canvasGroup;
-
-    public void Close()
+    public class SettingScreen : MonoBehaviour
     {
-        _canvasGroup.alpha = 0;
-        _canvasGroup.blocksRaycasts = false;
-    }
+        [SerializeField] private CanvasGroup _canvasGroup;
 
-    public void Open()
-    {
-        _canvasGroup.alpha = 1;
-        _canvasGroup.blocksRaycasts = true;
+        public void Close()
+        {
+            _canvasGroup.alpha = 0;
+            _canvasGroup.blocksRaycasts = false;
+        }
+
+        public void Open()
+        {
+            _canvasGroup.alpha = 1;
+            _canvasGroup.blocksRaycasts = true;
+        }
     }
 }
-

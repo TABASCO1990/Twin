@@ -1,33 +1,36 @@
-using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine;
 
-[RequireComponent(typeof(TMP_Text))]
-public class IncreaseScore : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Player _player;
-
-    private TMP_Text _score;
-    private float _duration = 0.3f;
-    private int _countLoops = 2;
-
-    private void Awake()
+    [RequireComponent(typeof(TMP_Text))]
+    public class IncreaseScore : MonoBehaviour
     {
-        _score = GetComponent<TMP_Text>();
-    }
+        [SerializeField] private Player.Player _player;
 
-    private void OnEnable()
-    {
-        _player.ScoreChanged += OnScoreChanged;
-    }
+        private TMP_Text _score;
+        private float _duration = 0.3f;
+        private int _countLoops = 2;
 
-    private void OnDisable()
-    {
-        _player.ScoreChanged -= OnScoreChanged;
-    }
+        private void Awake()
+        {
+            _score = GetComponent<TMP_Text>();
+        }
 
-    public void OnScoreChanged(int value)
-    {
-        _score.DOColor(Color.white, _duration).SetLoops(_countLoops, LoopType.Yoyo);
+        private void OnEnable()
+        {
+            _player.ScoreChanging += OnScoreChanged;
+        }
+
+        private void OnDisable()
+        {
+            _player.ScoreChanging -= OnScoreChanged;
+        }
+
+        public void OnScoreChanged(int value)
+        {
+            _score.DOColor(Color.white, _duration).SetLoops(_countLoops, LoopType.Yoyo);
+        }
     }
 }

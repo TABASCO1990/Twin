@@ -4,17 +4,8 @@ using UnityEngine.UI;
 
 public class Authorization : MonoBehaviour
 {
-    [DllImport("__Internal")] public static extern void ShowWindowAuthorization();
-
-    [DllImport("__Internal")] private static extern void InitAuthorization();
-
     [SerializeField] private Button _login;
     [SerializeField] private GameObject AreaLogin;
-
-    private void Start()
-    {
-        ShowWindowAuthorization();
-    }
 
     private void OnEnable()
     {
@@ -24,11 +15,16 @@ public class Authorization : MonoBehaviour
     private void OnDisable()
     {
         _login.onClick.RemoveListener(Login);
-    } 
+    }
+
+    private void Start()
+    {
+        ShowWindowAuthorization();
+    }
 
     public void ShowScreen()
     {
-        AreaLogin.SetActive(true);       
+        AreaLogin.SetActive(true);
     }
 
     public void CloseScreen()
@@ -40,4 +36,8 @@ public class Authorization : MonoBehaviour
     {
         InitAuthorization();
     }
+
+    [DllImport("__Internal")] public static extern void ShowWindowAuthorization();
+
+    [DllImport("__Internal")] private static extern void InitAuthorization();
 }

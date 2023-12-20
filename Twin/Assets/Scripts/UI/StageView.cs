@@ -3,9 +3,9 @@ using UnityEngine.Events;
 
 namespace UI
 {
-    public class PauseScreen : ScreenBase
+    public class StageView : ScreenBase
     {
-        public event UnityAction ContinueButtonClick;
+        public event UnityAction SelectStageClick;
 
         public override void Close()
         {
@@ -17,7 +17,6 @@ namespace UI
 
         public override void Open()
         {
-            Time.timeScale = 0;
             CanvasGroup.alpha = 1;
             Button.interactable = true;
             CanvasGroup.blocksRaycasts = true;
@@ -26,7 +25,7 @@ namespace UI
 
         protected override void OnButtonClick()
         {
-            ContinueButtonClick?.Invoke();
+            SelectStageClick?.Invoke();
         }
     }
 }

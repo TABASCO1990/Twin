@@ -1,35 +1,38 @@
 using UnityEngine;
 
-public class Stage : ObjectPool
+namespace Levels
 {
-    [SerializeField] private GameObject[] _levelPrefabs;
-    [SerializeField] private int _startLevelPrefab = 0;
-    [SerializeField] private Player _player;
-
-    private void Start()
+    public class Stage : ObjectPool
     {
-        foreach (var level in _levelPrefabs)
+        [SerializeField] private GameObject[] _levelPrefabs;
+        [SerializeField] private int _startLevelPrefab = 0;
+        [SerializeField] private Player.Player _player;
+
+        private void Start()
         {
-            Initialize(level);            
+            foreach (var level in _levelPrefabs)
+            {
+                Initialize(level);
+            }
+
+            _pool[_startLevelPrefab].SetActive(true);
         }
 
-        _pool[_startLevelPrefab].SetActive(true);
-    }
-
-    public void SetLevel()
-    {
-        if (TryGetNextObject(out GameObject level))
+        public void SetLevel()
         {
-            InitializeObstacle(level);
+            if (TryGetNextObject(out GameObject level))
+            {
+                InitializeObstacle(level);
+            }
+
+            _player.CheckLevelCompletion();
         }
 
-        _player.CheckLevelCompletion();
-    }
-
-    private void InitializeObstacle(GameObject level)
-    {
-        int numberCurrentLevel = _pool.IndexOf(level) - 1;
-        _pool[numberCurrentLevel].SetActive(false); 
-        level.SetActive(true);
+        private void InitializeObstacle(GameObject level)
+        {
+            int numberCurrentLevel = _pool.IndexOf(level) - 1;
+            _pool[numberCurrentLevel].SetActive(false);
+            level.SetActive(true);
+        }
     }
 }

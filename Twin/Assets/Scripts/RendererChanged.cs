@@ -7,7 +7,7 @@ public class RendererChanged : MonoBehaviour
 
     private int _colorValue;
     private int _startColorIndex = 0;
-    private string _shadedName = "_ColorDim";  
+    private string _shadedName = "_ColorDim";
 
     private void Start()
     {
@@ -37,9 +37,9 @@ public class RendererChanged : MonoBehaviour
 
     private void SetShaded()
     {
-        float _value = 0.66f;
-        Color.RGBToHSV(_colors[_colorValue], out float H, out float S, out float V);
-        Color color = Color.HSVToRGB(H, S, _value);
-        _material.SetColor(_shadedName, color);       
-    }  
+        float value = 0.66f;
+        Color.RGBToHSV(_colors[_colorValue], out float h, out float s, out float v);
+        Color color = Color.HSVToRGB(h, s, value);
+        _material.SetColor(_shadedName, color);
+    }
 }

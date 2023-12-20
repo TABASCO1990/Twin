@@ -9,7 +9,7 @@ public class Target : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Player player))
+        if (other.TryGetComponent(out Player.Player player))
         {
             player.IncreaseTime(_countBonusSeconds);
         }

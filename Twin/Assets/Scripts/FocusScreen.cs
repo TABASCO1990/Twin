@@ -1,15 +1,18 @@
 using UnityEngine;
 
-public class FocusScreen : MonoBehaviour
+namespace Controller
 {
-    [SerializeField] private PauseScreen _pauseScreen;
-    [SerializeField] private MobileInput _mobileInput;
-
-    private void OnApplicationFocus()
+    public class FocusScreen : MonoBehaviour
     {
-        if (_mobileInput.enabled == true)
+        [SerializeField] private UI.PauseScreen _pauseScreen;
+        [SerializeField] private MobileInput _mobileInput;
+
+        private void OnApplicationFocus()
         {
-            _pauseScreen.Open();
+            if (_mobileInput.enabled == true)
+            {
+                _pauseScreen.Open();
+            }
         }
     }
 }

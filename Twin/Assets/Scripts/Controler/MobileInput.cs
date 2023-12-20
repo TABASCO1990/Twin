@@ -3,58 +3,61 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
-public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+namespace Controller
 {
-    [SerializeField] private RectTransform _knobJoystick;
-    [SerializeField] private RectTransform _stickJoystic;
-
-    private Image _image;
-    private RectTransform _canvasRectTransform;
-    private OnScreenStick _stick;
-    private Vector2 _startPosition;
-    
-    void Start()
+    [RequireComponent(typeof(Image))]
+    public class MobileInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
-        _image = GetComponent<Image>();
-        _canvasRectTransform = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
-        _stick = _knobJoystick.GetComponent<OnScreenStick>();
-        _startPosition = _knobJoystick.anchoredPosition;
-    }
+        [SerializeField] private RectTransform _knobJoystick;
+        [SerializeField] private RectTransform _stickJoystic;
 
-    public void ResetJoystic()
-    {
-        _knobJoystick.GetComponent<Image>().enabled = false;
-        _stickJoystic.GetComponent<Image>().enabled = false;
-    }
+        private Image _image;
+        private RectTransform _canvasRectTransform;
+        private OnScreenStick _stick;
+        private Vector2 _startPosition;
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        _stick.OnDrag(eventData);
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Vector2 localPoint;
-
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRectTransform, eventData.position, eventData.pressEventCamera, out localPoint))
+        private void Start()
         {
-            _knobJoystick.anchoredPosition = localPoint;
-            _stickJoystic.anchoredPosition = localPoint;
-            _image.enabled = false;
-            _stickJoystic.GetComponent<Image>().enabled = true;
-            _stick.OnPointerDown(eventData);
-            _stick.GetComponent<Image>().enabled = true;
+            _image = GetComponent<Image>();
+            _canvasRectTransform = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
+            _stick = _knobJoystick.GetComponent<OnScreenStick>();
+            _startPosition = _knobJoystick.anchoredPosition;
         }
-    }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        _stick.OnPointerUp(eventData);
-        _image.enabled = true;
-        _knobJoystick.anchoredPosition = _startPosition;
-        _stickJoystic.anchoredPosition = _startPosition;
-        _stickJoystic.GetComponent<Image>().enabled = false;
-        _stick.GetComponent<Image>().enabled = false;
+        public void ResetJoystic()
+        {
+            _knobJoystick.GetComponent<Image>().enabled = false;
+            _stickJoystic.GetComponent<Image>().enabled = false;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            _stick.OnDrag(eventData);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            Vector2 localPoint;
+
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRectTransform, eventData.position, eventData.pressEventCamera, out localPoint))
+            {
+                _knobJoystick.anchoredPosition = localPoint;
+                _stickJoystic.anchoredPosition = localPoint;
+                _image.enabled = false;
+                _stickJoystic.GetComponent<Image>().enabled = true;
+                _stick.OnPointerDown(eventData);
+                _stick.GetComponent<Image>().enabled = true;
+            }
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            _stick.OnPointerUp(eventData);
+            _image.enabled = true;
+            _knobJoystick.anchoredPosition = _startPosition;
+            _stickJoystic.anchoredPosition = _startPosition;
+            _stickJoystic.GetComponent<Image>().enabled = false;
+            _stick.GetComponent<Image>().enabled = false;
+        }
     }
 }

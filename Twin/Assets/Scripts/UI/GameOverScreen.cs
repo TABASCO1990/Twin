@@ -1,26 +1,29 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameOverScreen : ScreenBase
+namespace UI
 {
-    public event UnityAction RestartButtonClock;
-
-    public override void Close()
+    public class GameOverScreen : ScreenBase
     {
-        CanvasGroup.alpha = 0;
-        CanvasGroup.blocksRaycasts = false;
-        DisableObjects(true);
-    }
+        public event UnityAction RestartButtonClock;
 
-    public override void Open()
-    {    
-        CanvasGroup.alpha = 1;
-        CanvasGroup.blocksRaycasts = true;
-        DisableObjects(false);
-    }
+        public override void Close()
+        {
+            CanvasGroup.alpha = 0;
+            CanvasGroup.blocksRaycasts = false;
+            DisableObjects(true);
+        }
 
-    protected override void OnButtonClick()
-    {
-        RestartButtonClock?.Invoke();
-    } 
+        public override void Open()
+        {
+            CanvasGroup.alpha = 1;
+            CanvasGroup.blocksRaycasts = true;
+            DisableObjects(false);
+        }
+
+        protected override void OnButtonClick()
+        {
+            RestartButtonClock?.Invoke();
+        }
+    }
 }

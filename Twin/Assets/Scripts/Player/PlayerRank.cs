@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class PlayerRank : MonoBehaviour
 {
-    [DllImport("__Internal")]
-    private static extern void GetPlayerRank();
-
     [SerializeField] private TMP_Text _rank;
 
     public event UnityAction<int> RatingChanged;
@@ -24,4 +21,6 @@ public class PlayerRank : MonoBehaviour
         _rank.text = rating.ToString();
         RatingChanged?.Invoke(rating);
     }
+
+    [DllImport("__Internal")] private static extern void GetPlayerRank();
 }

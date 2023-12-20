@@ -1,29 +1,32 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animation))]
-public class AdvertisingButton : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Watch _watch;
-
-    private Animation _animation;
-
-    private void Start()
+    [RequireComponent(typeof(Animation))]
+    public class AdvertisingButton : MonoBehaviour
     {
-        _animation = GetComponent<Animation>();
-    }
+        [SerializeField] private Watch _watch;
 
-    private void OnEnable()
-    {
-        _watch.ShakeButtonAds += OnShakeButtonAds;
-    }
+        private Animation _animation;
 
-    private void OnDisable()
-    {
-        _watch.ShakeButtonAds -= OnShakeButtonAds;
-    }
+        private void Start()
+        {
+            _animation = GetComponent<Animation>();
+        }
 
-    private void OnShakeButtonAds()
-    {
-        _animation.Play();
+        private void OnEnable()
+        {
+            _watch.ShakeButtonAds += OnShakeButtonAds;
+        }
+
+        private void OnDisable()
+        {
+            _watch.ShakeButtonAds -= OnShakeButtonAds;
+        }
+
+        private void OnShakeButtonAds()
+        {
+            _animation.Play();
+        }
     }
 }

@@ -1,3 +1,3 @@
-public class ObstacleColor: RendererChanged
+public class ObstacleColor : RendererChanged
 {
 }

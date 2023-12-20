@@ -1,12 +1,10 @@
-using UnityEngine;
-using System.Runtime.InteropServices;
 using Lean.Localization;
 using System.Linq;
+using System.Runtime.InteropServices;
+using UnityEngine;
 
 public class LanguageSwitch : MonoBehaviour
 {
-    [DllImport("__Internal")] public static extern string GetLang();
-
     private string _languageEnglish = "English";
 
     private void Start()
@@ -31,4 +29,6 @@ public class LanguageSwitch : MonoBehaviour
 
         LeanLocalization.SetCurrentLanguageAll(_languageEnglish);
     }
+
+    [DllImport("__Internal")] public static extern string GetLang();
 }

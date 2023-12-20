@@ -1,23 +1,26 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class StageNumber : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private ActivationStages _activationStages;
-    [SerializeField] private TMP_Text _number;
-
-    private void OnEnable()
+    public class StageNumber : MonoBehaviour
     {
-        _activationStages.StageChanged += OnStageChanged;
-    }
+        [SerializeField] private Levels.StageSelector _activationStages;
+        [SerializeField] private TMP_Text _number;
 
-    private void OnDisable()
-    {
-        _activationStages.StageChanged -= OnStageChanged;
-    }
+        private void OnEnable()
+        {
+            _activationStages.StageChanged += OnStageChanged;
+        }
 
-    private void OnStageChanged(int number)
-    {
-        _number.text = number.ToString();
+        private void OnDisable()
+        {
+            _activationStages.StageChanged -= OnStageChanged;
+        }
+
+        private void OnStageChanged(int number)
+        {
+            _number.text = number.ToString();
+        }
     }
 }

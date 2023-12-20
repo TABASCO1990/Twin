@@ -1,25 +1,21 @@
-using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine;
 
 public class Marketing : MonoBehaviour
 {
-    [SerializeField] private Player _player;
-    [SerializeField] private PauseScreen _pauseScreen;
+    [SerializeField] private Player.Player _player;
+    [SerializeField] private UI.PauseScreen _pauseScreen;
     [SerializeField] private int _seconds;
     [SerializeField] private AudioSource _audioSource;
-
-    [DllImport("__Internal")] private static extern void ShowFullScreenAdv();
-
-    [DllImport("__Internal")] private static extern void AddTimeForAdv(int value); 
-
-    public void ShowFullScreenAdvertisement()
+    
+    private void Start()
     {
 #if !UNITY_EDITOR && UNITY_WEBGL
     ShowFullScreenAdv();
 #endif
     }
-
-    private void Start()
+    
+    public void ShowFullScreenAdvertisement()
     {
 #if !UNITY_EDITOR && UNITY_WEBGL
     ShowFullScreenAdv();
@@ -37,7 +33,7 @@ public class Marketing : MonoBehaviour
     }
 
     public void AddTime(int value)
-    {       
+    {
         _player.IncreaseTime(value);
     }
 
@@ -45,4 +41,8 @@ public class Marketing : MonoBehaviour
     {
         _pauseScreen.Open();
     }
+    
+    [DllImport("__Internal")] private static extern void ShowFullScreenAdv();
+
+    [DllImport("__Internal")] private static extern void AddTimeForAdv(int value);
 }

@@ -1,23 +1,26 @@
 using TMPro;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Locations _location;
-    [SerializeField] private TMP_Text _stage;
-
-    private void OnEnable()
+    public class Level : MonoBehaviour
     {
-        _location.StageInitialised += OnStageChanged;
-    }
+        [SerializeField] private Levels.Locations _location;
+        [SerializeField] private TMP_Text _stage;
 
-    private void OnDisable()
-    {
-        _location.StageInitialised -= OnStageChanged;
-    }
+        private void OnEnable()
+        {
+            _location.StageInitialised += OnStageChanged;
+        }
 
-    private void OnStageChanged(int stage)
-    {
-        _stage.text = (stage+1).ToString();
+        private void OnDisable()
+        {
+            _location.StageInitialised -= OnStageChanged;
+        }
+
+        private void OnStageChanged(int stage)
+        {
+            _stage.text = (stage + 1).ToString();
+        }
     }
 }

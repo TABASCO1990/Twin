@@ -6,31 +6,40 @@ public class Clock : MonoBehaviour
 {
     [SerializeField] private int _duration;
     [SerializeField] private int _currentTime;
-    [SerializeField] private Player _player;
+    [SerializeField] private Player.Player _player;
 
     private Coroutine _corotineTimer;
     private int _remainingTime;
 
     public event UnityAction<int> ChangedTime;
-    public event UnityAction<int> FixedTime;
-    public int Duration => _duration;
-    public int RemainingTime => _remainingTime;
 
-    private void Start()
-    {
-        _currentTime = _duration;
-    }
+    public event UnityAction<int> FixedTime;
+
+    public int Duration => _duration;
+
+    public int RemainingTime => _remainingTime;
 
     private void OnEnable()
     {
-        _player.TimeChanged += OnTimeChanged;
+        _player.TimeChanging += OnTimeChanged;
         _player.LevelCompleted += OnLevelComplete;
     }
 
     private void OnDisable()
     {
-        _player.TimeChanged -= OnTimeChanged;
+        _player.TimeChanging -= OnTimeChanged;
         _player.LevelCompleted -= OnLevelComplete;
+    }
+
+    private void Start()
+    {
+        _currentTime = _duration;
+    } 
+
+    public void ResetTime()
+    {
+        _currentTime = _duration;
+        StartTime();
     }
 
     private IEnumerator UpdateTime()
@@ -43,13 +52,14 @@ public class Clock : MonoBehaviour
             _currentTime--;
             ChangedTime?.Invoke(_currentTime);
         }
+
         yield return null;
 
         _player.Die();
     }
 
     private void OnLevelComplete()
-    {       
+    {
         StopCoroutine(_corotineTimer);
         _remainingTime = _currentTime;
         FixedTime?.Invoke(_remainingTime);
@@ -65,12 +75,6 @@ public class Clock : MonoBehaviour
         }
 
         ChangedTime?.Invoke(_currentTime);
-    }
-
-    public void ResetTime()
-    {       
-        _currentTime = _duration;
-        StartTime();
     }
 
     private void StartTime()

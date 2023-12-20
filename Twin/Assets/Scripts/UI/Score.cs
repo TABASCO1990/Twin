@@ -1,36 +1,39 @@
 using TMPro;
 using UnityEngine;
 
-public class Score : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Player _player;
-    [SerializeField] private TMP_Text _score;
-    [SerializeField] private TMP_Text _scoreCount;
-
-    private void Awake()
+    public class Score : MonoBehaviour
     {
-        _score.text = "0";
-    }
+        [SerializeField] private Player.Player _player;
+        [SerializeField] private TMP_Text _score;
+        [SerializeField] private TMP_Text _scoreCount;
 
-    private void OnEnable()
-    {
-        _player.ScoreChanged += OnScoreChanged;
-        _player.ScoreCountChanged += OnScoreCountChanged;
-    }
+        private void Awake()
+        {
+            _score.text = "0";
+        }
 
-    private void OnDisable()
-    {
-        _player.ScoreChanged -= OnScoreChanged;
-        _player.ScoreCountChanged -= OnScoreCountChanged;
-    }
+        private void OnEnable()
+        {
+            _player.ScoreChanging += OnScoreChanged;
+            _player.ScoreCountChanging += OnScoreCountChanged;
+        }
 
-    private void OnScoreChanged(int score)
-    {
-        _score.text = score.ToString();
-    }
+        private void OnDisable()
+        {
+            _player.ScoreChanging -= OnScoreChanged;
+            _player.ScoreCountChanging -= OnScoreCountChanged;
+        }
 
-    private void OnScoreCountChanged(int count)
-    {
-        _scoreCount.text = count.ToString();
+        private void OnScoreChanged(int score)
+        {
+            _score.text = score.ToString();
+        }
+
+        private void OnScoreCountChanged(int count)
+        {
+            _scoreCount.text = count.ToString();
+        }
     }
 }

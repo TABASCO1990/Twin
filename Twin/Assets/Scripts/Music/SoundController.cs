@@ -1,20 +1,23 @@
 using UnityEngine;
 
-public class SoundController : MonoBehaviour
+namespace Music
 {
-    void OnApplicationFocus(bool hasFocus)
+    public class SoundController : MonoBehaviour
     {
-        Silence(!hasFocus);  
-    }
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            Silence(!hasFocus);
+        }
 
-    void OnApplicationPause(bool isPaused)
-    {
-        Silence(isPaused);
-    }
+        private void OnApplicationPause(bool isPaused)
+        {
+            Silence(isPaused);
+        }
 
-    private void Silence(bool silence)
-    {
-        AudioListener.pause = silence;
-        AudioListener.volume = silence ? 0 : 1;
+        private void Silence(bool silence)
+        {
+            AudioListener.pause = silence;
+            AudioListener.volume = silence ? 0 : 1;
+        }
     }
 }
