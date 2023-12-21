@@ -7,34 +7,31 @@ namespace Levels
     public class Launcher : MonoBehaviour
     {
         [SerializeField] protected GameObject[] ObjectsDisabled;
-        [SerializeField] protected GameObject _joystick;
         [SerializeField] private Stage _stage;
         [SerializeField] private Locations _location;
         [SerializeField] private int _numberStage;
-        [SerializeField] private GameObject _buttonStart;
+        [SerializeField] private Button _stageStart;
 
         public event Action<Stage> InitializeStage;
 
         private void OnEnable()
         {
-            _buttonStart.GetComponent<Button>().onClick.AddListener(ActivateStage);
-            _buttonStart.GetComponent<Button>().onClick.AddListener(SetStage);
+            _stageStart.onClick.AddListener(ActivateStage);
         }
 
         private void OnDisable()
         {
-            _buttonStart.GetComponent<Button>().onClick.RemoveListener(ActivateStage);
-            _buttonStart.GetComponent<Button>().onClick.RemoveListener(SetStage);
+            _stageStart.onClick.RemoveListener(ActivateStage);
         }
 
         private void Start()
         {
-            _buttonStart.GetComponent<Button>().enabled = true;
+            _stageStart.enabled = true;
         }
 
         public void SetButtonSprite(Sprite sprite)
         {
-            _buttonStart.GetComponent<Image>().sprite = sprite;
+            _stageStart.GetComponent<Image>().sprite = sprite;
         }
 
         private void ActivateStage()
@@ -42,18 +39,11 @@ namespace Levels
             _stage.gameObject.SetActive(true);
             _location.SetNumberStage(_numberStage);
             SetObjects(true);
-        }
-
-        private void SetStage()
-        {
             InitializeStage?.Invoke(_stage);
         }
 
         private void SetObjects(bool isActive)
         {
-            _joystick.GetComponent<Image>().enabled = isActive;
-            _joystick.GetComponent<Controller.MobileInput>().enabled = isActive;
-
             foreach (var screenObject in ObjectsDisabled)
             {
                 screenObject.gameObject.SetActive(isActive);

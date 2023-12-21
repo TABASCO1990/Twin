@@ -1,3 +1,5 @@
+using Levels;
+using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -8,32 +10,32 @@ namespace Shared
     public class Game : MonoBehaviour
     {
         [SerializeField] private Player.Player _player;
-        [SerializeField] private Levels.Locations _location;
+        [SerializeField] private Player.PlayerMover _playerMover;
+        [SerializeField] private Locations _location;
         [SerializeField] private Timer.Clock _clock;
         [SerializeField] private UI.StageView _mainScreen;
         [SerializeField] private Controller.MobileInput _mobileInput;
         [SerializeField] private UI.GameOverScreen _gameOverScreen;
         [SerializeField] private UI.PauseScreen _pauseScreen;
         [SerializeField] private UI.LevelComplete _levelCompleteScreen;
-        [SerializeField] private Levels.StageSelector _activationStages;
+        [SerializeField] private StageSelector _activationStages;
 
         [Header("Stages")]
-        [SerializeField] private Levels.Launcher _launcherStage_1;
-        [SerializeField] private Levels.Launcher _launcherStage_2;
-        [SerializeField] private Levels.Launcher _launcherStage_3;
-        [SerializeField] private Levels.Launcher _launcherStage_4;
-        [SerializeField] private Levels.Launcher _launcherStage_5;
-        [SerializeField] private Levels.Launcher _launcherStage_6;
-        [SerializeField] private Levels.Launcher _launcherStage_7;
-        [SerializeField] private Levels.Launcher _launcherStage_8;
-        [SerializeField] private Levels.Launcher _launcherStage_9;
-        [SerializeField] private Levels.Launcher _launcherStage_10;
+        [SerializeField] private Launcher _launcherStage_1;
+        [SerializeField] private Launcher _launcherStage_2;
+        [SerializeField] private Launcher _launcherStage_3;
+        [SerializeField] private Launcher _launcherStage_4;
+        [SerializeField] private Launcher _launcherStage_5;
+        [SerializeField] private Launcher _launcherStage_6;
+        [SerializeField] private Launcher _launcherStage_7;
+        [SerializeField] private Launcher _launcherStage_8;
+        [SerializeField] private Launcher _launcherStage_9;
+        [SerializeField] private Launcher _launcherStage_10;
 
         [Header("Current stage")]
-        [SerializeField] private Levels.Stage _stage;
+        [SerializeField] private Stage _stage;
 
-        [DllImport("__Internal")]
-        private static extern void ExitGame();
+        public event Action ColorReseted;
 
         private void OnEnable()
         {
@@ -94,18 +96,18 @@ namespace Shared
             SceneManager.LoadScene(0);
         }
 
-        private void OnPlayButtonClickFirst(Levels.Stage stage)
+        private void OnPlayButtonClickFirst(Stage stage)
         {
             _location.ResetStages();
             _stage = stage;
             Time.timeScale = 1;
-            _stage.GetComponentInChildren<Plant>().ResetTile();
+            ResetTile();
             _player.ResetPlayer();
             StartInstruction.Instance.ShowInfo();
             StartCoroutine(DeleyStartTimer());
         }
 
-        private void OnPlayButtonClick(Levels.Stage stage)
+        private void OnPlayButtonClick(Stage stage)
         {
             _location.ResetStages();
             _stage = stage;
@@ -116,15 +118,14 @@ namespace Shared
         {
             _mobileInput.ResetJoystic();
             _stage.ResetPool();
-            _stage.GetComponent<Levels.PlayerColor>().ResetColors();
-            _stage.GetComponent<Levels.ObstacleColor>().ResetColors();
+            ColorReseted?.Invoke();
             _clock.ResetTime();
         }
 
         private void StartGame()
         {
             Time.timeScale = 1;
-            _stage.GetComponentInChildren<Plant>().ResetTile();
+            ResetTile();
             _player.ResetPlayer();
             _clock.ResetTime();
         }
@@ -142,10 +143,10 @@ namespace Shared
 
         private IEnumerator DelayShowScreen()
         {
-            _player.GetComponent<Player.PlayerMover>().enabled = false;
+            _playerMover.enabled = false;
             _activationStages.InitializeStage();
             yield return new WaitForSeconds(2.0f);
-            _player.GetComponent<Player.PlayerMover>().enabled = true;
+            _playerMover.enabled = true;
             Time.timeScale = 0;
             ResetAll();
             _levelCompleteScreen.Open();
@@ -153,10 +154,10 @@ namespace Shared
 
         private IEnumerator DeleyStartTimer()
         {
-            _player.GetComponent<Player.PlayerMover>().enabled = false;
+            _playerMover.enabled = false;
             yield return new WaitForSeconds(3);
             _clock.ResetTime();
-            _player.GetComponent<Player.PlayerMover>().enabled = true;
+            _playerMover.enabled = true;
         }
 
         private void OnContinueButtonClick()
@@ -164,5 +165,12 @@ namespace Shared
             Time.timeScale = 1;
             _pauseScreen.Close();
         }
+
+        private void ResetTile()
+        {
+            _stage.GetComponentInChildren<Plant>().ResetTile();
+        }
+
+        [DllImport("__Internal")] private static extern void ExitGame();
     }
 }

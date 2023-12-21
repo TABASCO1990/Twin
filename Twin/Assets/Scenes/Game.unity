@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 83.804, y: 0}
-  m_SizeDelta: {x: 157.48, y: 52.321}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 52.321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9871041
 MonoBehaviour:
@@ -10343,11 +10343,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1413096938}
   _location: {fileID: 793927217}
   _numberStage: 6
-  _buttonStart: {fileID: 2010143934}
+  _stageStart: {fileID: 2010143936}
 --- !u!1 &403101460
 GameObject:
   m_ObjectHideFlags: 0
@@ -27894,11 +27894,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1388510059}
   _location: {fileID: 793927217}
   _numberStage: 1
-  _buttonStart: {fileID: 219035936}
+  _stageStart: {fileID: 219035938}
 --- !u!1 &693942670
 GameObject:
   m_ObjectHideFlags: 0
@@ -50710,6 +50710,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.85882354, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.63529414, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &909095338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50741,6 +50742,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.70980394, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.41960785, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &909095339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51253,6 +51255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1487311327}
+  _playerMover: {fileID: 1487311340}
   _location: {fileID: 793927217}
   _clock: {fileID: 1320474300}
   _mainScreen: {fileID: 1275487210}
@@ -51913,11 +51916,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1267270031}
   _location: {fileID: 793927217}
   _numberStage: 8
-  _buttonStart: {fileID: 1774580886}
+  _stageStart: {fileID: 1774580888}
 --- !u!222 &983183968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -62937,8 +62940,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 204.919, y: 0}
-  m_SizeDelta: {x: 74.75, y: 55.339}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 55.339}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1060308634
 MonoBehaviour:
@@ -63324,6 +63327,7 @@ MonoBehaviour:
   - {r: 0.11372549, g: 0.7372549, b: 0.5372549, a: 0}
   - {r: 0.11372549, g: 0.7372549, b: 0.5372549, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1066675615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63355,6 +63359,7 @@ MonoBehaviour:
   - {r: 0.54509807, g: 0.9529412, b: 0.8666667, a: 0}
   - {r: 0.54509807, g: 0.9529412, b: 0.8666667, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1066675616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70375,6 +70380,7 @@ MonoBehaviour:
   - {r: 0.8235294, g: 0.16078432, b: 0.9254902, a: 0}
   - {r: 0.8235294, g: 0.16078432, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1241912548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70406,6 +70412,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.50980395, b: 0.8392157, a: 0}
   - {r: 0.9254902, g: 0.50980395, b: 0.8392157, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1241912549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70583,6 +70590,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.85882354, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.63529414, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1260586285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70614,6 +70622,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.70980394, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.41960785, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1260586286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70712,11 +70721,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1348520770}
   _location: {fileID: 793927217}
   _numberStage: 2
-  _buttonStart: {fileID: 1360385202}
+  _stageStart: {fileID: 1360385204}
 --- !u!1 &1267270027
 GameObject:
   m_ObjectHideFlags: 0
@@ -70784,6 +70793,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.85882354, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.63529414, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1267270030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70815,6 +70825,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.70980394, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.41960785, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1267270031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81917,6 +81928,7 @@ MonoBehaviour:
   - {r: 0.5921569, g: 0.16078432, b: 0.9254902, a: 0}
   - {r: 0.5921569, g: 0.16078432, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1348520769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81948,6 +81960,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.50980395, b: 0.8392157, a: 0}
   - {r: 0.9254902, g: 0.50980395, b: 0.8392157, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1348520770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82491,6 +82504,7 @@ MonoBehaviour:
   - {r: 0.7529412, g: 0.10980392, b: 0.11764706, a: 0}
   - {r: 0.7529412, g: 0.10980392, b: 0.11764706, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1388510058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82522,6 +82536,7 @@ MonoBehaviour:
   - {r: 0.11372549, g: 0.7372549, b: 0.28627452, a: 0}
   - {r: 0.11372549, g: 0.7372549, b: 0.28627452, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1388510059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82850,6 +82865,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.85882354, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.63529414, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1413096937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82881,6 +82897,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.70980394, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.41960785, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1413096938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88843,6 +88860,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 8678645794647677495, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
   m_PrefabInstance: {fileID: 312594855}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1487311340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4492025407303057069, guid: f718b3f0eb99a9448bba1a8595e7a107, type: 3}
+  m_PrefabInstance: {fileID: 312594855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52000b16de60e4e41b40620ea2d72f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1489520105
 GameObject:
   m_ObjectHideFlags: 0
@@ -88908,11 +88936,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1241912549}
   _location: {fileID: 793927217}
   _numberStage: 4
-  _buttonStart: {fileID: 1634804883}
+  _stageStart: {fileID: 1634804885}
 --- !u!1 &1492857842
 GameObject:
   m_ObjectHideFlags: 0
@@ -94079,11 +94107,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1260586286}
   _location: {fileID: 793927217}
   _numberStage: 9
-  _buttonStart: {fileID: 925517878}
+  _stageStart: {fileID: 925517880}
 --- !u!222 &1504402516
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -94157,11 +94185,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1066675616}
   _location: {fileID: 793927217}
   _numberStage: 3
-  _buttonStart: {fileID: 284561979}
+  _stageStart: {fileID: 284561981}
 --- !u!1 &1523800818
 GameObject:
   m_ObjectHideFlags: 0
@@ -94294,6 +94322,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.85882354, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.63529414, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1525556554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94325,6 +94354,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.70980394, b: 0.16078432, a: 0}
   - {r: 0.16078432, g: 0.41960785, b: 0.9254902, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1525556555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95070,11 +95100,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1525556555}
   _location: {fileID: 793927217}
   _numberStage: 5
-  _buttonStart: {fileID: 974868808}
+  _stageStart: {fileID: 974868810}
 --- !u!1 &1610497769
 GameObject:
   m_ObjectHideFlags: 0
@@ -98029,11 +98059,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 909095339}
   _location: {fileID: 793927217}
   _numberStage: 7
-  _buttonStart: {fileID: 1848971053}
+  _stageStart: {fileID: 1848971055}
 --- !u!222 &1748371056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -104530,6 +104560,7 @@ MonoBehaviour:
   - {r: 0.9254902, g: 0.70980394, b: 0.16078432, a: 0}
   - {r: 0.11372549, g: 0.7372549, b: 0.28627452, a: 0}
   _material: {fileID: 2100000, guid: f4d0d0bf0d114c44195d24195841a1a4, type: 2}
+  _game: {fileID: 963194229}
 --- !u!114 &1918362610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104561,6 +104592,7 @@ MonoBehaviour:
   - {r: 0.7529412, g: 0.10980392, b: 0.11764706, a: 0}
   - {r: 0.7529412, g: 0.10980392, b: 0.11764706, a: 0}
   _material: {fileID: 2100000, guid: 06812c7cdfa4cc94c8af9a5ba9316555, type: 2}
+  _game: {fileID: 963194229}
 --- !u!1 &1971974038
 GameObject:
   m_ObjectHideFlags: 0
@@ -104819,7 +104851,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 165.21, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 55.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2005635941
@@ -105343,11 +105375,11 @@ MonoBehaviour:
   - {fileID: 1320474295}
   - {fileID: 2005635939}
   - {fileID: 1708081984}
-  _joystick: {fileID: 2100365764}
+  - {fileID: 2100365764}
   _stage: {fileID: 1918362608}
   _location: {fileID: 793927217}
   _numberStage: 0
-  _buttonStart: {fileID: 341223017}
+  _stageStart: {fileID: 341223019}
 --- !u!1 &2076274940
 GameObject:
   m_ObjectHideFlags: 0

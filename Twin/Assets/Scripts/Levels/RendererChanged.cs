@@ -1,3 +1,4 @@
+using Shared;
 using UnityEngine;
 
 namespace Levels
@@ -6,10 +7,21 @@ namespace Levels
     {
         [SerializeField] private Color[] _colors;
         [SerializeField] private Material _material;
+        [SerializeField] private Game _game;
 
         private int _colorValue;
         private int _startColorIndex = 0;
         private string _shadedName = "_ColorDim";
+
+        private void OnEnable()
+        {
+            _game.ColorReseted += OnColorReseted;
+        }
+
+        private void OnDisable()
+        {
+            _game.ColorReseted -= OnColorReseted;
+        }
 
         private void Start()
         {
@@ -30,7 +42,7 @@ namespace Levels
             SetShaded();
         }
 
-        public void ResetColors()
+        public void OnColorReseted()
         {
             _colorValue = _startColorIndex;
             _material.color = _colors[_colorValue];
