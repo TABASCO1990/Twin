@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace UI
 {
@@ -8,7 +8,7 @@ namespace UI
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _audioWin;
 
-        public event UnityAction ContinueButtonClock;
+        public event Action ContinueButtonClock;
 
         public override void Close()
         {

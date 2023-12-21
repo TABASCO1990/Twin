@@ -7,14 +7,14 @@ namespace Shared
 {
     public class Plant : MonoBehaviour
     {
-        [SerializeField] private Shared.Tile _tilePrefab;
+        [SerializeField] private Tile _tilePrefab;
         [SerializeField] private int _columnsCount;
         [SerializeField] private int _rowsCount;
         [SerializeField] private string _numbersTilesGreen;
         [SerializeField] private ParticleSystem _explosionTile;
 
         private Vector3 _startPosition = new Vector3(-6f, 0f, 3.75f);
-        private List<Shared.Tile> _tiles = new List<Shared.Tile>();
+        private List<Tile> _tiles = new List<Tile>();
         private List<int> _numbers;
 
         private void Awake()

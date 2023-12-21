@@ -1,7 +1,7 @@
+using System;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Player
 {
@@ -9,7 +9,7 @@ namespace Player
     {
         [SerializeField] private TMP_Text _rank;
 
-        public event UnityAction<int> RatingChanged;
+        public event Action<int> RatingChanged;
 
         public void ShowInfo()
         {

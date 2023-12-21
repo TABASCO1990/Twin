@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Timer
 {
@@ -13,9 +13,9 @@ namespace Timer
         private Coroutine _corotineTimer;
         private int _remainingTime;
 
-        public event UnityAction<int> ChangedTime;
+        public event Action<int> ChangedTime;
 
-        public event UnityAction<int> FixedTime;
+        public event Action<int> FixedTime;
 
         public int Duration => _duration;
 

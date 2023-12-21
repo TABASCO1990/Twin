@@ -1,6 +1,6 @@
+using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Shared
 {
@@ -19,7 +19,7 @@ namespace Shared
 
         public Player.PlayerInfo PlayerInfo;
 
-        public event UnityAction<int, int, int> CalculateScore;
+        public event Action<int, int, int> CalculateScore;
 
         private void Awake()
         {

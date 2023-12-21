@@ -16,7 +16,9 @@ namespace Shared
         private void Start()
         {
             Instance = this;
+#if !UNITY_EDITOR && UNITY_WEBGL
             DeviceInfo();
+#endif
         }
 
         public void ShowInfo()

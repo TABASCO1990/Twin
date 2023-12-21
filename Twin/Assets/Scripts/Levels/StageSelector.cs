@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Levels
 {
@@ -12,7 +11,7 @@ namespace Levels
 
         private int _currentStage;
 
-        public event UnityAction<int> StageChanged;
+        public event Action<int> StageChanged;
 
         private void Start()
         {

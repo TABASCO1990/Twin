@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Player
 {
@@ -16,19 +16,19 @@ namespace Player
         private int _score;
         private int _countEventsScore;
 
-        public event UnityAction<int> ScoreChanging;
+        public event Action<int> ScoreChanging;
 
-        public event UnityAction<int> ScoreCountChanging;
+        public event Action<int> ScoreCountChanging;
 
-        public event UnityAction<float> TimeChanging;
+        public event Action<float> TimeChanging;
 
-        public event UnityAction EffectsStarting;
+        public event Action EffectsStarting;
 
-        public event UnityAction BombExploding;
+        public event Action BombExploding;
 
-        public event UnityAction LevelCompleted;
+        public event Action LevelCompleted;
 
-        public event UnityAction GameOver;
+        public event Action GameOver;
 
         public int CountEventsScore => _countEventsScore;
 

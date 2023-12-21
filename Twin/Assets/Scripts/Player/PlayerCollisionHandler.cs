@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Player
 {
@@ -23,22 +22,10 @@ namespace Player
         private float _heightParticalTarget = 2;
         private float _heightParticalBomb = 0.5f;
 
-        public UnityEvent EffectsLaunched;
-
         private void Awake()
         {
             _player = GetComponent<Player>();
             _audioSource = GetComponent<AudioSource>();
-        }
-
-        private void OnEnable()
-        {
-            _player.EffectsStarting += OnEffectsStarted;
-        }
-
-        private void OnDisable()
-        {
-            _player.EffectsStarting -= OnEffectsStarted;
         }
 
         public void ResetCollisoin()
@@ -74,11 +61,6 @@ namespace Player
             {
                 _audioSource.PlayOneShot(_audioBonusTime);
             }
-        }
-
-        private void OnEffectsStarted()
-        {
-            EffectsLaunched?.Invoke();
         }
     }
 }

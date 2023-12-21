@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Levels
@@ -13,7 +13,7 @@ namespace Levels
         [SerializeField] private int _numberStage;
         [SerializeField] private GameObject _buttonStart;
 
-        public event UnityAction<Stage> InitializeStage;
+        public event Action<Stage> InitializeStage;
 
         private void OnEnable()
         {

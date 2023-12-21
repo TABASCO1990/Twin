@@ -1,6 +1,6 @@
+using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Timer
@@ -21,7 +21,7 @@ namespace Timer
         private bool _isRedTimer = true;
         private bool _isGreenTimer = true;
 
-        public event UnityAction ShakeButtonAds;
+        public event Action ShakeButtonAds;
 
         private void OnEnable()
         {

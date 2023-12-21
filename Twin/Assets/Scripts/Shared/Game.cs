@@ -101,7 +101,7 @@ namespace Shared
             Time.timeScale = 1;
             _stage.GetComponentInChildren<Plant>().ResetTile();
             _player.ResetPlayer();
-            Shared.StartInstruction.Instance.ShowInfo();
+            StartInstruction.Instance.ShowInfo();
             StartCoroutine(DeleyStartTimer());
         }
 

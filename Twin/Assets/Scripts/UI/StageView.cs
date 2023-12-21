@@ -1,10 +1,10 @@
-using UnityEngine.Events;
+using System;
 
 namespace UI
 {
     public class StageView : ScreenBase
     {
-        public event UnityAction SelectStageClick;
+        public event Action SelectStageClick;
 
         public override void Close()
         {

@@ -11,7 +11,9 @@ namespace UI
 
         private void Start()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
             SetLanguageCountry();
+#endif
         }
 
         private void SetLanguageCountry()

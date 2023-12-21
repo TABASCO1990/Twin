@@ -21,7 +21,9 @@ namespace UI
 
         private void Start()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
             ShowWindowAuthorization();
+#endif
         }
 
         public void ShowScreen()

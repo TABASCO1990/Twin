@@ -1,10 +1,10 @@
-using UnityEngine.Events;
+using System;
 
 namespace UI
 {
     public class GameOverScreen : ScreenBase
     {
-        public event UnityAction RestartButtonClock;
+        public event Action RestartButtonClock;
 
         public override void Close()
         {

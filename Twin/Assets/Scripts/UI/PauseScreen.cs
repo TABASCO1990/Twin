@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace UI
 {
     public class PauseScreen : ScreenBase
     {
-        public event UnityAction ContinueButtonClick;
+        public event Action ContinueButtonClick;
 
         public override void Close()
         {

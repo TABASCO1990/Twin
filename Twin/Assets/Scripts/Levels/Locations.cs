@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Levels
 {
@@ -13,7 +13,7 @@ namespace Levels
 
         public int CountStage => _stages.Length;
 
-        public event UnityAction<int> StageInitialised;
+        public event Action<int> StageInitialised;
 
         private void Start()
         {
