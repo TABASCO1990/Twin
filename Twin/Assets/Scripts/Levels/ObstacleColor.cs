@@ -1,3 +1,6 @@
-public class ObstacleColor : RendererChanged
+namespace Levels
 {
+    public class ObstacleColor : RendererChanged
+    {
+    }
 }

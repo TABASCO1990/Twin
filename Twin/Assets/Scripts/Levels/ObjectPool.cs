@@ -21,7 +21,7 @@ namespace Levels
 
                 foreach (var child in _pool[i].GetComponentsInChildren<Transform>(true))
                 {
-                    if (child.GetComponent<TimerBonus>() || child.GetComponent<Bomb>())
+                    if (child.GetComponent<Timer.TimerBonus>() || child.GetComponent<Shared.Bomb>())
                     {
                         child.gameObject.SetActive(true);
                         DOTween.Play(child);

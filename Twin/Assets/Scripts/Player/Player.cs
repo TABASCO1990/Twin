@@ -9,7 +9,7 @@ namespace Player
     {
         private const int MaxCountScore = 17;
 
-        [SerializeField] private Progress _progress;
+        [SerializeField] private Shared.Progress _progress;
 
         private PlayerMover _mover;
         private PlayerCollisionHandler _collisionHandler;
@@ -24,7 +24,7 @@ namespace Player
 
         public event UnityAction EffectsStarting;
 
-        public event UnityAction EffectsBomb;
+        public event UnityAction BombExploding;
 
         public event UnityAction LevelCompleted;
 
@@ -81,7 +81,7 @@ namespace Player
         public void TakeHit()
         {
             _mover.StopMove();
-            EffectsBomb?.Invoke();
+            BombExploding?.Invoke();
         }
     }
 }

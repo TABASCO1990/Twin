@@ -48,23 +48,23 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Target target))
+            if (other.TryGetComponent(out Shared.Target target))
             {
                 _player.IncreaseScore(target.Score);
-                _level.GetComponent<PlayerColor>().SetColor();
-                _level.GetComponent<ObstacleColor>().SetColor();
+                _level.GetComponent<Levels.PlayerColor>().SetColor();
+                _level.GetComponent<Levels.ObstacleColor>().SetColor();
                 _level.SetLevel();
-                _level.GetComponentInChildren<Plant>().RemoveTile();
+                _level.GetComponentInChildren<Shared.Plant>().RemoveTile();
                 _targetPartical.gameObject.transform.position = new Vector3(target.transform.position.x, _heightParticalTarget, target.transform.position.z);
                 _targetPartical.Play();
                 _audioSource.PlayOneShot(_audioScore);
             }
-            else if (other.TryGetComponent(out Water water))
+            else if (other.TryGetComponent(out Shared.Water water))
             {
                 _player.Die();
                 _audioSource.PlayOneShot(_audioDie);
             }
-            else if (other.TryGetComponent(out Bomb bomb))
+            else if (other.TryGetComponent(out Shared.Bomb bomb))
             {
                 _bombPartical.gameObject.transform.position = new Vector3(bomb.transform.position.x, _heightParticalBomb, bomb.transform.position.z);
                 _bombPartical.Play();

@@ -3,32 +3,35 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class LanguageSwitch : MonoBehaviour
+namespace UI
 {
-    private string _languageEnglish = "English";
-
-    private void Start()
+    public class LanguageSwitch : MonoBehaviour
     {
-        SetLanguageCountry();
-    }
+        private string _languageEnglish = "English";
 
-    private void SetLanguageCountry()
-    {
-        string currentLanguage = GetLang();
-
-        for (int i = 0; i < LeanLocalization.CurrentLanguages.Count; i++)
+        private void Start()
         {
-            var language = LeanLocalization.CurrentLanguages.ElementAt(i);
-
-            if (currentLanguage == language.Value.TranslationCode)
-            {
-                LeanLocalization.SetCurrentLanguageAll(language.Key);
-                return;
-            }
+            SetLanguageCountry();
         }
 
-        LeanLocalization.SetCurrentLanguageAll(_languageEnglish);
-    }
+        private void SetLanguageCountry()
+        {
+            string currentLanguage = GetLang();
 
-    [DllImport("__Internal")] public static extern string GetLang();
+            for (int i = 0; i < LeanLocalization.CurrentLanguages.Count; i++)
+            {
+                var language = LeanLocalization.CurrentLanguages.ElementAt(i);
+
+                if (currentLanguage == language.Value.TranslationCode)
+                {
+                    LeanLocalization.SetCurrentLanguageAll(language.Key);
+                    return;
+                }
+            }
+
+            LeanLocalization.SetCurrentLanguageAll(_languageEnglish);
+        }
+
+        [DllImport("__Internal")] public static extern string GetLang();
+    }
 }

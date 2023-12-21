@@ -1,3 +1,6 @@
-public class PlayerColor : RendererChanged
+namespace Levels
 {
+    public class PlayerColor : RendererChanged
+    {
+    }
 }

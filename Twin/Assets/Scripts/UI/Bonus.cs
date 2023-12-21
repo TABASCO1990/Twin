@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace UI
 {
-    [RequireComponent(typeof(TimerBonus))]
+    [RequireComponent(typeof(Timer.TimerBonus))]
     public class Bonus : MonoBehaviour
     {
         [SerializeField] private TMP_Text _value;
 
-        private TimerBonus _timerBonus;
+        private Timer.TimerBonus _timerBonus;
 
         private void Start()
         {
-            _timerBonus = GetComponent<TimerBonus>();
+            _timerBonus = GetComponent<Timer.TimerBonus>();
             _value.text = "+" + _timerBonus.Value;
         }
     }

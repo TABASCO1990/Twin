@@ -9,7 +9,7 @@ namespace UI
         [SerializeField] private TMP_Text _sumScoreSelectedScreen;
         [SerializeField] private TMP_Text _sumScoreGameScreen;
         [SerializeField] private TMP_Text _sumScoreLevelCompleteScreen;
-        [SerializeField] private Progress _progress;
+        [SerializeField] private Shared.Progress _progress;
 
         private void OnEnable()
         {

@@ -5,8 +5,8 @@ namespace UI
 {
     public class ResultStage : MonoBehaviour
     {
-        [SerializeField] private PlayerRank _playerRank;
-        [SerializeField] private Clock _clock;
+        [SerializeField] private Player.PlayerRank _playerRank;
+        [SerializeField] private Timer.Clock _clock;
         [SerializeField] private TMP_Text _rank;
         [SerializeField] private TMP_Text _time;
 

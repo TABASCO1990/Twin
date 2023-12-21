@@ -12,7 +12,7 @@ namespace Music
 
         private bool AudioEnabled
         {
-            get => Progress.Instance.PlayerInfo._isMusic;
+            get => Shared.Progress.Instance.PlayerInfo._isMusic;
             set => SetAudio(value);
         }
 
@@ -31,7 +31,7 @@ namespace Music
             _audioSource.enabled = enabled;
             _image.GetComponent<Image>().sprite = enabled ? _enableSprite : _disableSprite;
 
-            Progress.Instance.PlayerInfo._isMusic = enabled;
+            Shared.Progress.Instance.PlayerInfo._isMusic = enabled;
 
 #if !UNITY_EDITOR && UNITY_WEBGL
     Progress.Instance.Save();

@@ -5,7 +5,7 @@ namespace UI
     [RequireComponent(typeof(Animation))]
     public class AdvertisingButton : MonoBehaviour
     {
-        [SerializeField] private Watch _watch;
+        [SerializeField] private Timer.Watch _watch;
 
         private Animation _animation;
 
