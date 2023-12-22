@@ -26,6 +26,10 @@ namespace UI
 #endif
         }
 
+        [DllImport("__Internal")] public static extern void ShowWindowAuthorization();
+
+        [DllImport("__Internal")] private static extern void InitAuthorization();
+
         public void ShowScreen()
         {
             AreaLogin.SetActive(true);
@@ -40,9 +44,5 @@ namespace UI
         {
             InitAuthorization();
         }
-
-        [DllImport("__Internal")] public static extern void ShowWindowAuthorization();
-
-        [DllImport("__Internal")] private static extern void InitAuthorization();
     }
 }

@@ -9,11 +9,11 @@ namespace Levels
 
         private int _numberLevel;
 
+        public event Action<int> StageInitialised;
+
         public int NumberLevel => _numberLevel;
 
         public int CountStage => _stages.Length;
-
-        public event Action<int> StageInitialised;
 
         private void Start()
         {

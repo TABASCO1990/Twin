@@ -1,6 +1,6 @@
-using Lean.Localization;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Lean.Localization;
 using UnityEngine;
 
 namespace UI
@@ -15,6 +15,8 @@ namespace UI
             SetLanguageCountry();
 #endif
         }
+
+        [DllImport("__Internal")] public static extern string GetLang();
 
         private void SetLanguageCountry()
         {
@@ -33,7 +35,5 @@ namespace UI
 
             LeanLocalization.SetCurrentLanguageAll(_languageEnglish);
         }
-
-        [DllImport("__Internal")] public static extern string GetLang();
     }
 }

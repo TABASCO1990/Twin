@@ -6,7 +6,7 @@ namespace Levels
 {
     public class Launcher : MonoBehaviour
     {
-        [SerializeField] protected GameObject[] ObjectsDisabled;
+        [SerializeField] private GameObject[] ObjectsDisabled;
         [SerializeField] private Stage _stage;
         [SerializeField] private Locations _location;
         [SerializeField] private int _numberStage;

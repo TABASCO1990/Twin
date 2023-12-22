@@ -79,6 +79,8 @@ namespace Shared
             _mainScreen.Open();
         }
 
+        [DllImport("__Internal")] private static extern void ExitGame();
+
         public void OnRestartButtonClick()
         {
             ResetAll();
@@ -170,7 +172,5 @@ namespace Shared
         {
             _stage.GetComponentInChildren<Plant>().ResetTile();
         }
-
-        [DllImport("__Internal")] private static extern void ExitGame();
     }
 }

@@ -36,6 +36,12 @@ namespace Shared
             PlayerInfo._scores = new int[_location.CountStage];
         }
 
+        [DllImport("__Internal")] private static extern void SaveExtern(string date);
+
+        [DllImport("__Internal")] private static extern void LoadExtern();
+
+        [DllImport("__Internal")] private static extern void SetToLeaderboard(int value);
+
         public void CountScore()
         {
             SetStageScores();
@@ -90,11 +96,5 @@ namespace Shared
         SetToLeaderboard(_sumScores);
 #endif
         }
-
-        [DllImport("__Internal")] private static extern void SaveExtern(string date);
-
-        [DllImport("__Internal")] private static extern void LoadExtern();
-
-        [DllImport("__Internal")] private static extern void SetToLeaderboard(int value);
     }
 }

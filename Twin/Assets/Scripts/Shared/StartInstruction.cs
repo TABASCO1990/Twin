@@ -21,6 +21,8 @@ namespace Shared
 #endif
         }
 
+        [DllImport("__Internal")] private static extern void DeviceInfo();
+
         public void ShowInfo()
         {
             StartCoroutine(SetManual());
@@ -44,7 +46,5 @@ namespace Shared
             _navigation.SetActive(false);
             _hintTimer.SetActive(false);
         }
-
-        [DllImport("__Internal")] private static extern void DeviceInfo();
     }
 }
