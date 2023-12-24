@@ -25,7 +25,7 @@ namespace Shared
         {
             Instance = this;
             _scoreStages = new int[_location.CountStage];
-            Instance.PlayerInfo._isEffects = true;
+            Instance.PlayerInfo.IsEffects = true;
 #if !UNITY_EDITOR && UNITY_WEBGL
         LoadExtern();
 #endif
@@ -33,7 +33,7 @@ namespace Shared
 
         private void Start()
         {
-            PlayerInfo._scores = new int[_location.CountStage];
+            PlayerInfo.Scores = new int[_location.CountStage];
         }
 
         [DllImport("__Internal")] private static extern void SaveExtern(string date);
@@ -58,15 +58,15 @@ namespace Shared
         public void SetPlayerInfo(string value)
         {
             PlayerInfo = JsonUtility.FromJson<Player.PlayerInfo>(value);
-            PlayerInfo._scores.CopyTo(_scoreStages, 0);
+            PlayerInfo.Scores.CopyTo(_scoreStages, 0);
             SetTotalScores();
 
-            for (int i = 0; i < PlayerInfo._scores.Length; i++)
+            for (int i = 0; i < PlayerInfo.Scores.Length; i++)
             {
-                CalculateScore?.Invoke(PlayerInfo._scores[i], i, _sumScores);
+                CalculateScore?.Invoke(PlayerInfo.Scores[i], i, _sumScores);
             }
 
-            for (int i = 0; i <= PlayerInfo._countActiveStages; i++)
+            for (int i = 0; i <= PlayerInfo.CountActiveStages; i++)
             {
                 _activationStages.SetActivatedStages(i);
             }
@@ -75,7 +75,7 @@ namespace Shared
         private void SetStageScores()
         {
             _scoreStages[_location.NumberLevel] = _clock.RemainingTime + _player.Score;
-            _scoreStages.CopyTo(PlayerInfo._scores, 0);
+            _scoreStages.CopyTo(PlayerInfo.Scores, 0);
 #if !UNITY_EDITOR && UNITY_WEBGL
         Save();
 #endif
@@ -85,7 +85,7 @@ namespace Shared
         {
             int sum = 0;
 
-            foreach (var item in PlayerInfo._scores)
+            foreach (var item in PlayerInfo.Scores)
             {
                 sum += item;
             }

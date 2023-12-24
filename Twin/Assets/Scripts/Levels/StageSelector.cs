@@ -16,7 +16,7 @@ namespace Levels
         private void Start()
         {
             _launchers[_currentStage].enabled = true;
-            _currentStage = Shared.Progress.Instance.PlayerInfo._countActiveStages;
+            _currentStage = Shared.Progress.Instance.PlayerInfo.CountActiveStages;
         }
 
         public void SetActivatedStages(int count)
@@ -44,7 +44,7 @@ namespace Levels
 
         private void CountStageActive()
         {
-            Shared.Progress.Instance.PlayerInfo._countActiveStages = Math.Max(Shared.Progress.Instance.PlayerInfo._countActiveStages, _currentStage);
+            Shared.Progress.Instance.PlayerInfo.CountActiveStages = Math.Max(Shared.Progress.Instance.PlayerInfo.CountActiveStages, _currentStage);
 
 #if !UNITY_EDITOR && UNITY_WEBGL
         Progress.Instance.Save();
