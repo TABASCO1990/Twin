@@ -1,3 +1,4 @@
+![Alt-текст](https://avatars.mds.yandex.net/get-games/6300668/2a0000018ab1597360f12133a4aad26d12e0/pjpg128x128)
 # Игра: "Свой среди чужих"
 
 ## Описание
