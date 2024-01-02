@@ -5,5 +5,5 @@
 > Нажмите и удерживайте, чтобы управлять своим персонажем.
 > Избегайте ловушек и препятствия, чтобы включить оставшееся время в бонус прохождения и продвинуться в таблице лидеров.
 
-**[Яндекс игры]([https://pages.github.com/](https://yandex.ru/games/#app=252738)https://yandex.ru/games/#app=252738).**
+[Яндекс игры]([https://pages.github.com/](https://yandex.ru/games/#app=252738)https://yandex.ru/games/#app=252738).
 
