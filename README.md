@@ -9,6 +9,8 @@
 
 >[YouTube](https://youtu.be/nzpbSx7p15M).
 
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/nzpbSx7p15M)
+
 ## Применение 
 
 :white_check_mark: ООП    
