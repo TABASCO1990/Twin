@@ -9,7 +9,7 @@
 
 >[YouTube](https://youtu.be/nzpbSx7p15M).
 
-[![Watch the video](https://i9.ytimg.com/vi_webp/nzpbSx7p15M/mq3.webp?sqp=COD2va0G-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGCAgYyhlMA8=&rs=AOn4CLAy6flCotJVUkWUuF_HamDdMvm0mw)](https://youtu.be/nzpbSx7p15M)
+[![Watch the video](https://disk.yandex.ru/client/disk?idApp=client&dialog=slider&idDialog=%2Fdisk%2FWinnerRus.png)](https://youtu.be/nzpbSx7p15M)
 
 ## Применение 
 
