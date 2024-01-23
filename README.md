@@ -7,7 +7,7 @@
 
 >[Яндекс игры](https://yandex.ru/games/#app=252738)
 >[YouTube](https://youtu.be/nzpbSx7p15M)
->
+
 ## Применение 
 
 :white_check_mark: ООП    
