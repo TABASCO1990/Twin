@@ -9,7 +9,7 @@
 
 >[YouTube](https://youtu.be/nzpbSx7p15M).
 
-[![Watch the video](https://disk.yandex.ru/client/disk?idApp=client&dialog=slider&idDialog=%2Fdisk%2FWinnerRus.png)](https://youtu.be/nzpbSx7p15M)
+[![Watch the video](https://i.postimg.cc/G9w4fLXK/Winner-Rus.png)](https://youtu.be/nzpbSx7p15M)
 
 ## Применение 
 
