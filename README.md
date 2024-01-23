@@ -6,7 +6,8 @@
 > Избегайте ловушек и препятствия, чтобы включить оставшееся время в бонус прохождения и продвинуться в таблице лидеров.
 
 >[Яндекс игры](https://yandex.ru/games/#app=252738)
-
+>[YouTube](https://youtu.be/nzpbSx7p15M)
+>
 ## Применение 
 
 :white_check_mark: ООП    
@@ -18,4 +19,3 @@
 :white_check_mark: Blender     
 :white_check_mark: Adobe Illustrator    
 :white_check_mark: Реализация адаптивного UI    
-
